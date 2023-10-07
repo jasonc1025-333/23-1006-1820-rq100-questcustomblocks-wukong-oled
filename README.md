@@ -1,6 +1,6 @@
 Works for others to code with:
 * 'New Project':: 'Extensions': 'Enter Project URL...'
-* Saved as filename: 23-1006-2020-RQ100-QuestCustomBlocks-AsExtension 
+* Saved as *arbitrary* filename: 23-1006-2020-RQ100-QuestCustomBlocks-AsExtension 
 * GOOD: LeftPopOutWindow NOT shows 'README.md' where coders can access sensitive content
 * https://makecode.microbit.org/S24343-10858-43871-73362
   
