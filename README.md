@@ -1,4 +1,14 @@
+Works for others to code with:
+* 'New Project':: 'Extensions': 'Enter Project URL...'
+* Saved as filename: 23-1006-2020-RQ100-QuestCustomBlocks-AsExtension 
+* GOOD: LeftPopOutWindow NOT shows 'README.md' where coders can access sensitive content
+* https://makecode.microbit.org/S24343-10858-43871-73362
+  
+Not work for others to code with:
+* 'Edit this project' ('Import': 'Import URL...'), then 'Share Project Link' for others to obtain a private copy to code with:
+* BAD: LeftPopOutWindow shows 'README.md' where coders can access sensitive content
 
+WebPage
 > Open this page at [https://eande-jasonc1025.github.io/23-1006-1820-rq100-questcustomblocks-wukong-oled/](https://eande-jasonc1025.github.io/23-1006-1820-rq100-questcustomblocks-wukong-oled/)
 
 ## Use as Extension
