@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "pxt-wuKong--ForkedFrom_Wukong": "github:eande-jasonc1025/pxt-wukong--ForkedFrom_Wukong#v2.0.0"
     },
     "files": [
         "main.blocks",
