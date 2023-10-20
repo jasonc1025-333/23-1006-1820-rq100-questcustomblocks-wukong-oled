@@ -866,13 +866,17 @@ namespace quest_Motors {
     * @param turn_Direction_In turn_Direction_Enum
     * @param turn_Power_In turn_Power_Enum
     * @param turn_Duration_In turn_Duration_Enum
+    * @param debug_Show_In debug_Show_Enum
+
     */
-    //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
+    //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: debug_Show_In"
     //% weight=60 blockGap=8
     //% inlineInputMode=external
-    export function quest_Set_Turn_WithTimer_Fn(port_Ids_In: quest_PortGroup_BlueRedBlack_PortIds_Enum, turn_Type_In: turn_Type_Enum, turn_Direction_In: turn_Direction_Enum, turn_Power_In: turn_Power_Enum, turn_Duration_In: turn_Duration_Enum): void {
+    export function quest_Set_Turn_WithTimer_Fn(port_Ids_In: quest_PortGroup_BlueRedBlack_PortIds_Enum, turn_Type_In: turn_Type_Enum, turn_Direction_In: turn_Direction_Enum, turn_Power_In: turn_Power_Enum, turn_Duration_In: turn_Duration_Enum, debug_Show_In: debug_Show_Enum): void {
 
-        basic.showIcon(IconNames.SmallHeart)
+        ///jwc y if(debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
 
         let motor_Power_L = 0
         let motor_Power_R = 0
@@ -1026,20 +1030,34 @@ namespace quest_Motors {
         }
 
         // diagnostics
-        quest_Dashboard.quest_Show_Oled_Cleared_Fn
-        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Fn(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+        switch (debug_Show_In) {
+            case debug_Show_Enum.Dashboard_OLED:
+                quest_Dashboard.quest_Show_Oled_Cleared_Fn
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Fn(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+
+                break  // out of these case statements
+            case debug_Show_Enum.MicroBit_Screen:
+                // diagnostics
+                basic.showIcon(IconNames.Fabulous)
+
+                break  // out of these case statements
+            case debug_Show_Enum.Off:
+
+                break  // out of these case statements
+            default:
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    serial.writeLine("* ERROR: quest_Set_Turn_WithTimer_Fn: " + motor_Power_L + " " + motor_Power_R + " " + turn_Duration)
+                }
+                break
+        }
 
         // turn
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Fn(port_Ids_In, motor_Power_L, motor_Power_R)
-
         // timer
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Fn(turn_Duration, quest_Time_Units_Enum.Milliseconds)
-
         // stop
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Fn(port_Ids_In, 0, 0)
 
-        // diagnostics
-        basic.showIcon(IconNames.Heart)
     }
 
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': /**
