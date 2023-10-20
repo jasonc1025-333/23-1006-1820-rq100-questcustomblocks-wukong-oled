@@ -128,6 +128,15 @@ enum turn_Power_Enum {
     Hi,
 }
 
+enum debug_Show_Enum {
+    //% block="Off"
+    Off,
+    //% block="Dashboard_OLED"
+    Dashboard_OLED,
+    //% block="MicroBit_Screen"
+    MicroBit_Screen,
+}
+
 // * Though it seems that can define global vars here, but not advised 
 // ** since memory storage would be safer within 'namespace'
 //
@@ -730,19 +739,23 @@ namespace quest_Motors {
      * @param powerLeftIn number
      * @param powerRightIn number
      * @param turn_Duration_In turn_Duration_Enum
+     * @param debug_Show_In debug_Show_Enum
+     *
      */
     ////jwc o //% block="set servo_motors w/ timer: $portIdsIn|@ left motor power: $powerLeftIn|@ right motor power: $powerRightIn|turn_Duration_In $turn_Duration_In"
     ////jwc y //% block="set servo_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
-    ////jwc //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
     // '\\' = escape character to deactivate following special character
-    //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: debug_Show_In"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=78 blockGap=8
     //% inlineInputMode=external
-    export function quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn(portIdsIn: quest_PortGroup_BlueRedBlack_PortIds_Enum, powerLeftIn: number, powerRightIn: number, turn_Duration_In: turn_Duration_Enum): void {
-
-        basic.showIcon(IconNames.SmallHeart)
+    export function quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn(portIdsIn: quest_PortGroup_BlueRedBlack_PortIds_Enum, powerLeftIn: number, powerRightIn: number, turn_Duration_In: turn_Duration_Enum, debug_Show_In: debug_Show_Enum): void {
+        
+        ///jwc y if(debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
 
         // Motor-Left Conversion: Same Rotational Direction
         let motor_Power_L = Math.map(powerLeftIn, -100, 100, 0, 360)
@@ -801,35 +814,49 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* ERROR: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
         }
 
         // diagnostics
-        quest_Dashboard.quest_Show_Oled_Cleared_Fn
-        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Fn(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+        switch (debug_Show_In) {
+            case debug_Show_Enum.Dashboard_OLED:
+                quest_Dashboard.quest_Show_Oled_Cleared_Fn
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Fn(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+
+                break  // out of these case statements
+            case debug_Show_Enum.MicroBit_Screen:
+                // diagnostics
+                basic.showIcon(IconNames.Happy)
+
+                break  // out of these case statements
+            case debug_Show_Enum.Off:
+
+                break  // out of these case statements
+            default:
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    serial.writeLine("* ERROR: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                }
+                break
+        }
 
         // timer
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Fn(turn_Duration, quest_Time_Units_Enum.Milliseconds)
-
         // stop
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Fn(portIdsIn, 0, 0)
-
-        // diagnostics
-        basic.showIcon(IconNames.Heart)
     }
 
     /**

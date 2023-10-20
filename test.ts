@@ -7,7 +7,8 @@ input.onButtonPressed(Button.A, function () {
         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
         50,
         -50,
-        turn_Duration_Enum.msec_2000
+        turn_Duration_Enum.msec_2000,
+        debug_Show_Enum.Dashboard_OLED
     )
 })
 input.onButtonPressed(Button.B, function () {
@@ -15,7 +16,8 @@ input.onButtonPressed(Button.B, function () {
         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
         -50,
         50,
-        turn_Duration_Enum.msec_2000
+        turn_Duration_Enum.msec_2000,
+        debug_Show_Enum.MicroBit_Screen
     )
 })
 basic.forever(function () {
@@ -24,6 +26,7 @@ basic.forever(function () {
         0,
         0
     )
-    quest_Dashboard.quest_Show_Oled_Cleared_Fn(
-    )
+        quest_Dashboard.quest_Show_Oled_Cleared_Fn(
+        )
+        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Fn(3, quest_Time_Units_Enum.Seconds)
 })
