@@ -56,6 +56,7 @@ basic.forever(function () {
 })
 
 basic.forever(function () {
-    serial.writeLine(' | quest_Sensors.quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn(): ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn()) )
+    serial.writeLine(' | quest_Sensors.quest_Get_Controller_Joystick_Polar_AngleDegree_IncrementsOf90_AsIntOut_Func(): ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_Polar_AngleDegree_IncrementsOf90_AsIntOut_Func()))
+    serial.writeLine(' | quest_Sensors.quest_Get_Controller_Joystick_Polar_RayLength_AsIntOut_Func(): ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_Polar_RayLength_AsIntOut_Func()))
 
 })
