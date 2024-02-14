@@ -2,6 +2,7 @@
 
 // jwc 23-1006-1847
 // jwc 23-1019-1900
+// jwc 24-0214-0400
 
 input.onButtonPressed(Button.A, function () {
     quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn(
@@ -52,4 +53,9 @@ basic.forever(function () {
         quest_Dashboard.quest_Show_Oled_Cleared_Fn(
         )
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Fn(3, quest_Time_Units_Enum.Seconds)
+})
+
+basic.forever(function () {
+    serial.writeLine(' | quest_Sensors.quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn(): ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn()) )
+
 })

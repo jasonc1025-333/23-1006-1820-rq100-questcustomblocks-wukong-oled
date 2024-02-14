@@ -7,7 +7,8 @@
         "radio": "*",
         "microphone": "*",
         "pxt-wuKong--ForkedFrom_Wukong": "github:eande-jasonc1025/pxt-wukong--ForkedFrom_Wukong#v2.0.0",
-        "OLED12864_I2C--ForkedFrom_Makecode-Extensions": "github:eande-jasonc1025/OLED12864_I2C--ForkedFrom_Makecode-Extensions#v2.0.1"
+        "OLED12864_I2C--ForkedFrom_Makecode-Extensions": "github:eande-jasonc1025/OLED12864_I2C--ForkedFrom_Makecode-Extensions#v2.0.1",
+        "joystickbit": "github:tinkertanker/pxt-joystickbit#v1.0.2"
     },
     "files": [
         "main.blocks",
@@ -20,7 +21,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "6.0.19",
+        "target": "6.0.25",
         "targetId": "microbit"
     },
     "supportedTargets": [

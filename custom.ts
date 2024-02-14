@@ -1104,6 +1104,82 @@ namespace quest_Sensors {
     /// //
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
+
+    /**
+    * quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn
+    */
+    // '\\' escape character to deactivate special character processing
+    ///jwc o //% block="get number w/ column\\_padding as string\\_out|number_in: $number_in|string\\_len\\_max\\_in: $string_len_max_in|decimal\\_places\\_in  $decimal_places_in"
+    //% block="get controller\\_joystick angle\\_degree increments\\_of_90 as int\\_out: $number_in|"
+    //% weight=60 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_Controller_Joystick_AngleDegree_IncrementsOf90_AsIntOut_Fn() {
+
+        let _local_converted_value_int_out = 0
+        let angle_degrees_incremented_in = 90
+
+        let controller_Joystick__Raw_OriginAtBottomRight__X_Int = joystickbit.getRockerValue(joystickbit.rockerType.X)
+        let controller_Joystick__Raw_OriginAtBottomRight__Y_Int = joystickbit.getRockerValue(joystickbit.rockerType.Y)
+
+        let controller_Joystick__Raw_OriginAtBottomRight__XandY_Center = 512
+        let cartesian_side_adjacent_x_int_in = (controller_Joystick__Raw_OriginAtBottomRight__X_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * 1
+        let cartesian_side_opposite_y_int_in = (controller_Joystick__Raw_OriginAtBottomRight__Y_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * -1
+
+        serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            cartesian_side_adjacent_x_int_in,
+            5,
+            0
+        ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            cartesian_side_opposite_y_int_in,
+            5,
+            0
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to radians"
+        )
+        _local_converted_value_int_out = Math.atan2(cartesian_side_opposite_y_int_in, cartesian_side_adjacent_x_int_in)
+        serial.writeString(" Angle:: Radians: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            10,
+            4
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to degrees"
+        )
+        _local_converted_value_int_out = _local_converted_value_int_out * (180 / 3.1416)
+        if (_local_converted_value_int_out < 0) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+                "If < 0, then keep > 0"
+            )
+            _local_converted_value_int_out = _local_converted_value_int_out + 360
+        }
+        serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to degrees as incremented by passed_in_argument"
+        )
+        _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degrees_incremented_in) + Math.round(_local_converted_value_int_out % angle_degrees_incremented_in / angle_degrees_incremented_in)
+        serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ) + " * " + angle_degrees_incremented_in)
+        _local_converted_value_int_out = _local_converted_value_int_out * angle_degrees_incremented_in
+        serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ))
+        if (false) {
+            serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        }
+        return _local_converted_value_int_out
+    }
+
+
     /**
      * quest_Show_Magnet_Sensor_Fn
      * @param rawSensorReadMaxIn number, eg: 2000
