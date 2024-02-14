@@ -1109,7 +1109,7 @@ namespace quest_Sensors {
     */
     // '\\' escape character to deactivate special character processing
     //% block="get controller\\_joystick polar\\_angle\\_degree increments\\_of_90 as int\\_out|"
-    //% weight=60 blockGap=8
+    //% weight=71 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_Controller_Joystick_Polar_AngleDegree_IncrementsOf90_AsIntOut_Func() {
 
@@ -1183,7 +1183,7 @@ namespace quest_Sensors {
     */
     // '\\' escape character to deactivate special character processing
     //% block="get controller\\_joystick polar\\_ray\\_length as int\\_out|"
-    //% weight=60 blockGap=8
+    //% weight=70 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_Controller_Joystick_Polar_RayLength_AsIntOut_Func() {
    
@@ -1238,7 +1238,7 @@ namespace quest_Sensors {
     // '\\' = escape character to deactivate following special character
     //% block="show light\\_sensor\\_value:|* rawSensorReadMaxIn: $rawSensorReadMaxIn"
     //% rawSensorReadMaxIn.min=0 rawSensorReadMaxIn.max=255
-    //% weight=80 blockGap=8
+    //% weight=81 blockGap=8
     //% inlineInputMode=external
     export function quest_Show_Light_Sensor_Fn(rawSensorReadMaxIn: number = 255): void {
         led.plotBarGraph(input.lightLevel(), rawSensorReadMaxIn)
