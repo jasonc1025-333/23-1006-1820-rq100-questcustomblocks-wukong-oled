@@ -29,6 +29,7 @@
 //   ** http://www.baskent.edu.tr/~tkaracay/etudio/agora/nnn/html_colors.htm#:~:text=aqua%2C%20black%2C%20blue%2C%20fuchsia,for%20the%20same%20color%20name.
 //   ** https://www.rapidtables.com/web/color/RGB_Color.html
 //   ** https://www.indezine.com/products/powerpoint/learn/color/color-rgb.html
+//   ** https://htmlcolorcodes.com/
 
 
 // enum MyEnum {
@@ -343,6 +344,27 @@ namespace quest_General {
 // 3: Aqua #00FFFF rgb(0, 255, 255)
 // 4: Yellow #FFFF00 rgb(255, 255, 0)
 // 5: Red #FF0000 rgb(255,0,0)
+
+// https://htmlcolorcodes.com/
+// List of common HTML color codes
+// COLOR	NAME	HEX CODE	RGB CODE
+// White	#FFFFFF	rgb(255, 255, 255)
+// Silver	#C0C0C0	rgb(192, 192, 192)
+// Gray	#808080	rgb(128, 128, 128)
+// Black	#000000	rgb(0, 0, 0)
+// Red	#FF0000	rgb(255, 0, 0)
+// Maroon	#800000	rgb(128, 0, 0)
+// Yellow	#FFFF00	rgb(255, 255, 0)
+// Olive	#808000	rgb(128, 128, 0)
+// Lime	#00FF00	rgb(0, 255, 0)
+// Green	#008000	rgb(0, 128, 0)
+// Aqua	#00FFFF	rgb(0, 255, 255)
+// Teal	#008080	rgb(0, 128, 128)
+// Blue	#0000FF	rgb(0, 0, 255)
+// Navy	#000080	rgb(0,  0, 128)
+// Fuchsia	#FF00FF	rgb(255, 0, 255)
+// Purple	#800080	rgb(128, 0, 128)
+
 //
 //
 
@@ -405,7 +427,9 @@ namespace quest_Note_2 {
 /**
  * quest_Note_3 blocks
  */
-//% weight=53 color=#00FFFF icon="Q"
+////jwc y //% weight=53 color=#00FFFF icon="Q"
+
+//% weight=53 color=#0000FF icon="Q"
 namespace quest_Note_3 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -432,10 +456,12 @@ namespace quest_Note_3 {
 
 //////jwc y //% weight=56 color=#FFFF00 icon="Q"
 //////jwc y //% weight=56 color=#7F7F00 icon="Q"
+//////jwc y //% weight=52 color=#ffff00 icon="Q"
+
 /**
  * quest_Note_4 blocks
  */
-//% weight=52 color=#ffff00 icon="Q"
+//% weight=52 color=#ff7f00 icon="Q"
 namespace quest_Note_4 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -470,13 +496,14 @@ namespace quest_Note_4 {
 ///jwc //% weight=50 color=#ff7f00 icon="Q"
 ///jwc //% weight=50 color=#ff7f00 icon="Q"
 ///jwc //% weight=49 color=#ff7f00 icon="Q"
+///jwc //% weight=51 color=#ff7f00 icon="Q"
 ///jwc n same //% weight=45 color=#ff7f00 icon="Q"
 ///jwc n below 'wuKong' //% weight=40 color=#ff7f00 icon="Q"
 ///jwc below oled //% weight=20 c'olor=#ff7f00 icon="Q"
 ///jwc //% weight=50.5 color=#ff7f00 icon="Q"
 // jwc 21,22,30,40,45,50, 50.5: below 'wuKong'
 // jwc 51 below 'Quest_Note_4'
-//% weight=51 color=#ff7f00 icon="Q"
+//% weight=51 color=#FF00FF icon="Q"
 namespace quest_Note_5 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -698,7 +725,8 @@ namespace quest_Motors {
      */
     ////jwc yy //% block="set manual:servo_motors:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn"
     // '\\' = escape character to deactivate following special character
-    //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn"
+    ////jwc y //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn"
+    //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=80 blockGap=8
@@ -747,7 +775,8 @@ namespace quest_Motors {
     ////jwc y //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
     ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
     // '\\' = escape character to deactivate following special character
-    //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=78 blockGap=8
