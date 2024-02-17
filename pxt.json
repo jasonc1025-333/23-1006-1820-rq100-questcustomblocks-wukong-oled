@@ -15,8 +15,7 @@
         "main.ts",
         "README.md",
         "main.py",
-        "custom.ts",
-        "RQ100-OneCode-Controller_Joystick-Bot-Beginner-FINAL.ts"
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"
