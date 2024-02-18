@@ -371,7 +371,7 @@ namespace quest_General {
 /**
  * quest_Note_1 blocks
  */
-//% weight=55 color=#C0C0C0 icon="Q"
+//% weight=56 color=#C0C0C0 icon="Q"
 namespace quest_Note_1 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -399,7 +399,7 @@ namespace quest_Note_1 {
 /**
  * quest_Note_2 blocks
  */
-//% weight=54 color=#00FF00 icon="Q"
+//% weight=55 color=#00FF00 icon="Q"
 namespace quest_Note_2 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -429,7 +429,7 @@ namespace quest_Note_2 {
  */
 ////jwc y //% weight=53 color=#00FFFF icon="Q"
 
-//% weight=53 color=#0000FF icon="Q"
+//% weight=54 color=#0000FF icon="Q"
 namespace quest_Note_3 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -461,7 +461,7 @@ namespace quest_Note_3 {
 /**
  * quest_Note_4 blocks
  */
-//% weight=52 color=#ff7f00 icon="Q"
+//% weight=53 color=#ff7f00 icon="Q"
 namespace quest_Note_4 {
     /**
      * quest_Show_String_For_Note_Small_Fn
@@ -503,8 +503,33 @@ namespace quest_Note_4 {
 ///jwc //% weight=50.5 color=#ff7f00 icon="Q"
 // jwc 21,22,30,40,45,50, 50.5: below 'wuKong'
 // jwc 51 below 'Quest_Note_4'
-//% weight=51 color=#FF00FF icon="Q"
+//% weight=52 color=#FF00FF icon="Q"
 namespace quest_Note_5 {
+    /**
+     * quest_Show_String_For_Note_Small_Fn
+     * @param textStrIn string
+     */
+    // '\\' escape character to deactivate special character processing
+    //% block="note\\_small: $textStrIn"
+    //% weight=80 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Show_String_For_Note_Small_Fn(textStrIn: string) {
+    }
+    // * Add space in front of '|' such as ' |' creates reliable 1row spacing
+    /**
+     * quest_Show_String_For_Note_Big_Fn
+     * @param textStrIn string
+     */
+    // '\\' escape character to deactivate special character processing
+    //% block=" |note\\_big: $textStrIn |"
+    //% weight=80 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Show_String_For_Note_Big_Fn(textStrIn: string) {
+    }
+}
+
+//% weight=51 color=#000000 icon="Q"
+namespace quest_Note_6 {
     /**
      * quest_Show_String_For_Note_Small_Fn
      * @param textStrIn string
