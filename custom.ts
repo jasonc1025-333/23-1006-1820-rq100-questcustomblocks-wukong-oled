@@ -1159,13 +1159,13 @@ namespace quest_Sensors {
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
     /**
-    * quest_Get_Controller_Joystick_Polar_AngleDegree_IncrementsOf90_AsIntOut_Func
+    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementsOf90_AsIntOut_Func
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick polar\\_angle\\_degree increments\\_of_90 as int\\_out|"
+    //% block="get controller\\_joystick directional angle\\_degree increments\\_of\\_90 as int\\_out|"
     //% weight=71 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_Controller_Joystick_Polar_AngleDegree_IncrementsOf90_AsIntOut_Func() {
+    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementsOf90_AsIntOut_Func() {
 
         let _local_converted_value_int_out = 0
         let angle_degrees_incremented_in = 90
@@ -1233,13 +1233,13 @@ namespace quest_Sensors {
     }
 
     /**
-    * quest_Get_Controller_Joystick_Polar_RayLength_AsIntOut_Func
+    * quest_Get_Controller_Joystick_Directional_DistancePixel_AsIntOut_Func
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick polar\\_ray\\_length as int\\_out|"
+    //% block="get controller\\_joystick directional distance\\_pixel as int\\_out|"
     //% weight=70 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_Controller_Joystick_Polar_RayLength_AsIntOut_Func() {
+    export function quest_Get_Controller_Joystick_Directional_DistancePixel_AsIntOut_Func() {
    
         let _local_converted_value_int_out = 0
 
