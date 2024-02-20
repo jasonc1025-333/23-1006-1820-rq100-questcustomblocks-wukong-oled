@@ -138,6 +138,15 @@ enum debug_Show_Enum {
     MicroBit_Screen,
 }
 
+enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
+    //% block="degree_90"
+    degree_90,
+    //% block="degree_45"
+    degree_45,
+    //% block="degree_30"
+    degree_30,
+}
+
 // * Though it seems that can define global vars here, but not advised 
 // ** since memory storage would be safer within 'namespace'
 //
@@ -1159,16 +1168,16 @@ namespace quest_Sensors {
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
     /**
-    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementsOf90_AsIntOut_Func
+    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf90_AsIntOut_Func
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick directional angle\\_degree increments\\_of\\_90 as int\\_out|"
-    //% weight=71 blockGap=8
+    //% block="get controller\\_joystick directional angle\\_degree increment\\_of\\_90 as int\\_out|"
+    //% weight=89 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementsOf90_AsIntOut_Func() {
+    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf90_AsIntOut_Func() {
 
         let _local_converted_value_int_out = 0
-        let angle_degrees_incremented_in = 90
+        let angle_degree_increment_in = 90
 
         let controller_Joystick__Raw_OriginAtBottomRight__X_Int = joystickbit.getRockerValue(joystickbit.rockerType.X)
         let controller_Joystick__Raw_OriginAtBottomRight__Y_Int = joystickbit.getRockerValue(joystickbit.rockerType.Y)
@@ -1213,13 +1222,13 @@ namespace quest_Sensors {
         quest_Note_1.quest_Show_String_For_Note_Small_Fn(
             "Convert to degrees as incremented by passed_in_argument"
         )
-        _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degrees_incremented_in) + Math.round(_local_converted_value_int_out % angle_degrees_incremented_in / angle_degrees_incremented_in)
+        _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degree_increment_in) + Math.round(_local_converted_value_int_out % angle_degree_increment_in / angle_degree_increment_in)
         serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
             _local_converted_value_int_out,
             5,
             1
-        ) + " * " + angle_degrees_incremented_in)
-        _local_converted_value_int_out = _local_converted_value_int_out * angle_degrees_incremented_in
+        ) + " * " + angle_degree_increment_in)
+        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
         serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
             _local_converted_value_int_out,
             5,
@@ -1233,13 +1242,101 @@ namespace quest_Sensors {
     }
 
     /**
-    * quest_Get_Controller_Joystick_Directional_DistancePixel_AsIntOut_Func
+    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf_AsIntOut_Func
+    * @param angle_degree_increment_in quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick directional distance\\_pixel as int\\_out|"
-    //% weight=70 blockGap=8
+    //% block="get controller\\_joystick directional angle\\_degree:| * increment\\_of: $angle_degree_increment_in as int\\_out|"
+    //% weight=87 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_Controller_Joystick_Directional_DistancePixel_AsIntOut_Func() {
+    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf_AsIntOut_Func(angle_degree_increment_enum_in: quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum) {
+
+        let _local_converted_value_int_out = 0
+        ////jwc o let angle_degree_increment_in = 90
+        let angle_degree_increment_in = 0
+
+        switch (angle_degree_increment_enum_in) {
+            case quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum.degree_90:
+                angle_degree_increment_in = 90
+                break  // out of these case statements
+            case quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum.degree_45:
+                angle_degree_increment_in = 45
+                break  // out of these case statements
+            case quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum.degree_30:
+                angle_degree_increment_in = 30
+                break  // out of these case statements
+        }
+
+        let controller_Joystick__Raw_OriginAtBottomRight__X_Int = joystickbit.getRockerValue(joystickbit.rockerType.X)
+        let controller_Joystick__Raw_OriginAtBottomRight__Y_Int = joystickbit.getRockerValue(joystickbit.rockerType.Y)
+
+        let controller_Joystick__Raw_OriginAtBottomRight__XandY_Center = 512
+        let cartesian_side_adjacent_x_int_in = (controller_Joystick__Raw_OriginAtBottomRight__X_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * -1
+        let cartesian_side_opposite_y_int_in = (controller_Joystick__Raw_OriginAtBottomRight__Y_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * 1
+
+        serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            cartesian_side_adjacent_x_int_in,
+            5,
+            0
+        ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            cartesian_side_opposite_y_int_in,
+            5,
+            0
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to radians"
+        )
+        _local_converted_value_int_out = Math.atan2(cartesian_side_opposite_y_int_in, cartesian_side_adjacent_x_int_in)
+        serial.writeString(" Angle:: Radians: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            10,
+            4
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to degrees"
+        )
+        _local_converted_value_int_out = _local_converted_value_int_out * (180 / 3.1416)
+        if (_local_converted_value_int_out < 0) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+                "If < 0, then keep > 0"
+            )
+            _local_converted_value_int_out = _local_converted_value_int_out + 360
+        }
+        serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ))
+        quest_Note_1.quest_Show_String_For_Note_Small_Fn(
+            "Convert to degrees as incremented by passed_in_argument"
+        )
+        _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degree_increment_in) + Math.round(_local_converted_value_int_out % angle_degree_increment_in / angle_degree_increment_in)
+        serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ) + " * " + angle_degree_increment_in)
+        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
+        serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Fn(
+            _local_converted_value_int_out,
+            5,
+            1
+        ))
+        if (false) {
+            serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        }
+        serial.writeLine("")
+        return _local_converted_value_int_out
+    }
+
+    /**
+    * quest_Get_Controller_Joystick_Directional_MagnitudePixel_AsIntOut_Func
+    */
+    // '\\' escape character to deactivate special character processing
+    //% block="get controller\\_joystick directional magnitude\\_pixel as int\\_out|"
+    //% weight=85 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_Controller_Joystick_Directional_MagnitudePixel_AsIntOut_Func() {
    
         let _local_converted_value_int_out = 0
 
@@ -1273,19 +1370,6 @@ namespace quest_Sensors {
     }
 
     /**
-     * quest_Show_Magnet_Sensor_Fn
-     * @param rawSensorReadMaxIn number, eg: 2000
-     */
-    // '\\' = escape character to deactivate following special character
-    //% block="show magnet\\_sensor\\_value:|* rawSensorReadMaxIn: $rawSensorReadMaxIn"
-    //% rawSensorReadMaxIn.min=0 rawSensorReadMaxIn.max=2000
-    //% weight=80 blockGap=8
-    //% inlineInputMode=external
-    export function quest_Show_Magnet_Sensor_Fn(rawSensorReadMaxIn: number = 2000): void {
-        led.plotBarGraph(input.magneticForce(Dimension.Strength), rawSensorReadMaxIn)
-    }
-
-    /**
      * quest_Show_Light_Sensor_Fn
      * @param rawSensorReadMaxIn number, eg: 255
      */
@@ -1296,6 +1380,19 @@ namespace quest_Sensors {
     //% inlineInputMode=external
     export function quest_Show_Light_Sensor_Fn(rawSensorReadMaxIn: number = 255): void {
         led.plotBarGraph(input.lightLevel(), rawSensorReadMaxIn)
+    }
+
+    /**
+     * quest_Show_Magnet_Sensor_Fn
+     * @param rawSensorReadMaxIn number, eg: 2000
+     */
+    // '\\' = escape character to deactivate following special character
+    //% block="show magnet\\_sensor\\_value:|* rawSensorReadMaxIn: $rawSensorReadMaxIn"
+    //% rawSensorReadMaxIn.min=0 rawSensorReadMaxIn.max=2000
+    //% weight=80 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Show_Magnet_Sensor_Fn(rawSensorReadMaxIn: number = 2000): void {
+        led.plotBarGraph(input.magneticForce(Dimension.Strength), rawSensorReadMaxIn)
     }
 
 }
