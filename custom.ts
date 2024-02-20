@@ -1168,13 +1168,13 @@ namespace quest_Sensors {
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
     /**
-    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf90_AsIntOut_Func
+    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick directional angle\\_degree increment\\_of\\_90 as int\\_out|"
+    //% block="get controller\\_joystick directional angle\\_degree increment\\_of\\_degree\\_90 as int\\_out|"
     //% weight=89 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf90_AsIntOut_Func() {
+    export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func() {
 
         let _local_converted_value_int_out = 0
         let angle_degree_increment_in = 90
