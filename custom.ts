@@ -1246,7 +1246,7 @@ namespace quest_Sensors {
     * @param angle_degree_increment_in quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum
     */
     // '\\' escape character to deactivate special character processing
-    //% block="get controller\\_joystick directional angle\\_degree:| * increment\\_of: $angle_degree_increment_in as int\\_out|"
+    //% block="get controller\\_joystick directional angle\\_degree:| * increment\\_of: $angle_degree_increment_enum_in as int\\_out|"
     //% weight=87 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf_AsIntOut_Func(angle_degree_increment_enum_in: quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum) {
