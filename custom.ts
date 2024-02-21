@@ -474,8 +474,8 @@ namespace quest_Note_2 {
  * quest_Note_3 blocks
  */
 ////jwc y //% weight=53 color=#00FFFF icon="Q"
-
-//% weight=54 color=#0000FF icon="Q"
+////jwc ? confused with blue 'call function' //% weight=54 color=#0000FF icon="Q"
+//% weight=54 color=#000080 icon="Q"
 namespace quest_Note_3 {
     /**
      * quest_Show_String_For_Note_Small_Fn
