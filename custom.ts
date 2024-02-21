@@ -147,6 +147,13 @@ enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
     degree_30,
 }
 
+enum quest_String_Justify_Type_Enum {
+    //% block="justify_Left"
+    justify_Left,
+    //% block="justify_Right"
+    justify_Right,
+}
+
 // * Though it seems that can define global vars here, but not advised 
 // ** since memory storage would be safer within 'namespace'
 //
@@ -329,7 +336,7 @@ namespace quest_General {
     ////jwc m //% block="get number with_column_padding as_string_out|number_in: $number_in|string_len_max_in: $string_len_max_in|decimal_places_in  $decimal_places_in"
     // '\\' escape character to deactivate special character processing
     //% block="get number w/ column\\_padding as string\\_out|number_in: $number_in|string\\_len\\_max\\_in: $string_len_max_in|decimal\\_places\\_in  $decimal_places_in"
-    //% weight=60 blockGap=8
+    //% weight=62 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_Number_WithColumnPadding_AsStringOut_Fn(number_in: number, string_len_max_in: number, decimal_places_in: number = 0) {
         let local_number_with_fixed_decimal_deci = Math.round(number_in * 10 ** decimal_places_in) / 10 ** decimal_places_in
@@ -343,7 +350,37 @@ namespace quest_General {
         }
         return local_string_out
     }
+    
+    /**
+    * quest_Get_String_WithColumnPadding_AsStringOut_Fn
+    * @param string_in string
+    * @param string_len_max_in number
+    * @param string_justify_type_in quest_String_Justify_Type_Enum
+    */
+    // '\\' escape character to deactivate special character processing
+    //% block="get string w/ column\\_padding as string\\_out|string_in: $string_in|string\\_len\\_max\\_in: $string_len_max_in|string\\_justify\\_type\\_in: $quest_String_Justify_Type_Enum"
+    //% weight=60 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_String_WithColumnPadding_AsStringOut_Fn(string_in: string, string_len_max_in: number, string_justify_type_in: quest_String_Justify_Type_Enum) {
+        let local_string_out = string_in
 
+        let local_loop_count_max = string_len_max_in - local_string_out.length
+
+        for (let index = 0; index < local_loop_count_max; index++) {
+            if(string_justify_type_in == quest_String_Justify_Type_Enum.justify_Left){
+                ////jwc y good test: local_string_out = local_string_out + "."
+                local_string_out = local_string_out + " "
+            }
+            else if(string_justify_type_in == quest_String_Justify_Type_Enum.justify_Right) {
+                ////jwc y good test: local_string_out = "." + local_string_out
+                local_string_out = " " + local_string_out
+            }
+            ///jwc y good test: else {
+            ///jwc y good test:     local_string_out = local_string_out + "."
+            ///jwc y good test: }
+        }
+        return local_string_out
+    }
 }
 
 //
