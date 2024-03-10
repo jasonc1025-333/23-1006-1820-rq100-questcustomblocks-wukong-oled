@@ -1223,15 +1223,17 @@ namespace quest_Sensors {
         let cartesian_side_adjacent_x_int_in = (controller_Joystick__Raw_OriginAtBottomRight__X_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * -1
         let cartesian_side_opposite_y_int_in = (controller_Joystick__Raw_OriginAtBottomRight__Y_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * 1
 
-        serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_adjacent_x_int_in,
-            5,
-            0
-        ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_opposite_y_int_in,
-            5,
-            0
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_adjacent_x_int_in,
+                5,
+                0
+            ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_opposite_y_int_in,
+                5,
+                0
+            ))
+        }
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Convert to radians"
         )
@@ -1251,30 +1253,38 @@ namespace quest_Sensors {
             )
             _local_converted_value_int_out = _local_converted_value_int_out + 360
         }
-        serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ))
+        }    
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Convert to degrees as incremented by passed_in_argument"
         )
         _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degree_increment_in) + Math.round(_local_converted_value_int_out % angle_degree_increment_in / angle_degree_increment_in)
-        serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ) + " * " + angle_degree_increment_in)
-        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
-        serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ))
-        if (false) {
-            serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ) + " * " + angle_degree_increment_in)
         }
-        serial.writeLine("")
+        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ))
+        }
+        ////jwc debug: if (false) {
+        ////jwc debug:     serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        ////jwc debug: }
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeLine("")
+        }
         return _local_converted_value_int_out
     }
 
@@ -1311,24 +1321,28 @@ namespace quest_Sensors {
         let cartesian_side_adjacent_x_int_in = (controller_Joystick__Raw_OriginAtBottomRight__X_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * -1
         let cartesian_side_opposite_y_int_in = (controller_Joystick__Raw_OriginAtBottomRight__Y_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * 1
 
-        serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_adjacent_x_int_in,
-            5,
-            0
-        ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_opposite_y_int_in,
-            5,
-            0
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_adjacent_x_int_in,
+                5,
+                0
+            ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_opposite_y_int_in,
+                5,
+                0
+            ))
+        }
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Convert to radians"
         )
         _local_converted_value_int_out = Math.atan2(cartesian_side_opposite_y_int_in, cartesian_side_adjacent_x_int_in)
-        serial.writeString(" Angle:: Radians: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            10,
-            4
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Angle:: Radians: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                10,
+                4
+            ))
+        }
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Convert to degrees"
         )
@@ -1339,30 +1353,38 @@ namespace quest_Sensors {
             )
             _local_converted_value_int_out = _local_converted_value_int_out + 360
         }
-        serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Degrees:: Raw: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ))
+        }
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Convert to degrees as incremented by passed_in_argument"
         )
         _local_converted_value_int_out = Math.idiv(_local_converted_value_int_out, angle_degree_increment_in) + Math.round(_local_converted_value_int_out % angle_degree_increment_in / angle_degree_increment_in)
-        serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ) + " * " + angle_degree_increment_in)
-        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
-        serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            5,
-            1
-        ))
-        if (false) {
-            serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Incremented: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ) + " * " + angle_degree_increment_in)
         }
-        serial.writeLine("")
+        _local_converted_value_int_out = _local_converted_value_int_out * angle_degree_increment_in
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" = " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                5,
+                1
+            ))
+        }
+        ////jwc debug: if (false) {
+        ////jwc debug:     serial.writeNumbers([Math.atan2(1, 1), Math.atan2(1.732, 1), Math.atan2(1, 1.732)])
+        ////jwc debug: }
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeLine("")
+        }
         return _local_converted_value_int_out
     }
 
@@ -1384,25 +1406,29 @@ namespace quest_Sensors {
         let cartesian_side_adjacent_x_int_in = (controller_Joystick__Raw_OriginAtBottomRight__X_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * -1
         let cartesian_side_opposite_y_int_in = (controller_Joystick__Raw_OriginAtBottomRight__Y_Int - controller_Joystick__Raw_OriginAtBottomRight__XandY_Center) * 1
 
-        serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_adjacent_x_int_in,
-            5,
-            0
-        ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            cartesian_side_opposite_y_int_in,
-            5,
-            0
-        ))
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString("> Convert::" + " Side_Adjacent: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_adjacent_x_int_in,
+                5,
+                0
+            ) + " Side_Opposite: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                cartesian_side_opposite_y_int_in,
+                5,
+                0
+            ))
+        }
         quest_Note_1.quest_Show_String_For_Note_Small_Func(
             "Calculate radius (pixels)"
         )
         _local_converted_value_int_out = Math.sqrt(cartesian_side_adjacent_x_int_in ** 2 + cartesian_side_opposite_y_int_in ** 2)
-        serial.writeString(" Radius: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
-            _local_converted_value_int_out,
-            10,
-            4
-        ))
-        serial.writeLine("")
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            serial.writeString(" Radius: " + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(
+                _local_converted_value_int_out,
+                10,
+                4
+            ))
+            serial.writeLine("")
+        }
         return _local_converted_value_int_out
     }
 
