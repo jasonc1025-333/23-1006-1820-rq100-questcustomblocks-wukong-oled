@@ -3,25 +3,59 @@
 // jwc 23-1006-1847
 // jwc 23-1019-1900
 // jwc 24-0214-0400
+// jwc 25-0208-0300 quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func
 
+//// jwc 25-0208-0300 y: input.onButtonPressed(Button.A, function () {
+//// jwc 25-0208-0300 y:     quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
+//// jwc 25-0208-0300 y:         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
+//// jwc 25-0208-0300 y:         50,
+//// jwc 25-0208-0300 y:         -50,
+//// jwc 25-0208-0300 y:         quest_Turn_Duration_Enum.msec_2000,
+//// jwc 25-0208-0300 y:         quest_Debug_Show_Enum.Dashboard_OLED,
+//// jwc 25-0208-0300 y:     )
+//// jwc 25-0208-0300 y: })
+//// jwc 25-0208-0300 y: input.onButtonPressed(Button.B, function () {
+//// jwc 25-0208-0300 y:     quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
+//// jwc 25-0208-0300 y:         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
+//// jwc 25-0208-0300 y:         -50,
+//// jwc 25-0208-0300 y:         50,
+//// jwc 25-0208-0300 y:         quest_Turn_Duration_Enum.msec_2000,
+//// jwc 25-0208-0300 y:         quest_Debug_Show_Enum.MicroBit_Screen,
+//// jwc 25-0208-0300 y:     )
+//// jwc 25-0208-0300 y: })
+
+//// jwc export function quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func(my_Network_GroupChannel_Base0_IntIn: number, sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn: quest_Toggle_OnOrOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+//// jwc input.onButtonPressed(Button.AB, function () {
+//// jwc y input.onLogoEvent(TouchButtonEvent.Pressed, function() {
 input.onButtonPressed(Button.A, function () {
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
-        50,
-        -50,
-        quest_Turn_Duration_Enum.msec_2000,
+    quest_Dashboard.quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func(
+        // randint: inclusive boundaries
+        //// jwc y randint(101, 200),
+        //// jwc y? randint(-1, 3),
+        //// jwc yy 0,1,2,3 randint(0, 3),
+        randint(0, 1),
+        //// jwc y randint(0, 1),
+        quest_Toggle_OnOrOff_Enum.On,
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
+    serial.writeLine('*00 ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+
 })
 input.onButtonPressed(Button.B, function () {
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
-        -50,
-        50,
-        quest_Turn_Duration_Enum.msec_2000,
-        quest_Debug_Show_Enum.MicroBit_Screen,
+    quest_Dashboard.quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func(
+        // randint: inclusive boundaries
+        //// jwc y randint(101, 200),
+        //// jwc y? randint(-1, 3),
+        //// jwc yy 0,1,2,3 randint(0, 3),
+        randint(2, 3),
+        //// jwc y randint(0, 1),
+        quest_Toggle_OnOrOff_Enum.On,
+        quest_Debug_Show_Enum.Dashboard_OLED,
     )
+    serial.writeLine('*00 ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+
 })
+
 
 input.onGesture(Gesture.TiltLeft, function () {
     quest_Motors.quest_Set_Turn_WithTimer_Func(
@@ -61,6 +95,11 @@ basic.forever(function () {
 ////jwc y })
 
 basic.forever(function () {
-    serial.writeLine(' > L: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
-    serial.writeLine(' > R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+    //// jwc y serial.writeLine(' > L: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
+    //// jwc y serial.writeLine(' > R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+    //// jwc yy serial.writeLine(' > L:11 ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
+    //// jwc yy serial.writeLine(' > R:11 ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+    //// jwc yy serial.writeLine('*44 ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+    serial.writeLine('.')
+
 })

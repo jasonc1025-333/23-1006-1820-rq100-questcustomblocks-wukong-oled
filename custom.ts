@@ -39,6 +39,13 @@
 //    Two
 // }
 
+enum quest_Toggle_OnOrOff_Enum {
+    //% block="On"
+    On,
+    //% block="Off"
+    Off,
+}
+
 enum quest_PortGroup_BlueRedBlack_PortIds_Enum {
     //% block="S1_MotorLeft__S0_MotorRight"
     S1_MotorLeft__S0_MotorRight,
@@ -170,6 +177,9 @@ enum quest_String_Justify_Type_Enum {
 let deviceType_Bot_Bool_QuestGlobal = true
 let deviceType_Controller_Bool_QuestGlobal = false
 //
+let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
+let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = quest_Toggle_OnOrOff_Enum.On
+//
 let _debug_Serial_Print_Bool_QuestGlobal = false
 //
 let motor_Power_No_QuestGlobal = 0
@@ -256,7 +266,7 @@ namespace quest_Dashboard {
     //% block="show oled small_font (AutoSetup I2cAddress=60, SCL=Pin19, SDA=Pin20)|text\\_Str\\_In: $textStrIn|x\\_Col\\_Base0\\_In[0..24]: $xColBase0In|y\\_Row\\_Base0\\_In[0..7]: $yRowBase0In"
     //% xColBase0In.min=0 xColBase0In.max=24
     //% yRowBase0In.min=0 yRowBase0In.max=7
-    //% weight=50 blockGap=8
+    //% weight=51 blockGap=8
     //% inlineInputMode=external
     export function quest_Show_String_For_Oled_SmallFont_Func(textStrIn: string, xColBase0In: number, yRowBase0In: number) {
         // Default Values
@@ -281,6 +291,95 @@ namespace quest_Dashboard {
             colorIntIn
         )
     }
+
+
+    //// jwc oyy /**
+    //// jwc oyy  * quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
+    //// jwc oyy  * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
+    //// jwc oyy  * @param powerLeftIn number
+    //// jwc oyy  * @param powerRightIn number
+    //// jwc oyy  * @param turn_Duration_In quest_Turn_Duration_Enum
+    //// jwc oyy  * @param debug_Show_In quest_Debug_Show_Enum
+    //// jwc oyy  *
+    //// jwc oyy  */
+
+    ////jwc o //% block="set servo_motors w/ timer: $portIdsIn|@ left motor power: $powerLeftIn|@ right motor power: $powerRightIn|turn_Duration_In $turn_Duration_In"
+    ////jwc y //% block="set servo_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    ////
+    //// jwc o export function quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(portIdsIn: quest_PortGroup_BlueRedBlack_PortIds_Enum, powerLeftIn: number, powerRightIn: number, turn_Duration_In: quest_Turn_Duration_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    ////
+    //// jwc oyy //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //// jwc oyy //% powerLeftIn.min=-100 powerLeftIn.max=100
+    //// jwc oyy //% powerRightIn.min=-100 powerRightIn.max=100
+    ////
+
+    /**
+     * quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func
+     * @param my_Network_GroupChannel_Base0_IntIn number
+     * @param sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn quest_Toggle_OnOrOff_Enum
+     * @param debug_Show_In quest_Debug_Show_Enum
+     *
+     */
+    // '\\' = escape character to deactivate following special character
+    //% block="set quest\\_SendData\\_OfBot\\_ToMbServer\\_AsXrayDashboard\\_Func:|* my_Network_GroupChannel_Base0_IntIn: $my_Network_GroupChannel_Base0_IntIn|* sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn: $sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn|* debug_Show: $debug_Show_In"
+    //% my_Network_GroupChannel_Base0_IntIn.min=0 my_Network_GroupChannel_Base0_IntIn.max=254
+    //% weight=50 blockGap=8
+    //% inlineInputMode=external
+    export function quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func(my_Network_GroupChannel_Base0_IntIn: number, sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn: quest_Toggle_OnOrOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+        let network_GroupChannelOfMe_Base0_Int_QuestGlobal = my_Network_GroupChannel_Base0_IntIn
+        let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn
+
+        if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 1 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255 ){
+            //// jwc n network_GroupChannelOfMe_Base0_Int_QuestGlobal = convertToText(control.deviceSerialNumber()).substr(convertToText(control.deviceSerialNumber()).length - 2, 2)
+            serial.writeLine("*1- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
+            network_GroupChannelOfMe_Base0_Int_QuestGlobal = 100 + Math.abs(control.deviceSerialNumber() % 100)
+            serial.writeLine("*1+ " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+        }
+
+        // diagnostics
+        switch (debug_Show_In) {
+            case quest_Debug_Show_Enum.Dashboard_OLED:
+                quest_Dashboard.quest_Show_Oled_Cleared_Func()
+                
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(my_Network_GroupChannel_Base0_IntIn) + " " + convertToText(sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn) + " " + convertToText(debug_Show_In), 0, 0)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In), 0, 1)
+
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()), 0, 2)
+
+                serial.writeLine('*2: ' + convertToText(my_Network_GroupChannel_Base0_IntIn)            + " " + convertToText(sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn)         + " " + convertToText(debug_Show_In))
+                serial.writeLine('*3: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In))
+
+                break  // out of these case statements
+            case quest_Debug_Show_Enum.MicroBit_Screen:
+                // diagnostics
+                basic.showIcon(IconNames.Happy)
+
+                break  // out of these case statements
+            case quest_Debug_Show_Enum.Off:
+
+                break  // out of these case statements
+            default:
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    serial.writeLine("* ERROR: 25-0208-0300: quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func: " + my_Network_GroupChannel_Base0_IntIn + " " + sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn + " " + debug_Show_In)
+                }
+                break
+        }
+        //// jwc y serial.writeLine(" *8 L: " + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + " < ")
+        //// jwc y serial.writeLine(' *9 R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+
+        //// jwc send data
+    }
+
+
+
+
 }
 
 //////jwc y //% weight=67 color=#ff7f00 icon="Q"
