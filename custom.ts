@@ -31,6 +31,14 @@
 //   ** https://www.indezine.com/products/powerpoint/learn/color/color-rgb.html
 //   ** https://htmlcolorcodes.com/
 // * jwc 25-0209-0730 Need to refresh web-browser to see changes in front-end (create/change coding blocks)
+// * jwc 25-0209-0800 
+//   * quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
+//     * "A:" : Motor-Rear-Left, Motor-Rear-Right
+//     * "B:" : Sensor-Light, Sensor-Magnet
+//     * "C:" : Servo-Left, Servo-Right
+//     * "D:" : Motor-Front-Left, Motor-Front-Right
+
+
 
 
 // enum MyEnum {
@@ -179,8 +187,8 @@ let deviceType_Bot_Bool_QuestGlobal = true
 let deviceType_Controller_Bool_QuestGlobal = false
 //
 let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
-//// jwc obsolete: let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = quest_Toggle_OnOff_Enum.On
-let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = true
+//// jwc obsolete: let network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global = quest_Toggle_OnOff_Enum.On
+let network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global = true
 // "IMPORTANT: Network Message will be cut off beyond Max Length"
 let network_Message_LENGTH_MAX_INT = 18
 let network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT = 255
@@ -381,7 +389,7 @@ namespace quest_Dashboard {
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
         let network_GroupChannelOfMe_Base0_Int_QuestGlobal = network_GroupChannelOfMe_Base0_IntIn
-        let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In
+        let network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global = send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In
 
         let network_Message_Str = ""
 
@@ -399,12 +407,12 @@ namespace quest_Dashboard {
                 quest_Dashboard.quest_Show_Oled_Cleared_Func()
                 
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_IntIn) + " " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In) + " " + convertToText(debug_Show_In), 0, 0)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In), 0, 1)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(debug_Show_In), 0, 1)
 
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()), 0, 2)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(control.deviceSerialNumber()), 0, 2)
 
                 serial.writeLine('* 20: ' + convertToText(network_GroupChannelOfMe_Base0_IntIn)            + " " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In)         + " " + convertToText(debug_Show_In))
-                serial.writeLine('* 30: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In))
+                serial.writeLine('* 30: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(debug_Show_In))
 
                 break  // out of these case statements
             case quest_Debug_Show_Enum.MicroBit_Screen:
@@ -983,6 +991,9 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) {
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
@@ -990,13 +1001,19 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) {
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
             default:
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) {
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("ERROR:  25-0209-0822: " + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* ERROR: 25-0209-0820: quest_PowerMotorsViaBlueRedBlackPins_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
         }

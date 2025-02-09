@@ -40,7 +40,7 @@ input.onButtonPressed(Button.A, function () {
         true,
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
-    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
 
 })
 // Valid GroupChannelNum
@@ -49,7 +49,7 @@ input.onButtonPressed(Button.B, function () {
         "A:ThisIsADataTest",
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
-    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
 
 })
 
