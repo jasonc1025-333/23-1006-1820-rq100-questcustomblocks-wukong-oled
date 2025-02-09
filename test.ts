@@ -34,7 +34,8 @@ input.onButtonPressed(Button.A, function () {
         //// jwc yy 0,1,2,3 randint(0, 3),
         randint(0, 1),
         //// jwc y randint(0, 1),
-        quest_Toggle_OnOff_Enum.On,
+        //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
+        true,
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
@@ -48,7 +49,8 @@ input.onButtonPressed(Button.B, function () {
         //// jwc yy 0,1,2,3 randint(0, 3),
         randint(2, 3),
         //// jwc y randint(0, 1),
-        quest_Toggle_OnOff_Enum.On,
+        //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
+        true,
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
