@@ -330,7 +330,7 @@ namespace quest_Dashboard {
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannelOfMe_Base0_IntIn: $network_GroupChannelOfMe_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: $send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In|* debug_Show_In: $debug_Show_In"
+    //% block="set quest\\_Send\\_LoginOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannelOfMe_Base0_IntIn: $network_GroupChannelOfMe_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: $send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In|* debug_Show_In: $debug_Show_In"
     //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
     //% weight=50 blockGap=8
     //% inlineInputMode=external
@@ -413,14 +413,12 @@ namespace quest_Dashboard {
 
     /**
      * quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
-     * @param network_GroupChannelOfMe_Base0_IntIn number
-     * @param send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In boolean
+     * @param send_DataOfBot_ToXrayDashboardOfMb_Message_String string
      * @param debug_Show_In quest_Debug_Show_Enum
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannelOfMe_Base0_IntIn: $network_GroupChannelOfMe_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: $send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In|* debug_Show_In: $debug_Show_In"
-    //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
+    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
     export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
