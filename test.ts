@@ -37,7 +37,7 @@ input.onButtonPressed(Button.A, function () {
         randint(0, 3),
         //// jwc y randint(0, 1),
         //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
-        true,
+        quest_Toggle_OnOff_Enum.On,
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))

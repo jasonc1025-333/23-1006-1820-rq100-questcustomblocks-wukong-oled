@@ -48,12 +48,12 @@
 //    Two
 // }
 
-//// jwc y obsolete: enum quest_Toggle_OnOff_Enum {
-//// jwc y obsolete:     //% block="On"
-//// jwc y obsolete:     On,
-//// jwc y obsolete:     //% block="Off"
-//// jwc y obsolete:     Off,
-//// jwc y obsolete: }
+enum quest_Toggle_OnOff_Enum {
+    //% block="On"
+    On,
+    //% block="Off"
+    Off,
+}
 
 enum quest_PortGroup_BlueRedBlack_PortIds_Enum {
     //% block="S1_MotorLeft__S0_MotorRight"
@@ -146,12 +146,12 @@ enum quest_Turn_Power_Enum {
 }
 
 enum quest_Debug_Show_Enum {
-    //% block="Off"
-    Off,
     //% block="Dashboard_OLED"
     Dashboard_OLED,
     //% block="MicroBit_Screen"
     MicroBit_Screen,
+    //% block="Off"
+    Off,
 }
 
 enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
@@ -319,7 +319,9 @@ namespace quest_Dashboard {
     //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
+    //// jwc n default: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
+    //// jwc n default only seems to work w/ number: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
+        export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
@@ -384,7 +386,8 @@ namespace quest_Dashboard {
     //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean = true, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
+    //// jwc n default only seems to work w/ number: export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean = true, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
+    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: quest_Toggle_OnOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
