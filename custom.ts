@@ -39,7 +39,7 @@
 //    Two
 // }
 
-enum quest_Toggle_OnOrOff_Enum {
+enum quest_Toggle_OnOff_Enum {
     //% block="On"
     On,
     //% block="Off"
@@ -178,7 +178,7 @@ let deviceType_Bot_Bool_QuestGlobal = true
 let deviceType_Controller_Bool_QuestGlobal = false
 //
 let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
-let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = quest_Toggle_OnOrOff_Enum.On
+let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = quest_Toggle_OnOff_Enum.On
 //
 let _debug_Serial_Print_Bool_QuestGlobal = false
 //
@@ -318,29 +318,29 @@ namespace quest_Dashboard {
     ////
 
     /**
-     * quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func
-     * @param my_Network_GroupChannel_Base0_IntIn number
-     * @param sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn quest_Toggle_OnOrOff_Enum
+     * quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
+     * @param network_GroupChannelOfMe_Base0_IntIn number
+     * @param send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn quest_Toggle_OnOff_Enum
      * @param debug_Show_In quest_Debug_Show_Enum
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_SendData\\_OfBot\\_ToMbServer\\_AsXrayDashboard\\_Func:|* my_Network_GroupChannel_Base0_IntIn: $my_Network_GroupChannel_Base0_IntIn|* sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn: $sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn|* debug_Show: $debug_Show_In"
-    //% my_Network_GroupChannel_Base0_IntIn.min=0 my_Network_GroupChannel_Base0_IntIn.max=254
+    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannelOfMe_Base0_IntIn: $network_GroupChannelOfMe_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn: $send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn|* debug_Show_In: $debug_Show_In"
+    //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func(my_Network_GroupChannel_Base0_IntIn: number, sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn: quest_Toggle_OnOrOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn: quest_Toggle_OnOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
-        let network_GroupChannelOfMe_Base0_Int_QuestGlobal = my_Network_GroupChannel_Base0_IntIn
-        let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn
+        let network_GroupChannelOfMe_Base0_Int_QuestGlobal = network_GroupChannelOfMe_Base0_IntIn
+        let network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal = send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn
 
         if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 1 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255 ){
             //// jwc n network_GroupChannelOfMe_Base0_Int_QuestGlobal = convertToText(control.deviceSerialNumber()).substr(convertToText(control.deviceSerialNumber()).length - 2, 2)
-            serial.writeLine("*1- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
+            serial.writeLine("* 10- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
             network_GroupChannelOfMe_Base0_Int_QuestGlobal = 100 + Math.abs(control.deviceSerialNumber() % 100)
-            serial.writeLine("*1+ " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+            serial.writeLine("* 10+ " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
         }
 
         // diagnostics
@@ -348,13 +348,13 @@ namespace quest_Dashboard {
             case quest_Debug_Show_Enum.Dashboard_OLED:
                 quest_Dashboard.quest_Show_Oled_Cleared_Func()
                 
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(my_Network_GroupChannel_Base0_IntIn) + " " + convertToText(sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn) + " " + convertToText(debug_Show_In), 0, 0)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_IntIn) + " " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn) + " " + convertToText(debug_Show_In), 0, 0)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In), 0, 1)
 
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()), 0, 2)
 
-                serial.writeLine('*2: ' + convertToText(my_Network_GroupChannel_Base0_IntIn)            + " " + convertToText(sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn)         + " " + convertToText(debug_Show_In))
-                serial.writeLine('*3: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In))
+                serial.writeLine('* 20: ' + convertToText(network_GroupChannelOfMe_Base0_IntIn)            + " " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn)         + " " + convertToText(debug_Show_In))
+                serial.writeLine('* 30: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(debug_Show_In))
 
                 break  // out of these case statements
             case quest_Debug_Show_Enum.MicroBit_Screen:
@@ -367,12 +367,12 @@ namespace quest_Dashboard {
                 break  // out of these case statements
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0208-0300: quest_SendData_OfBot_ToMbServer_AsXrayDashboard_Func: " + my_Network_GroupChannel_Base0_IntIn + " " + sendData_OfBot_ToMbServer_AsXrayDashboard_On_EnumIn + " " + debug_Show_In)
+                    serial.writeLine("* ERROR: 25-0208-0300: quest_Send_DataOfBot_ToXrayDashboardOfMb_Func: " + network_GroupChannelOfMe_Base0_IntIn + " " + send_DataOfBot_ToXrayDashboardOfMb_OnOff_EnumIn + " " + debug_Show_In)
                 }
                 break
         }
-        //// jwc y serial.writeLine(" *8 L: " + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + " < ")
-        //// jwc y serial.writeLine(' *9 R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+        //// jwc y serial.writeLine(" *80: L: " + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + " < ")
+        //// jwc y serial.writeLine(' *90: R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
 
         //// jwc send data
     }
