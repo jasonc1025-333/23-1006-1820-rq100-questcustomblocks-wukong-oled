@@ -319,7 +319,7 @@ namespace quest_Dashboard {
     //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
@@ -384,7 +384,7 @@ namespace quest_Dashboard {
     //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean = true, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
