@@ -24,16 +24,17 @@
 //// jwc 25-0208-0300 y:     )
 //// jwc 25-0208-0300 y: })
 
-// Invalid GroupChannelNum
+// GroupChannelNum: Valid (1,3) & Invalid (0,0)
 //// jwc input.onButtonPressed(Button.AB, function () {
 //// jwc y input.onLogoEvent(TouchButtonEvent.Pressed, function() {
 input.onButtonPressed(Button.A, function () {
-    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
+    quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(
         // randint: inclusive boundaries
         //// jwc y randint(101, 200),
         //// jwc y? randint(-1, 3),
         //// jwc yy 0,1,2,3 randint(0, 3),
-        randint(0, 0),
+        //// jwc yy randint(0, 0),
+        randint(0, 3),
         //// jwc y randint(0, 1),
         //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
         true,
@@ -45,14 +46,7 @@ input.onButtonPressed(Button.A, function () {
 // Valid GroupChannelNum
 input.onButtonPressed(Button.B, function () {
     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
-        // randint: inclusive boundaries
-        //// jwc y randint(101, 200),
-        //// jwc y? randint(-1, 3),
-        //// jwc yy 0,1,2,3 randint(0, 3),
-        randint(1, 3),
-        //// jwc y randint(0, 1),
-        //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
-        true,
+        "A:ThisIsADataTest",
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))

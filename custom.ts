@@ -323,7 +323,7 @@ namespace quest_Dashboard {
     ////
 
     /**
-     * quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
+     * quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func
      * @param network_GroupChannelOfMe_Base0_IntIn number
      * @param send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In boolean
      * @param debug_Show_In quest_Debug_Show_Enum
@@ -334,7 +334,7 @@ namespace quest_Dashboard {
     //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean, debug_Show_In: quest_Debug_Show_Enum): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
@@ -375,7 +375,7 @@ namespace quest_Dashboard {
                 break  // out of these case statements
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0208-0300: quest_Send_DataOfBot_ToXrayDashboardOfMb_Func: " + network_GroupChannelOfMe_Base0_IntIn + " " + send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In + " " + debug_Show_In)
+                    serial.writeLine("* ERROR: 25-0208-0300: quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func: " + network_GroupChannelOfMe_Base0_IntIn + " " + send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In + " " + debug_Show_In)
                 }
                 break
         }
@@ -401,13 +401,56 @@ namespace quest_Dashboard {
             radio.setGroup(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT)
             radio.sendString(network_Message_Str)
             radio.setGroup(network_GroupChannelOfMe_Base0_Int_QuestGlobal)
-            if (debug_Show_In) {
-                serial.writeLine("* 40: network_Message_Str: " + network_Message_Str)
+            if (debug_Show_In = quest_Debug_Show_Enum.Dashboard_OLED) {
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + " | network_Message_Str: " + network_Message_Str, 0, 3)
+                serial.writeLine("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + " | network_Message_Str: " + network_Message_Str)
             }
         }
 
     }
 
+    //// jwc yy export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(network_GroupChannelOfMe_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: boolean, debug_Show_In: quest_Debug_Show_Enum): void {
+
+    /**
+     * quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
+     * @param network_GroupChannelOfMe_Base0_IntIn number
+     * @param send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In boolean
+     * @param debug_Show_In quest_Debug_Show_Enum
+     *
+     */
+    // '\\' = escape character to deactivate following special character
+    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannelOfMe_Base0_IntIn: $network_GroupChannelOfMe_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In: $send_DataOfBot_ToXrayDashboardOfMb_On_Bool_In|* debug_Show_In: $debug_Show_In"
+    //% network_GroupChannelOfMe_Base0_IntIn.min=0 network_GroupChannelOfMe_Base0_IntIn.max=254
+    //% weight=50 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+        let network_Message_Str = send_DataOfBot_ToXrayDashboardOfMb_Message_String
+
+        //// jwc send data
+
+        if (true) {
+            quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                "Not end w/'delimiter' or will create a fake key_value pair at receiving end"
+            )
+            quest_Note_3.quest_Show_String_For_Note_Big_Func(
+                "Network_Message Max Length or will be cut off"
+            )
+            if (network_Message_Str.length > network_Message_LENGTH_MAX_INT) {
+                basic.showString("ERROR: 25-0209-0410 Network Message > Max Len.")
+            }
+            radio.setGroup(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT)
+            radio.sendString(network_Message_Str)
+            radio.setGroup(network_GroupChannelOfMe_Base0_Int_QuestGlobal)
+            if (debug_Show_In = quest_Debug_Show_Enum.Dashboard_OLED) {
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + " | network_Message_Str: " + network_Message_Str, 0, 3)
+                serial.writeLine("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT + " | network_Message_Str: " + network_Message_Str)
+            }
+        }
+
+    }
 
 
 
