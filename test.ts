@@ -49,7 +49,10 @@ input.onButtonPressed(Button.A, function () {
 // Valid GroupChannelNum
 input.onButtonPressed(Button.B, function () {
     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
-        "A:ThisIsADataTest",
+        //// jwc y "A:ThisIsADataTest",
+        //// jwc y "A:3456789012345678901234567890",
+        //// jwc Test Max Len = 19 \/
+        "A:34567890123456789",
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 5: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))

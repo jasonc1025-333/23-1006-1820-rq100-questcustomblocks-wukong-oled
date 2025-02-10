@@ -41,6 +41,7 @@
 //   * network_GroupChannelOfMe_Base0_Int_QuestGlobal
 //   * quest_Public_Variables_N_Constants.network_GroupChannelOfMe_Base0_Int_QuestGlobal_01
 //   * quest_Dashboard.network_GroupChannelOfMe_Base0_Int_QuestGlobal_11
+// * jwc 25-0210-1500 TYJ 19 Char Max for MbRadioNetwork
 
 
 // enum MyEnum {
@@ -207,7 +208,8 @@ namespace quest_Public_Variables_N_Constants {
 //// jwc n seems to only have default of non-number types: let network_Send_DataOfBot_ToXrayDashboardOfMb_On_Bool_Quest_Global = true
 let network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global = quest_Toggle_OnOff_Enum.On
 // "IMPORTANT: Network Message will be cut off beyond Max Length"
-let network_Message_LENGTH_MAX_INT_QUESTGLOBAL = 18
+//// jwc y let network_Message_LENGTH_MAX_INT_QUESTGLOBAL = 18
+let network_Message_LENGTH_MAX_INT_QUESTGLOBAL = 19
 let network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL = 255
 
 //
