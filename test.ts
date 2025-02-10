@@ -37,10 +37,13 @@ input.onButtonPressed(Button.A, function () {
         randint(0, 3),
         //// jwc y randint(0, 1),
         //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
-        quest_Toggle_OnOff_Enum.On,
-        quest_Debug_Show_Enum.Dashboard_OLED,
+        //// jwc yy quest_Toggle_OnOff_Enum.On,
+        quest_Toggle_OnOff_Enum.Off,
+        //// jwc yy quest_Debug_Show_Enum.Dashboard_OLED,
+        quest_Debug_Show_Enum.MicroBit_Screen,
     )
-    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
+    //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
+    //// jwc ? serial.writeLine('* 0: ' + convertToText(quest_Pub network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
 
 })
 // Valid GroupChannelNum
@@ -49,8 +52,11 @@ input.onButtonPressed(Button.B, function () {
         "A:ThisIsADataTest",
         quest_Debug_Show_Enum.Dashboard_OLED,
     )
-    serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
-
+    serial.writeLine('* 5: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
+    //// jwc ? serial.writeLine('* 6: ' + convertToText(quest_Public_Variables_N_Constants.network_GroupChannelOfMe_Base0_Int_QuestGlobal_01) + " " + convertToText(quest_Public_Variables_N_Constants_01.prototype.network_GroupChannelOfMe_Base0_Int_QuestGlobal_02))
+    serial.writeLine('* 6: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+    serial.writeLine('* 6_01: ' + convertToText(quest_Public_Variables_N_Constants.network_GroupChannelOfMe_Base0_Int_QuestGlobal_01))
+    serial.writeLine('* 6_11: ' + convertToText(quest_Dashboard.network_GroupChannelOfMe_Base0_Int_QuestGlobal_11))
 })
 
 
