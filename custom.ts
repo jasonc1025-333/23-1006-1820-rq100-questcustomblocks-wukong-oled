@@ -43,8 +43,6 @@
 //   * quest_Dashboard.network_GroupChannelOfMe_Base0_Int_QuestGlobal_11
 
 
-
-
 // enum MyEnum {
 //    //% block="one"
 //    One,
@@ -1039,7 +1037,8 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -1049,7 +1048,8 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -1057,7 +1057,7 @@ namespace quest_Motors {
                 break
             default:
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) {
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("ERROR:  25-0209-0822: " + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerLeftIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("ERROR:  25-0209-0822: " + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -1147,6 +1147,9 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
@@ -1154,13 +1157,16 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* ERROR: 25-0209-0920 quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
         }
@@ -1182,7 +1188,7 @@ namespace quest_Motors {
                 break  // out of these case statements
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* ERROR: 25-0209-0922 quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 }
                 break
         }
@@ -1380,7 +1386,7 @@ namespace quest_Motors {
                 break  // out of these case statements
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: quest_Set_Turn_WithTimer_Func: " + motor_Power_L + " " + motor_Power_R + " " + turn_Duration)
+                    serial.writeLine("* ERROR: 25-0209-1020: quest_Set_Turn_WithTimer_Func: " + motor_Power_L + " " + motor_Power_R + " " + turn_Duration)
                 }
                 break
         }
