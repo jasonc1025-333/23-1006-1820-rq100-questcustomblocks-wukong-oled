@@ -445,6 +445,9 @@ namespace quest_Dashboard {
             serial.writeLine("* 20+ " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
         }
 
+        // Show 'network_GroupChannelOfMe_Base0_Int_QuestGlobal'
+        basic.showString(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+
         quest_Public_Variables_N_Constants.network_GroupChannelOfMe_Base0_Int_QuestGlobal_01 = network_GroupChannelOfMe_Base0_Int_QuestGlobal
         //// jwc ? quest_Public_Variables_N_Constants_01.prototype.network_GroupChannelOfMe_Base0_Int_QuestGlobal_02 = network_GroupChannelOfMe_Base0_Int_QuestGlobal
         network_GroupChannelOfMe_Base0_Int_QuestGlobal_11 = network_GroupChannelOfMe_Base0_Int_QuestGlobal
