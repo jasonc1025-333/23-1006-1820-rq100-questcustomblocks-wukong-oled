@@ -107,5 +107,13 @@ basic.forever(function () {
     //// jwc yy serial.writeLine('* 1: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))    
     //// jwc yyy serial.writeLine('.')
     serial.writeString('.')
+basic.showLeds(`
+. . . . .
+. . . . .
+. . # . .
+. . . . .
+. . . . .
+`)
 
+quest_Dashboard.showIcon2(IconNames2.Heart2)
 })

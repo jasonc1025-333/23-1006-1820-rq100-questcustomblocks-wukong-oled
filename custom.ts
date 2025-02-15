@@ -195,16 +195,44 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc n public network_GroupChannelOfMe_Base0_Int_QuestGlobal
 //// jwc n var network_GroupChannelOfMe_Base0_Int_QuestGlobal
 
-//// jwc yy \/ yet needs 'quest_Public_Variables_N_Constants.' namespace-prefix to access
+
+enum IconNames2 {
+    //% block="heart"
+    //% jres=icons.heart
+    Heart2 = 0,
+    //% block="small heart"
+    //% jres=icons.smallheart
+    SmallHeart2,
+    //% block="yes"
+    //% jres=icons.yes
+    Yes2,
+    //% block="no"
+    //% jres=icons.no
+    No2,
+    //% block="happy"
+    //% jres=icons.happy
+    Happy2,
+    //% block="scissors"
+    //% jres=icons.scissors
+    Scissors2
+}
+
 
 // TYJ these will auto-run like an on-start stack
 //
-basic.showIcon(IconNames.SmallHeart)
-quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
-basic.showIcon(IconNames.Heart)
-quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
+/// jwc y basic.showIcon(IconNames.SmallHeart)
+basic.showIcon(IconNames.SmallHeart, 0)
+//// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
+//// jwc y basic.showIcon(IconNames.Heart)
+basic.showIcon(IconNames.Heart, 0)
+basic.showIcon(IconNames.Yes, 0)
+basic.showIcon(IconNames.No, 0)
+basic.showIcon(IconNames.Sad, 0)
+basic.showIcon(IconNames.Asleep, 0)
+//// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 
 
+//// jwc yy \/ yet needs 'quest_Public_Variables_N_Constants.' namespace-prefix to access
 namespace quest_Public_Variables_N_Constants {
     export let network_GroupChannelOfMe_Base0_Int_QuestGlobal_01 = 0
 }
@@ -517,6 +545,88 @@ namespace quest_Dashboard {
             }
         }
     }
+
+
+    //% weight=50 blockGap=8
+    //% help=images/icon-image
+    //% blockId=builtin_image block="icon image %i"
+    //% i.fieldEditor="imagedropdown"
+    //% i.fieldOptions.columns="5"
+    //% i.fieldOptions.width="380"
+    //% i.fieldOptions.maxRows=4
+    export function iconImage2(i: IconNames2): Image {
+        switch (i) {
+            case IconNames2.Heart2: return images.createImage(`
+                                        . # . # .
+                                        # # # # #
+                                        # # # # #
+                                        . # # # .
+                                        . . # . .`);
+
+            case IconNames2.SmallHeart2: return images.createImage(`
+                                        . . . . .
+                                        . # . # .
+                                        . # # # .
+                                        . . # . .
+                                        . . . . .`);
+            //faces
+            case IconNames2.Happy2: return images.createImage(`
+                                        . . . . .
+                                        . # . # .
+                                        . . . . .
+                                        # . . . #
+                                        . # # # .`);
+
+            default: return images.createImage(`
+                                        . . . . .
+                                        . . . . .
+                                        . . . . .
+                                        . . . . .
+                                        . . . . .
+                                        `);
+        }
+    }
+
+
+    //// jwc o /**
+    //// jwc o  * Draws the selected icon on the LED screen
+    //// jwc o  * @param icon the predefined icon id
+    //// jwc o  * @param interval the amount of time (milliseconds) to show the icon. Default is 600.
+    //// jwc o  */
+    //// jwc o //% weight=90 blockGap=8
+    //// jwc o //% blockId=basic_show_icon
+    //// jwc o //% block="show icon %i" icon="\uf00a"
+    //// jwc o //% parts="ledmatrix"
+    //// jwc o //% help=basic/show-icon
+    //// jwc o //% icon.fieldEditor="imagedropdown"
+    //// jwc o //% icon.fieldOptions.columns="5"
+    //// jwc o //% icon.fieldOptions.width="380"
+    //// jwc o //% icon.fieldOptions.maxRows=4
+    //// jwc o export function showIcon(icon: IconNames, interval = 600) {
+    //// jwc o     let res = images.iconImage(icon)
+    //// jwc o     res.showImage(0, interval)
+    //// jwc o }
+
+    /**
+     * Draws the selected icon on the LED screen
+     * @param icon2 the predefined icon id
+     * @param interval the amount of time (milliseconds) to show the icon. Default is 600.
+     */
+    //% weight=90 blockGap=8
+    //% blockId=basic_show_icon2
+    //% block="show icon2 %i" icon="\uf00a"
+    //% parts="ledmatrix"
+    //% help=basic/show-icon
+    //% icon2.fieldEditor="imagedropdown"
+    //% icon2.fieldOptions.columns="5"
+    //% icon2.fieldOptions.width="380"
+    //% icon2.fieldOptions.maxRows=4
+    export function showIcon2(icon2: IconNames2, interval = 600) {
+        let res = iconImage2(icon2)
+        res.showImage(0, interval)
+    }
+
+
 
 }
 
