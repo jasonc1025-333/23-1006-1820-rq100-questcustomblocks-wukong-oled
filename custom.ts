@@ -212,23 +212,26 @@ enum IconNames2 {
     //% block="happy"
     //% jres=icons.happy
     Happy2,
-    //% block="scissors"
-    //% jres=icons.scissors
-    Scissors2
 }
 
 
 // TYJ these will auto-run like an on-start stack
 //
 /// jwc y basic.showIcon(IconNames.SmallHeart)
-basic.showIcon(IconNames.SmallHeart, 0)
+//// jwc y basic.showIcon(IconNames.SmallHeart, 0)
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 //// jwc y basic.showIcon(IconNames.Heart)
-basic.showIcon(IconNames.Heart, 0)
-basic.showIcon(IconNames.Yes, 0)
-basic.showIcon(IconNames.No, 0)
+//// jwc y basic.showIcon(IconNames.Heart, 0)
+basic.showIcon(IconNames.Confused, 0)
+basic.showIcon(IconNames.Silly, 0)
 basic.showIcon(IconNames.Sad, 0)
 basic.showIcon(IconNames.Asleep, 0)
+
+//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.SmallHeart2)
+//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.Heart2)
+//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.Yes2)
+//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.No2)
+
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 
 
@@ -570,6 +573,18 @@ namespace quest_Dashboard {
                                         . . # . .
                                         . . . . .`);
             //faces
+            case IconNames2.Yes2: return images.createImage(`
+                                        . . . . .
+                                        . . . . #
+                                        . . . # .
+                                        # . # . .
+                                        . # . . .`);
+            case IconNames2.No2: return images.createImage(`
+                                        # . . . #
+                                        . # . # .
+                                        . . # . .
+                                        . # . # .
+                                        # . . . #`);
             case IconNames2.Happy2: return images.createImage(`
                                         . . . . .
                                         . # . # .
@@ -626,7 +641,8 @@ namespace quest_Dashboard {
     //% icon2.fieldOptions.maxRows=4
     export function showIcon2(icon2: IconNames2, interval = 0) {
         let res = iconImage2(icon2)
-        res.showImage(0, interval)
+        //// jwc try forced to internval=0 \/: res.showImage(0, interval)
+        res.showImage(0, 0)
     }
 
 
