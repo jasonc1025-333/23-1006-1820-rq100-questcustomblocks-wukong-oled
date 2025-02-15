@@ -196,6 +196,15 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc n var network_GroupChannelOfMe_Base0_Int_QuestGlobal
 
 //// jwc yy \/ yet needs 'quest_Public_Variables_N_Constants.' namespace-prefix to access
+
+// TYJ these will auto-run like an on-start stack
+//
+basic.showIcon(IconNames.SmallHeart)
+quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
+basic.showIcon(IconNames.Heart)
+quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
+
+
 namespace quest_Public_Variables_N_Constants {
     export let network_GroupChannelOfMe_Base0_Int_QuestGlobal_01 = 0
 }
