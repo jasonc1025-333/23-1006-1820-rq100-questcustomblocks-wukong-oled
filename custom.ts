@@ -607,6 +607,9 @@ namespace quest_Dashboard {
     //// jwc o     res.showImage(0, interval)
     //// jwc o }
 
+    //// jwc o export function showIcon2(icon2: IconNames2, interval = 600) {
+
+
     /**
      * Draws the selected icon on the LED screen
      * @param icon2 the predefined icon id
@@ -621,7 +624,7 @@ namespace quest_Dashboard {
     //% icon2.fieldOptions.columns="5"
     //% icon2.fieldOptions.width="380"
     //% icon2.fieldOptions.maxRows=4
-    export function showIcon2(icon2: IconNames2, interval = 600) {
+    export function showIcon2(icon2: IconNames2, interval = 0) {
         let res = iconImage2(icon2)
         res.showImage(0, interval)
     }
