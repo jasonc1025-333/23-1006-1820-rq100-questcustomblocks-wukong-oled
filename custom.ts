@@ -550,6 +550,20 @@ namespace quest_Dashboard {
     }
 
 
+    //// jwc o //% weight=50 blockGap=8
+    //// jwc o //% help=images/icon-image
+    //// jwc o //% blockId=builtin_image block="icon image %i"
+    //// jwc o //% i.fieldEditor="imagedropdown"
+    //// jwc o //% i.fieldOptions.columns="5"
+    //// jwc o //% i.fieldOptions.width="380"
+    //// jwc o //% i.fieldOptions.maxRows=4
+
+    //// jwc n add space in front of '\': // * Add space in front of '|' such as ' |' creates reliable 1row spacing
+    //// jwc n add space in front of '\': //% blockId=builtin_image block=" |icon  |image |%i"
+    //// jwc n add space in front of '\': //% i.fieldOptions.columns="10"
+    //// jwc n add space in front of '\': //% i.fieldOptions.width="760"
+    //// jwc n add space in front of '\': //% i.fieldOptions.maxRows=8
+
     //% weight=50 blockGap=8
     //% help=images/icon-image
     //% blockId=builtin_image block="icon image %i"
@@ -623,7 +637,14 @@ namespace quest_Dashboard {
     //// jwc o }
 
     //// jwc o export function showIcon2(icon2: IconNames2, interval = 600) {
+    //// jwc y % block="show icon2 %i" icon="\uf00a"
+    //// jwc n % block="  |show icon2 %i  |" icon="\uf00a"
 
+    //// jwc n add space in front of '\': // * Add space in front of '|' such as ' |' creates reliable 1row spacing
+    //// jwc n add space in front of '\': //% block="  |show |icon2 |%i  |" icon="\uf00a"
+    //// jwc n add space in front of '\': //% icon2.fieldOptions.columns="10"
+    //// jwc n add space in front of '\': //% icon2.fieldOptions.width=760"
+    //// jwc n add space in front of '\': //% icon2.fieldOptions.maxRows=8
 
     /**
      * Draws the selected icon on the LED screen
@@ -636,9 +657,9 @@ namespace quest_Dashboard {
     //% parts="ledmatrix"
     //% help=basic/show-icon
     //% icon2.fieldEditor="imagedropdown"
-    //% icon2.fieldOptions.columns="5"
-    //% icon2.fieldOptions.width="380"
-    //% icon2.fieldOptions.maxRows=4
+    //% icon.fieldOptions.columns="5"
+    //% icon.fieldOptions.width="380"
+    //% icon.fieldOptions.maxRows=4
     export function showIcon2(icon2: IconNames2, interval = 0) {
         let res = iconImage2(icon2)
         //// jwc try forced to internval=0 \/: res.showImage(0, interval)
