@@ -386,7 +386,7 @@ namespace quest_Dashboard {
     //% inlineInputMode=external
     //// jwc n default: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
     //// jwc n default only seems to work w/ number: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
-        export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
@@ -566,7 +566,7 @@ namespace quest_Dashboard {
 
     //% weight=50 blockGap=8
     //% help=images/icon-image
-    //% blockId=builtin_image block="icon image %i"
+    //% blockId=builtin_image block="icon image 2 %i"
     //% i.fieldEditor="imagedropdown"
     //% i.fieldOptions.columns="5"
     //% i.fieldOptions.width="380"
