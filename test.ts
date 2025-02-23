@@ -38,9 +38,12 @@ input.onButtonPressed(Button.A, function () {
         //// jwc y randint(0, 1),
         //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
         //// jwc yy quest_Toggle_OnOff_Enum.On,
-        quest_Toggle_OnOff_Enum.Off,
+        //// jwc y quest_Toggle_OnOff_Enum.Off,
+        quest_Toggle_OnOff_Enum.On,
         //// jwc yy quest_Debug_Show_Enum.Dashboard_OLED,
-        quest_Debug_Show_Enum.MicroBit_Screen,
+        //// jwc y quest_Debug_Show_Enum.MicroBit_Screen,
+        quest_Debug_Show_Enum.Dashboard_OLED,
+
     )
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))
     //// jwc ? serial.writeLine('* 0: ' + convertToText(quest_Pub network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global) + " " + convertToText(control.deviceSerialNumber()))

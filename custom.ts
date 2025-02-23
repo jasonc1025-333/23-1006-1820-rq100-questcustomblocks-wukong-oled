@@ -206,9 +206,17 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc y basic.showIcon(IconNames.Heart, 0)
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 
+//// jwc only for Bot but not for Controller-Joystick: // jwc since 'micro:bit' upside-down (reverse-direction) re: bot's forward-direction, then flip display upside-down
+//// jwc only for Bot but not for Controller-Joystick: display.rotateTo(display.Direction.UpsideDown)
 
-// jwc since 'micro:bit' upside-down (reverse-direction) re: bot's forward-direction, then flip display upside-down
-display.rotateTo(display.Direction.UpsideDown)
+quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(0, quest_Toggle_OnOff_Enum.On, quest_Debug_Show_Enum.Dashboard_OLED)
+
+
+input.onLogoEvent(TouchButtonEvent.LongPressed, function() {
+
+    basic.showNumber(network_GroupChannelOfMe_Base0_Int_QuestGlobal)
+    
+})
 
 
 //// jwc yy \/ yet needs 'quest_Public_Variables_N_Constants.' namespace-prefix to access
@@ -454,15 +462,17 @@ namespace quest_Dashboard {
         let network_Message_Str = ""
 
         //// jwc yy: allow '1' be legal for simplicity: if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 1 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
-            if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
+        if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
             //// jwc n network_GroupChannelOfMe_Base0_Int_QuestGlobal = convertToText(control.deviceSerialNumber()).substr(convertToText(control.deviceSerialNumber()).length - 2, 2)
-            serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
-            network_GroupChannelOfMe_Base0_Int_QuestGlobal = 100 + Math.abs(control.deviceSerialNumber() % 100)
-            serial.writeLine("* 20+ " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+            //// jwc y increase to 3-digits: serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
+            serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 1000)) + " " + convertToText(control.deviceSerialNumber()))
+            //// jwc y increase to 3-digits \/ network_GroupChannelOfMe_Base0_Int_QuestGlobal = 100 + Math.abs(control.deviceSerialNumber() % 100)
+            network_GroupChannelOfMe_Base0_Int_QuestGlobal = Math.abs(control.deviceSerialNumber() % 1000)
+            serial.writeLine("* 20+ " + "Z" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
         }
 
-        // Show 'network_GroupChannelOfMe_Base0_Int_QuestGlobal'
-        basic.showString(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
+        //// jwc only show on demand, like long-press-Logo: // Show 'network_GroupChannelOfMe_Base0_Int_QuestGlobal'
+        //// jwc only show on demand, like long-press-Logo: basic.showString(convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal))
 
         quest_Public_Variables_N_Constants.network_GroupChannelOfMe_Base0_Int_QuestGlobal_01 = network_GroupChannelOfMe_Base0_Int_QuestGlobal
         //// jwc ? quest_Public_Variables_N_Constants_01.prototype.network_GroupChannelOfMe_Base0_Int_QuestGlobal_02 = network_GroupChannelOfMe_Base0_Int_QuestGlobal
@@ -508,7 +518,8 @@ namespace quest_Dashboard {
             // network_Message_Str = "" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + ":" + convertToText(input.lightLevel()) + ":" + convertToText(input.temperature()) + ":" + convertToText(0)
             // network_Message_Str = "ID:" + convertToText(botGroupChannelNum_Int) + ", TE:" + convertToText(input.temperature()) + ", LI:" + convertToText(input.lightLevel()) + ", CO:" + convertToText(input.compassHeading()) + ", MX:" + convertToText(input.magneticForce(Dimension.X)) + ", MY:" + convertToText(input.magneticForce(Dimension.Y)) + ", MZ:" + convertToText(input.magneticForce(Dimension.Z)) + ", MT:" + convertToText(input.magneticForce(Dimension.Strength))
             // 'Z:' = Register Header
-            network_Message_Str = "Z:" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + ",L:" + convertToText(randint(1, 999)) + ",R:" + convertToText(randint(1, 999))
+            // * 
+            network_Message_Str = "Z" + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + ",L:+" + convertToText(randint(1, 100)) + ",R:-" + convertToText(randint(1, 100))
             quest_Note_3.quest_Show_String_For_Note_Big_Func(
                 "Network_Message Max Length or will be cut off"
             )
@@ -518,7 +529,7 @@ namespace quest_Dashboard {
             radio.setGroup(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL)
             radio.sendString(network_Message_Str)
             radio.setGroup(network_GroupChannelOfMe_Base0_Int_QuestGlobal)
-            if (debug_Show_In = quest_Debug_Show_Enum.Dashboard_OLED) {
+            if (debug_Show_In == quest_Debug_Show_Enum.Dashboard_OLED) {
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str, 0, 3)
                 serial.writeLine("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str)
             }
