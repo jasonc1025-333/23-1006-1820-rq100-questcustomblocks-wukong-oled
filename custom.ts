@@ -196,9 +196,10 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc n var network_GroupChannelOfMe_Base0_Int_QuestGlobal
 
 
-
+//
 // TYJ these will auto-run like an on-start stack
 //
+
 /// jwc y basic.showIcon(IconNames.SmallHeart)
 //// jwc y basic.showIcon(IconNames.SmallHeart, 0)
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
@@ -454,7 +455,7 @@ namespace quest_Dashboard {
 
         network_GroupChannelOfMe_Base0_Int_QuestGlobal = network_GroupChannelOfMe_Base0_IntIn
 
-
+        // * For Remote-Control, This should work well, as Bot-Code should call this func: 'quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func()' with Staff-Assigned GroupChannel_BotId_#
         let network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global = send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In
 
         serial.writeLine("* 10: " + convertToText(network_GroupChannelOfMe_Base0_IntIn) + " | " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In) + " | " + convertToText(debug_Show_In))
@@ -465,7 +466,10 @@ namespace quest_Dashboard {
         //// jwc yy: allow '1' be legal for simplicity: if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 1 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
         //// jwc oy if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
         // * Unconditionally create 4-Digit Z#### to be separate from Staff-Assigned GroupChannel_BotId_# \/
-        if (true) {
+        //// jwc ? if (true) {
+        // * For Autonomous, most likely 'network_GroupChannelOfMe_Base0_Int_QuestGlobal' == 0, so auto-create one
+        if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
+
             //// jwc n network_GroupChannelOfMe_Base0_Int_QuestGlobal = convertToText(control.deviceSerialNumber()).substr(convertToText(control.deviceSerialNumber()).length - 2, 2)
             //// jwc y increase to 3-digits: serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
             serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 1000)) + " " + convertToText(control.deviceSerialNumber()))
