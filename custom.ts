@@ -199,19 +199,19 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 enum IconNames2 {
     //% block="heart"
     //% jres=icons.heart
-    Heart2 = 0,
+    Heart = 0,
     //% block="small heart"
     //% jres=icons.smallheart
-    SmallHeart2,
+    SmallHeart,
     //% block="yes"
     //% jres=icons.yes
-    Yes2,
+    Yes,
     //% block="no"
     //% jres=icons.no
-    No2,
+    No,
     //% block="happy"
     //% jres=icons.happy
-    Happy2,
+    Happy,
 }
 
 
@@ -573,33 +573,73 @@ namespace quest_Dashboard {
     //% i.fieldOptions.maxRows=4
     export function iconImage2(i: IconNames2): Image {
         switch (i) {
-            case IconNames2.Heart2: return images.createImage(`
+            //// jwc y case IconNames2.Heart2: return images.createImage(`
+            //// jwc y                             . # . # .
+            //// jwc y                             # # # # #
+            //// jwc y                             # # # # #
+            //// jwc y                             . # # # .
+            //// jwc y                             . . # . .`);
+//// jwc y 
+            //// jwc y case IconNames2.SmallHeart2: return images.createImage(`
+            //// jwc y                             . . . . .
+            //// jwc y                             . # . # .
+            //// jwc y                             . # # # .
+            //// jwc y                             . . # . .
+            //// jwc y                             . . . . .`);
+            //// jwc y //faces
+            //// jwc y case IconNames2.Yes2: return images.createImage(`
+            //// jwc y                             . . . . .
+            //// jwc y                             . . . . #
+            //// jwc y                             . . . # .
+            //// jwc y                             # . # . .
+            //// jwc y                             . # . . .`);
+            //// jwc y case IconNames2.No2: return images.createImage(`
+            //// jwc y                             # . . . #
+            //// jwc y                             . # . # .
+            //// jwc y                             . . # . .
+            //// jwc y                             . # . # .
+            //// jwc y                             # . . . #`);
+            //// jwc y case IconNames2.Happy2: return images.createImage(`
+            //// jwc y                             . . . . .
+            //// jwc y                             . # . # .
+            //// jwc y                             . . . . .
+            //// jwc y                             # . . . #
+            //// jwc y                             . # # # .`);
+//// jwc y 
+            //// jwc y default: return images.createImage(`
+            //// jwc y                             . . . . .
+            //// jwc y                             . . . . .
+            //// jwc y                             . . . . .
+            //// jwc y                             . . . . .
+            //// jwc y                             . . . . .
+            //// jwc y                             `);
+            case IconNames2.Heart: return images.createImage(`
                                         . # . # .
                                         # # # # #
                                         # # # # #
                                         . # # # .
                                         . . # . .`);
 
-            case IconNames2.SmallHeart2: return images.createImage(`
+            case IconNames2.SmallHeart: return images.createImage(`
                                         . . . . .
                                         . # . # .
                                         . # # # .
                                         . . # . .
                                         . . . . .`);
             //faces
-            case IconNames2.Yes2: return images.createImage(`
+            case IconNames2.Yes: return images.createImage(`
                                         . . . . .
                                         . . . . #
                                         . . . # .
                                         # . # . .
                                         . # . . .`);
-            case IconNames2.No2: return images.createImage(`
+            case IconNames2.No: return images.createImage(`
                                         # . . . #
                                         . # . # .
                                         . . # . .
                                         . # . # .
                                         # . . . #`);
-            case IconNames2.Happy2: return images.createImage(`
+            case IconNames2.Happy: return images.createImage(`
                                         . . . . .
                                         . # . # .
                                         . . . . .

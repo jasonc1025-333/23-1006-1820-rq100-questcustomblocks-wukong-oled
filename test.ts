@@ -112,10 +112,10 @@ basic.forever(function () {
 // TYJ these will auto-run like an on-start stack
 //
 /// jwc y basic.showIcon(IconNames.SmallHeart)
-quest_Dashboard.showIcon2(IconNames2.SmallHeart2, 0)
+quest_Dashboard.showIcon2(IconNames2.SmallHeart, 0)
 //// jwc y /// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 //// jwc y /// jwc y basic.showIcon(IconNames.Heart)
-quest_Dashboard.showIcon2(IconNames2.Heart2, 0)
-quest_Dashboard.showIcon2(IconNames2.Yes2, 0)
-quest_Dashboard.showIcon2(IconNames2.No2, 0)
+quest_Dashboard.showIcon2(IconNames2.Heart, 0)
+quest_Dashboard.showIcon2(IconNames2.Yes, 0)
+quest_Dashboard.showIcon2(IconNames2.No, 0)
 
