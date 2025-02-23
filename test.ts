@@ -87,16 +87,16 @@ input.onGesture(Gesture.TiltRight, function () {
     )
 })
 
-basic.forever(function () {
-    quest_Dashboard.quest_Show_String_For_Oled_BigFont_Func(
-        convertToText(randint(0, 9)),
-        0,
-        0
-    )
-        quest_Dashboard.quest_Show_Oled_Cleared_Func(
-        )
-        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-})
+//// jwc y basic.forever(function () {
+//// jwc y     quest_Dashboard.quest_Show_String_For_Oled_BigFont_Func(
+//// jwc y         convertToText(randint(0, 9)),
+//// jwc y         0,
+//// jwc y         0
+//// jwc y     )
+//// jwc y         quest_Dashboard.quest_Show_Oled_Cleared_Func(
+//// jwc y         )
+//// jwc y         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+//// jwc y })
 
 ////jwc y basic.forever(function () {
 ////jwc y     serial.writeLine(' > quest_Sensors.quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOf90_AsIntOut_Func: ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func()))
