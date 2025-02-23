@@ -563,6 +563,8 @@ namespace quest_Dashboard {
     //// jwc n add space in front of '\': //% i.fieldOptions.columns="10"
     //// jwc n add space in front of '\': //% i.fieldOptions.width="760"
     //// jwc n add space in front of '\': //% i.fieldOptions.maxRows=8
+    
+    //// jwc ? export function iconImage2(i: IconNames2): Image {
 
     //% weight=50 blockGap=8
     //% help=images/icon-image
@@ -571,7 +573,7 @@ namespace quest_Dashboard {
     //% i.fieldOptions.columns="5"
     //% i.fieldOptions.width="380"
     //% i.fieldOptions.maxRows=4
-    export function iconImage2(i: IconNames2): Image {
+    function iconImage2(i: IconNames2): Image {
         switch (i) {
             //// jwc y case IconNames2.Heart2: return images.createImage(`
             //// jwc y                             . # . # .
