@@ -209,7 +209,9 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc only for Bot but not for Controller-Joystick: // jwc since 'micro:bit' upside-down (reverse-direction) re: bot's forward-direction, then flip display upside-down
 //// jwc only for Bot but not for Controller-Joystick: display.rotateTo(display.Direction.UpsideDown)
 
-quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(0, quest_Toggle_OnOff_Enum.On, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc y? quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(0, quest_Toggle_OnOff_Enum.On, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc ? quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(0, quest_Toggle_OnOff_Enum.On, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc ? quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(1, quest_Toggle_OnOff_Enum.On, quest_Debug_Show_Enum.Dashboard_OLED)
 
 
 input.onLogoEvent(TouchButtonEvent.LongPressed, function() {
@@ -465,7 +467,8 @@ namespace quest_Dashboard {
         //// jwc yy: allow '1' be legal for simplicity: if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 1 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
         //// jwc oy if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
         // * Unconditionally create 4-Digit Z#### to be separate from Staff-Assigned GroupChannel_BotId_# \/
-        if (true) {
+        //// jwc ? if (true) {
+        if (network_GroupChannelOfMe_Base0_Int_QuestGlobal == 0 || network_GroupChannelOfMe_Base0_Int_QuestGlobal == 255) {
             //// jwc n network_GroupChannelOfMe_Base0_Int_QuestGlobal = convertToText(control.deviceSerialNumber()).substr(convertToText(control.deviceSerialNumber()).length - 2, 2)
             //// jwc y increase to 3-digits: serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(100 + Math.abs(control.deviceSerialNumber() % 100)) + " " + convertToText(control.deviceSerialNumber()))
             serial.writeLine("* 20- " + convertToText(network_GroupChannelOfMe_Base0_Int_QuestGlobal) + " " + convertToText(Math.abs(control.deviceSerialNumber() % 1000)) + " " + convertToText(control.deviceSerialNumber()))
