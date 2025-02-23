@@ -204,17 +204,11 @@ let network_GroupChannelOfMe_Base0_Int_QuestGlobal = 0
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 //// jwc y basic.showIcon(IconNames.Heart)
 //// jwc y basic.showIcon(IconNames.Heart, 0)
-basic.showIcon(IconNames.Confused, 0)
-basic.showIcon(IconNames.Silly, 0)
-basic.showIcon(IconNames.Sad, 0)
-basic.showIcon(IconNames.Asleep, 0)
-
-//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.SmallHeart2)
-//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.Heart2)
-//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.Yes2)
-//// jwc yy moved to test.ts: quest_Dashboard.showIcon2(IconNames2.No2)
-
 //// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
+
+
+// jwc since 'micro:bit' upside-down (reverse-direction) re: bot's forward-direction, then flip display upside-down
+display.rotateTo(display.Direction.UpsideDown)
 
 
 //// jwc yy \/ yet needs 'quest_Public_Variables_N_Constants.' namespace-prefix to access
