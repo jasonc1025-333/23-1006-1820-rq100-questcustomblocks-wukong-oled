@@ -411,7 +411,52 @@ namespace quest_Dashboard {
                 serial.writeLine("* 53: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str)
             }
         }
+    }
 
+    /**
+     * quest_Show_GroupChannelOfMe_Func
+     * @param debug_Show_In quest_Debug_Show_Enum
+     *
+     */
+    // '\\' = escape character to deactivate following special character
+    //% block="set quest\\_Show\\_GroupChannelOfMe\\_Func:|* debug_Show_In: $debug_Show_In"
+    //% weight=50 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Show_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum): void {
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+
+        serial.writeLine("* 50: " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_Message_String) + " | " + convertToText(debug_Show_In))
+        serial.writeLine("* 51: " + convertToText(network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal) + " | " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global))
+
+
+        serial.writeLine(" 55: " + convertToText(network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal))
+        serial.writeLine(" 55_01: " + convertToText(quest_Public_Variables_N_Constants.network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal_01))
+        //// jwc ? serial.writeLine(" 55_02: " + convertToText(quest_Public_Variables_N_Constants_01.prototype.network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal_02))
+        serial.writeLine(" 55_11: " + convertToText(network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal_11))
+
+
+        //// jwc send data
+
+        if (true) {
+            quest_Note_3.quest_Show_String_For_Note_Small_Func(
+                "Not end w/'delimiter' or will create a fake key_value pair at receiving end"
+            )
+            quest_Note_3.quest_Show_String_For_Note_Big_Func(
+                "Network_Message Max Length or will be cut off"
+            )
+            if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
+                basic.showString("ERROR: 25-0209-0410 Network Message > Max Len.")
+            }
+            radio.setGroup(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL)
+            radio.sendString(network_Message_Str)
+            radio.setGroup(network_GroupChannelOfMe_ManualSet_Override_Base0_Int_QuestGlobal)
+            if (debug_Show_In = quest_Debug_Show_Enum.Dashboard_OLED) {
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str, 0, 3)
+                serial.writeLine("* 53: network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str)
+            }
+        }
     }
 
     //// jwc oyy /**
