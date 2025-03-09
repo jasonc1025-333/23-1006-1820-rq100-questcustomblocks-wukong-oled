@@ -1137,7 +1137,7 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
@@ -1233,8 +1233,9 @@ namespace quest_Motors {
 
         switch (portIdsIn) {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight:
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
+                //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
+                //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
+                quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
@@ -1243,8 +1244,9 @@ namespace quest_Motors {
                 }
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
+                //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
+                //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
+                quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
@@ -1491,9 +1493,9 @@ namespace quest_Motors {
 
     enum quest_PortSingle_ServoArm_PortId_Enum {
         //% block="S7_ServoArm_Left"
-        S7_ServoArmLeft,
-        //% block="S6_ServoArm_Right"
-        S6_ServoArmRight,
+        S7_ServoArm_Left,
+        //% block="S7_ServoArmLeftS6_ServoArm_Right"
+        S6_ServoArm_Right,
     }
 
     enum quest_ServoArm_DegreesInDirection_Enum {
@@ -1508,17 +1510,11 @@ namespace quest_Motors {
     /**
     * quest_Set_AutoDegrees_ForServoArm_Fn
     * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
-
     * @param servoArm_DegreesInDirection_Enum_In quest_ServoArm_DegreesInDirection_Enum
-    * @param turn_Direction_In quest_Turn_Direction_Enum
-    * @param turn_Power_In quest_Turn_Power_Enum
-    * @param turn_Duration_In quest_Turn_Duration_Enum
-
     * @param debug_Show_In quest_Debug_Show_Enum
 
     */
-    ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
-    //% block="set auto_degrees for_servo_arm:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% block="set auto_degrees for_servo_arm:|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In"
     //% weight=60 blockGap=8
     //% inlineInputMode=external
     export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArm_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
@@ -1526,118 +1522,63 @@ namespace quest_Motors {
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
-        let motor_Power_L = 0
-        let motor_Power_R = 0
+        let servoArm_Degrees_Local = 0
 
-        let turn_Duration = 0
+        switch (port_Id_In) {
+            case quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left:
 
-        switch (turn_Type_In) {
-            //////jwc y case quest_Turn_Type_Enum.Pivot:
-            ////jwc n case turn_Type_02_Enum.Pivot:
-            case quest_Turn_Type_Enum.Pivot:
-
-                switch (turn_Direction_In) {
-                    case quest_Turn_Direction_Enum.left:
-
-                        switch (turn_Power_In) {
-                            case quest_Turn_Power_Enum.Lo:
-                                motor_Power_L = motor_Power_No_QuestGlobal
-                                motor_Power_R = motor_Power_Lo_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Mi:
-                                motor_Power_L = motor_Power_No_QuestGlobal
-                                motor_Power_R = motor_Power_Mi_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Hi:
-                                motor_Power_L = motor_Power_No_QuestGlobal
-                                motor_Power_R = motor_Power_Hi_QuestGlobal
-                                break  // out of these case statements
-                        }
-                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                switch (servoArm_DegreesInDirection_Enum_In) {
+                    case quest_ServoArm_DegreesInDirection_Enum.Up:
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
-
-                    case quest_Turn_Direction_Enum.right:
-
-                        switch (turn_Power_In) {
-                            case quest_Turn_Power_Enum.Lo:
-                                motor_Power_L = motor_Power_Lo_QuestGlobal
-                                motor_Power_R = motor_Power_No_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Mi:
-                                motor_Power_L = motor_Power_Mi_QuestGlobal
-                                motor_Power_R = motor_Power_No_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Hi:
-                                motor_Power_L = motor_Power_Hi_QuestGlobal
-                                motor_Power_R = motor_Power_No_QuestGlobal
-                                break  // out of these case statements
-                        }
-                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                    case quest_ServoArm_DegreesInDirection_Enum.Down:
+                        servoArm_Degrees_Local = 180
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Back:
+                        servoArm_Degrees_Local = 45
+                        break  // out of these case statements
+                }
+                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                    //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 }
                 break  // out of these case statements
 
-            ////jwc y TODO case quest_Turn_Type_Enum.Spin:
-            ////jwc n case turn_Type_02_Enum.Spin:
-            case quest_Turn_Type_Enum.Spin:
+            case quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right:
 
-
-                switch (turn_Direction_In) {
-                    case quest_Turn_Direction_Enum.left:
-
-                        switch (turn_Power_In) {
-                            case quest_Turn_Power_Enum.Lo:
-                                motor_Power_L = motor_Power_Lo_QuestGlobal * (-1)
-                                motor_Power_R = motor_Power_Lo_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Mi:
-                                motor_Power_L = motor_Power_Mi_QuestGlobal * (-1)
-                                motor_Power_R = motor_Power_Mi_QuestGlobal
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Hi:
-                                motor_Power_L = motor_Power_Hi_QuestGlobal * (-1)
-                                motor_Power_R = motor_Power_Hi_QuestGlobal
-                                break  // out of these case statements
-                        }
-                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                switch (servoArm_DegreesInDirection_Enum_In) {
+                    case quest_ServoArm_DegreesInDirection_Enum.Up:
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
-
-                    case quest_Turn_Direction_Enum.right:
-
-                        switch (turn_Power_In) {
-                            case quest_Turn_Power_Enum.Lo:
-                                motor_Power_L = motor_Power_Lo_QuestGlobal
-                                motor_Power_R = motor_Power_Lo_QuestGlobal * (-1)
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Mi:
-                                motor_Power_L = motor_Power_Mi_QuestGlobal
-                                motor_Power_R = motor_Power_Mi_QuestGlobal * (-1)
-                                break  // out of these case statements
-                            case quest_Turn_Power_Enum.Hi:
-                                motor_Power_L = motor_Power_Hi_QuestGlobal
-                                motor_Power_R = motor_Power_Hi_QuestGlobal * (-1)
-                                break  // out of these case statements
-                        }
-                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                    case quest_ServoArm_DegreesInDirection_Enum.Down:
+                        servoArm_Degrees_Local = 0
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Back:
+                        servoArm_Degrees_Local = 135
+                        break  // out of these case statements
+                }
+                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                    //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                }
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 }
                 break  // out of these case statements
         }
-
 
         // diagnostics
         switch (debug_Show_In) {
             case quest_Debug_Show_Enum.Dashboard_OLED:
                 quest_Dashboard.quest_Show_Oled_Cleared_Func()
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
 
                 break  // out of these case statements
             case quest_Debug_Show_Enum.MicroBit_Screen:
@@ -1650,21 +1591,10 @@ namespace quest_Motors {
                 break  // out of these case statements
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0209-1020: quest_Set_Turn_WithTimer_Func: " + motor_Power_L + " " + motor_Power_R + " " + turn_Duration)
+                    serial.writeLine("* ERROR: 25-0309-0900: quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 }
                 break
         }
-
-        //// jwc o // turn
-        //// jwc o quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, motor_Power_L, motor_Power_R)
-        //// jwc o // timer
-        //// jwc o quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(turn_Duration, quest_Time_Units_Enum.Milliseconds)
-        //// jwc o // stop
-        //// jwc o quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, 0, 0)
-
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 90)
-        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 90)
-
     }
 
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': /**
@@ -1687,7 +1617,6 @@ namespace quest_Motors {
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':         1
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':     )
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': }
-
 }
 
 // dark blue #0000ff TOO DARK, CANNOT SEE BLACK BOUNDARY LINES

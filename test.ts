@@ -64,7 +64,6 @@ input.onButtonPressed(Button.B, function () {
     serial.writeLine('* 6_11: ' + convertToText(quest_Dashboard.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_11))
 })
 
-
 input.onGesture(Gesture.TiltLeft, function () {
     quest_Motors.quest_Set_Turn_WithTimer_Func(
         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
@@ -85,6 +84,13 @@ input.onGesture(Gesture.TiltRight, function () {
         quest_Debug_Show_Enum.MicroBit_Screen,
     )
 })
+
+input.onGesture(Gesture.LogoUp, function () {
+    
+})
+input.onGesture(Gesture.LogoDown, function () {
+})
+
 
 //// jwc y basic.forever(function () {
 //// jwc y     quest_Dashboard.quest_Show_String_For_Oled_BigFont_Func(
