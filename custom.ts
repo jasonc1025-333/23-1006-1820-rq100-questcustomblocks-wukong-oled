@@ -1488,6 +1488,185 @@ namespace quest_Motors {
 
     }
 
+
+    enum quest_PortSingle_ServoArm_PortId_Enum {
+        //% block="S7_ServoArm_Left"
+        S7_ServoArmLeft,
+        //% block="S6_ServoArm_Right"
+        S6_ServoArmRight,
+    }
+
+    enum quest_ServoArm_DegreesInDirection_Enum {
+        //% block="Up"
+        Up,
+        //% block="Down"
+        Down,
+        //% block="Back"
+        Back,
+    }
+
+    /**
+    * quest_Set_AutoDegrees_ForServoArm_Fn
+    * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
+
+    * @param servoArm_DegreesInDirection_Enum_In quest_ServoArm_DegreesInDirection_Enum
+    * @param turn_Direction_In quest_Turn_Direction_Enum
+    * @param turn_Power_In quest_Turn_Power_Enum
+    * @param turn_Duration_In quest_Turn_Duration_Enum
+
+    * @param debug_Show_In quest_Debug_Show_Enum
+
+    */
+    ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
+    //% block="set auto_degrees for_servo_arm:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% weight=60 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArm_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+        let motor_Power_L = 0
+        let motor_Power_R = 0
+
+        let turn_Duration = 0
+
+        switch (turn_Type_In) {
+            //////jwc y case quest_Turn_Type_Enum.Pivot:
+            ////jwc n case turn_Type_02_Enum.Pivot:
+            case quest_Turn_Type_Enum.Pivot:
+
+                switch (turn_Direction_In) {
+                    case quest_Turn_Direction_Enum.left:
+
+                        switch (turn_Power_In) {
+                            case quest_Turn_Power_Enum.Lo:
+                                motor_Power_L = motor_Power_No_QuestGlobal
+                                motor_Power_R = motor_Power_Lo_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Mi:
+                                motor_Power_L = motor_Power_No_QuestGlobal
+                                motor_Power_R = motor_Power_Mi_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Hi:
+                                motor_Power_L = motor_Power_No_QuestGlobal
+                                motor_Power_R = motor_Power_Hi_QuestGlobal
+                                break  // out of these case statements
+                        }
+                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        break  // out of these case statements
+
+                    case quest_Turn_Direction_Enum.right:
+
+                        switch (turn_Power_In) {
+                            case quest_Turn_Power_Enum.Lo:
+                                motor_Power_L = motor_Power_Lo_QuestGlobal
+                                motor_Power_R = motor_Power_No_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Mi:
+                                motor_Power_L = motor_Power_Mi_QuestGlobal
+                                motor_Power_R = motor_Power_No_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Hi:
+                                motor_Power_L = motor_Power_Hi_QuestGlobal
+                                motor_Power_R = motor_Power_No_QuestGlobal
+                                break  // out of these case statements
+                        }
+                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        break  // out of these case statements
+                }
+                break  // out of these case statements
+
+            ////jwc y TODO case quest_Turn_Type_Enum.Spin:
+            ////jwc n case turn_Type_02_Enum.Spin:
+            case quest_Turn_Type_Enum.Spin:
+
+
+                switch (turn_Direction_In) {
+                    case quest_Turn_Direction_Enum.left:
+
+                        switch (turn_Power_In) {
+                            case quest_Turn_Power_Enum.Lo:
+                                motor_Power_L = motor_Power_Lo_QuestGlobal * (-1)
+                                motor_Power_R = motor_Power_Lo_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Mi:
+                                motor_Power_L = motor_Power_Mi_QuestGlobal * (-1)
+                                motor_Power_R = motor_Power_Mi_QuestGlobal
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Hi:
+                                motor_Power_L = motor_Power_Hi_QuestGlobal * (-1)
+                                motor_Power_R = motor_Power_Hi_QuestGlobal
+                                break  // out of these case statements
+                        }
+                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        break  // out of these case statements
+
+                    case quest_Turn_Direction_Enum.right:
+
+                        switch (turn_Power_In) {
+                            case quest_Turn_Power_Enum.Lo:
+                                motor_Power_L = motor_Power_Lo_QuestGlobal
+                                motor_Power_R = motor_Power_Lo_QuestGlobal * (-1)
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Mi:
+                                motor_Power_L = motor_Power_Mi_QuestGlobal
+                                motor_Power_R = motor_Power_Mi_QuestGlobal * (-1)
+                                break  // out of these case statements
+                            case quest_Turn_Power_Enum.Hi:
+                                motor_Power_L = motor_Power_Hi_QuestGlobal
+                                motor_Power_R = motor_Power_Hi_QuestGlobal * (-1)
+                                break  // out of these case statements
+                        }
+                        //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        break  // out of these case statements
+                }
+                break  // out of these case statements
+        }
+
+
+        // diagnostics
+        switch (debug_Show_In) {
+            case quest_Debug_Show_Enum.Dashboard_OLED:
+                quest_Dashboard.quest_Show_Oled_Cleared_Func()
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) + " " + convertToText(motor_Power_R) + " " + convertToText(turn_Duration), 0, 0)
+
+                break  // out of these case statements
+            case quest_Debug_Show_Enum.MicroBit_Screen:
+                // diagnostics
+                basic.showIcon(IconNames.Fabulous)
+
+                break  // out of these case statements
+            case quest_Debug_Show_Enum.Off:
+
+                break  // out of these case statements
+            default:
+                if (_debug_Serial_Print_Bool_QuestGlobal) {
+                    serial.writeLine("* ERROR: 25-0209-1020: quest_Set_Turn_WithTimer_Func: " + motor_Power_L + " " + motor_Power_R + " " + turn_Duration)
+                }
+                break
+        }
+
+        //// jwc o // turn
+        //// jwc o quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, motor_Power_L, motor_Power_R)
+        //// jwc o // timer
+        //// jwc o quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(turn_Duration, quest_Time_Units_Enum.Milliseconds)
+        //// jwc o // stop
+        //// jwc o quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, 0, 0)
+
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, 90)
+        wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 90)
+
+    }
+
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': /**
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':  * set_Settings_Fn
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':  * @param deviceTypeBotBoolIn boolean
