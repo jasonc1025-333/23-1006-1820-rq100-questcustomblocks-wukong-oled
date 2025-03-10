@@ -148,13 +148,20 @@ enum quest_Turn_Power_Enum {
     Hi,
 }
 
-enum quest_Debug_Show_Enum {
-    //% block="Dashboard_OLED"
-    Dashboard_OLED,
-    //% block="MicroBit_Screen"
-    MicroBit_Screen,
-    //% block="Off"
-    Off,
+enum quest_PortSingle_ServoArm_PortId_Enum {
+    //% block="S7_ServoArm_Left"
+    S7_ServoArm_Left,
+    //% block="S7_ServoArmLeftS6_ServoArm_Right"
+    S6_ServoArm_Right,
+}
+
+enum quest_ServoArm_DegreesInDirection_Enum {
+    //% block="Up"
+    Up,
+    //% block="Down"
+    Down,
+    //% block="Back"
+    Back,
 }
 
 enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
@@ -164,6 +171,15 @@ enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
     degree_45,
     //% block="degree_30"
     degree_30,
+}
+
+enum quest_Debug_Show_Enum {
+    //% block="Dashboard_OLED"
+    Dashboard_OLED,
+    //% block="MicroBit_Screen"
+    MicroBit_Screen,
+    //% block="Off"
+    Off,
 }
 
 enum quest_String_Justify_Type_Enum {
@@ -1490,23 +1506,6 @@ namespace quest_Motors {
 
     }
 
-
-    enum quest_PortSingle_ServoArm_PortId_Enum {
-        //% block="S7_ServoArm_Left"
-        S7_ServoArm_Left,
-        //% block="S7_ServoArmLeftS6_ServoArm_Right"
-        S6_ServoArm_Right,
-    }
-
-    enum quest_ServoArm_DegreesInDirection_Enum {
-        //% block="Up"
-        Up,
-        //% block="Down"
-        Down,
-        //% block="Back"
-        Back,
-    }
-
     /**
     * quest_Set_AutoDegrees_ForServoArm_Fn
     * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
@@ -1541,7 +1540,8 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -1565,7 +1565,8 @@ namespace quest_Motors {
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)

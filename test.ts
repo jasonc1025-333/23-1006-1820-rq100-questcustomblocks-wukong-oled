@@ -86,9 +86,12 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 
 input.onGesture(Gesture.LogoUp, function () {
-    
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Down, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 input.onGesture(Gesture.LogoDown, function () {
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Up, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Up, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 
 
@@ -123,3 +126,7 @@ basic.forever(function () {
 //// jwc y /// jwc y quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
 //// jwc y /// jwc y basic.showIcon(IconNames.Heart)
 
+
+// Start Stack
+quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Back, quest_Debug_Show_Enum.Dashboard_OLED)
+quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Back, quest_Debug_Show_Enum.Dashboard_OLED)
