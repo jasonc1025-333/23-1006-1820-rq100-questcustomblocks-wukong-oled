@@ -151,7 +151,7 @@ enum quest_Turn_Power_Enum {
 enum quest_PortSingle_ServoArm_PortId_Enum {
     //% block="S7_ServoArm_Left"
     S7_ServoArm_Left,
-    //% block="S7_ServoArmLeftS6_ServoArm_Right"
+    //% block="S6_ServoArm_Right"
     S6_ServoArm_Right,
 }
 
@@ -1317,7 +1317,7 @@ namespace quest_Motors {
     */
     ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
     //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
-    //% weight=60 blockGap=8
+    //% weight=76 blockGap=8
     //% inlineInputMode=external
     export function quest_Set_Turn_WithTimer_Func(port_Ids_In: quest_PortGroup_BlueRedBlack_PortIds_Enum, turn_Type_In: quest_Turn_Type_Enum, turn_Direction_In: quest_Turn_Direction_Enum, turn_Power_In: quest_Turn_Power_Enum, turn_Duration_In: quest_Turn_Duration_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
 
@@ -1514,7 +1514,7 @@ namespace quest_Motors {
 
     */
     //% block="set auto_degrees for_servo_arm:|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In"
-    //% weight=60 blockGap=8
+    //% weight=74 blockGap=8
     //% inlineInputMode=external
     export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArm_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
 
