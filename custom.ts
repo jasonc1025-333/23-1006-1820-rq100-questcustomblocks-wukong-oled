@@ -1528,13 +1528,15 @@ namespace quest_Motors {
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Up:
-                        servoArm_Degrees_Local = 90
+                        //// jwc y servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 135
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Down:
                         servoArm_Degrees_Local = 180
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Back:
-                        servoArm_Degrees_Local = 45
+                        //// jwc y servoArm_Degrees_Local = 45
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
                 }
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
@@ -1553,13 +1555,15 @@ namespace quest_Motors {
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Up:
-                        servoArm_Degrees_Local = 90
+                        //// jwc y servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 45
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Down:
                         servoArm_Degrees_Local = 0
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Back:
-                        servoArm_Degrees_Local = 135
+                        //// jwc y servoArm_Degrees_Local = 135
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
                 }
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
