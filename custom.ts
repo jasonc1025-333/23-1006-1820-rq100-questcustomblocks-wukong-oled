@@ -1252,23 +1252,23 @@ namespace quest_Motors {
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
                 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
-                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
-                }
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
-                }
+                //// jwc 25-0325-1600 Obsolete: if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0325-1600 Obsolete:     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0325-1600 Obsolete: }
+                //// jwc 25-0325-1600 Obsolete: if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0325-1600 Obsolete:     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
+                //// jwc 25-0325-1600 Obsolete: }
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
-                if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
-                }
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
-                }
+                //// jwc 25-0325-1600 Obsolete: if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0325-1600 Obsolete:     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0325-1600 Obsolete: }
+                //// jwc 25-0325-1600 Obsolete: if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0325-1600 Obsolete:     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
+                //// jwc 25-0325-1600 Obsolete: }
                 break
             default:
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
@@ -1353,7 +1353,7 @@ namespace quest_Motors {
                         }
                         //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
                         //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        //////jwc 25-0325-1600: obsolete: quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
                         break  // out of these case statements
 
                     case quest_Turn_Direction_Enum.right:
@@ -1374,7 +1374,7 @@ namespace quest_Motors {
                         }
                         //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
                         //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        //////jwc 25-0325-1600: obsolete: quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
                         break  // out of these case statements
                 }
                 break  // out of these case statements
@@ -1403,7 +1403,7 @@ namespace quest_Motors {
                         }
                         //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
                         //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
+                        //////jwc 25-0325-1600: obsolete: quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Left)
                         break  // out of these case statements
 
                     case quest_Turn_Direction_Enum.right:
@@ -1424,7 +1424,7 @@ namespace quest_Motors {
                         }
                         //////jwc y quest_Dashboard.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
                         //////jwc n this.quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
-                        quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
+                        //////jwc 25-0325-1600: obsolete: quest_Show_MotionDirection_Func(quest_Motion_Direction_Enum.Right)
                         break  // out of these case statements
                 }
                 break  // out of these case statements
@@ -1543,11 +1543,13 @@ namespace quest_Motors {
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func( "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
-                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                    //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " +"C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 }
                 break  // out of these case statements
 
@@ -1570,11 +1572,13 @@ namespace quest_Motors {
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
                     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_Of_XrayDashboardOfMb_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
-                    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
-                }
+                    //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+               }
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
-                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                    //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                    serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 }
                 break  // out of these case statements
         }
@@ -1583,7 +1587,7 @@ namespace quest_Motors {
         switch (debug_Show_In) {
             case quest_Debug_Show_Enum.Dashboard_OLED:
                 quest_Dashboard.quest_Show_Oled_Cleared_Func()
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
 
                 break  // out of these case statements
             case quest_Debug_Show_Enum.MicroBit_Screen:
