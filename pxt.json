@@ -1,6 +1,6 @@
 {
     "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (25-0423-2100, v0.23.0)",
-    "version": "0.22.0",
+    "version": "0.23.0",
     "description": "",
     "dependencies": {
         "core": "*",
