@@ -28,22 +28,31 @@
 //// jwc input.onButtonPressed(Button.AB, function () {
 //// jwc y input.onLogoEvent(TouchButtonEvent.Pressed, function() {
 input.onButtonPressed(Button.A, function () {
+    //// jwc 25-0626-1400 quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(
+    //// jwc 25-0626-1400     // randint: inclusive boundaries
+    //// jwc 25-0626-1400     //// jwc y randint(101, 200),
+    //// jwc 25-0626-1400     //// jwc y? randint(-1, 3),
+    //// jwc 25-0626-1400     //// jwc yy 0,1,2,3 randint(0, 3),
+    //// jwc 25-0626-1400     //// jwc yy randint(0, 0),
+    //// jwc 25-0626-1400     randint(0, 3),
+    //// jwc 25-0626-1400     //// jwc y randint(0, 1),
+    //// jwc 25-0626-1400     //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
+    //// jwc 25-0626-1400     //// jwc yy quest_Toggle_OnOff_Enum.On,
+    //// jwc 25-0626-1400     //// jwc y quest_Toggle_OnOff_Enum.Off,
+    //// jwc 25-0626-1400     quest_Toggle_OnOff_Enum.On,
+    //// jwc 25-0626-1400     //// jwc yy quest_Debug_Show_Enum.Dashboard_OLED,
+    //// jwc 25-0626-1400     //// jwc y quest_Debug_Show_Enum.MicroBit_Screen,
+    //// jwc 25-0626-1400     quest_Debug_Show_Enum.Dashboard_OLED,
+    //// jwc 25-0626-1400 )
     quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(
         // randint: inclusive boundaries
         //// jwc y randint(101, 200),
         //// jwc y? randint(-1, 3),
         //// jwc yy 0,1,2,3 randint(0, 3),
         //// jwc yy randint(0, 0),
-        randint(0, 3),
-        //// jwc y randint(0, 1),
-        //// jwc obsolete: quest_Toggle_OnOff_Enum.On,
-        //// jwc yy quest_Toggle_OnOff_Enum.On,
-        //// jwc y quest_Toggle_OnOff_Enum.Off,
-        quest_Toggle_OnOff_Enum.On,
-        //// jwc yy quest_Debug_Show_Enum.Dashboard_OLED,
-        //// jwc y quest_Debug_Show_Enum.MicroBit_Screen,
-        quest_Debug_Show_Enum.Dashboard_OLED,
+        randint(0, 3)
     )
+
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
 
@@ -131,6 +140,8 @@ basic.forever(function () {
 
 
 // Start Stack
+serial.writeLine("* 00_B: On-Start: test.ts")
+
 quest_Dashboard.quest_Show_Oled_Cleared_Func()
 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("0", 0, 0)
 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("1", 0, 1)
