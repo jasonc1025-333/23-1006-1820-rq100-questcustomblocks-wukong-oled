@@ -66,7 +66,7 @@ input.onButtonPressed(Button.B, function () {
 
 input.onGesture(Gesture.TiltLeft, function () {
     quest_Motors.quest_Set_Turn_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
         quest_Turn_Type_Enum.Pivot,
         quest_Turn_Direction_Enum.right,
         quest_Turn_Power_Enum.Lo,
@@ -76,7 +76,7 @@ input.onGesture(Gesture.TiltLeft, function () {
 })
 input.onGesture(Gesture.TiltRight, function () {
     quest_Motors.quest_Set_Turn_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
+        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
         quest_Turn_Type_Enum.Spin,
         quest_Turn_Direction_Enum.left,
         quest_Turn_Power_Enum.Mi,
@@ -86,16 +86,16 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 
 input.onGesture(Gesture.LogoUp, function () {
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 input.onGesture(Gesture.LogoDown, function () {
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 input.onGesture(Gesture.ScreenDown, function () {
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 
 
@@ -132,5 +132,5 @@ basic.forever(function () {
 
 
 // Start Stack
-quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
-quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)

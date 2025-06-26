@@ -47,6 +47,11 @@
 // * jwc 25-0210-1500 TYJ 19 Char Max for MbRadioNetwork
 // * jwc 25-0625-1750
 //   * Oled Fix
+//   * 'S1_MotorLeft__S0_MotorRight' -> 'S1_MotorWheel_Left__S0_MotorWheel_Right'
+//   * 'S3_MotorLeft__S2_MotorRight' -> 'S3_MotorWheel_Left__S2_MotorWheel_Right'
+//   * 'quest_PortSingle_ServoArm_PortId_Enum' -> 'quest_PortSingle_ServoArmBeam_PortId_Enum'
+//     * 'S7_ServoArm_Left' -> 'S7_ServoArmBeam_Left'
+//     * 'S6_ServoArm_Right' -> 'S6_ServoArmBeam_Right'
 //   * Network Driver Dashboard
 
 
@@ -65,10 +70,10 @@ enum quest_Toggle_OnOff_Enum {
 }
 
 enum quest_PortGroup_BlueRedBlack_PortIds_Enum {
-    //% block="S1_MotorLeft__S0_MotorRight"
-    S1_MotorLeft__S0_MotorRight,
-    //% block="S3_MotorLeft__S2_MotorRight"
-    S3_MotorLeft__S2_MotorRight,
+    //% block="S1_MotorWheel_Left__S0_MotorWheel_Right"
+    S1_MotorWheel_Left__S0_MotorWheel_Right,
+    //% block="S3_MotorWheel_Left__S2_MotorWheel_Right"
+    S3_MotorWheel_Left__S2_MotorWheel_Right,
 }
 
 enum quest_Time_Units_Enum {
@@ -154,11 +159,11 @@ enum quest_Turn_Power_Enum {
     Hi,
 }
 
-enum quest_PortSingle_ServoArm_PortId_Enum {
-    //% block="S7_ServoArm_Left"
-    S7_ServoArm_Left,
-    //% block="S6_ServoArm_Right"
-    S6_ServoArm_Right,
+enum quest_PortSingle_ServoArmBeam_PortId_Enum {
+    //% block="S7_ServoArmBeam_Left"
+    S7_ServoArmBeam_Left,
+    //% block="S6_ServoArmBeam_Right"
+    S6_ServoArmBeam_Right,
 }
 
 enum quest_ServoArm_DegreesInDirection_Enum {
@@ -1152,7 +1157,7 @@ namespace quest_Motors {
         let motor_Power_R = Math.map(powerRightIn, -100, 100, 360, 0)
 
         switch (portIdsIn) {
-            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight:
+            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
@@ -1163,7 +1168,7 @@ namespace quest_Motors {
                     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
                 }
                 break
-            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
+            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 if (network_Send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_Quest_Global == quest_Toggle_OnOff_Enum.On) {
@@ -1263,7 +1268,7 @@ namespace quest_Motors {
         }
 
         switch (portIdsIn) {
-            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight:
+            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right:
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
                 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
@@ -1274,7 +1279,7 @@ namespace quest_Motors {
                 //// jwc 25-0325-1600 Obsolete:     serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
                 //// jwc 25-0325-1600 Obsolete: }
                 break
-            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorLeft__S2_MotorRight:
+            case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
                 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
@@ -1531,7 +1536,7 @@ namespace quest_Motors {
     //% block="set auto_degrees for_servo_arm:|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In"
     //% weight=74 blockGap=8
     //% inlineInputMode=external
-    export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArm_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -1539,7 +1544,7 @@ namespace quest_Motors {
         let servoArm_Degrees_Local = 0
 
         switch (port_Id_In) {
-            case quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left:
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
@@ -1571,7 +1576,7 @@ namespace quest_Motors {
                 }
                 break  // out of these case statements
 
-            case quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right:
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
