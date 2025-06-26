@@ -45,6 +45,9 @@
 //   * quest_Public_Variables_N_Constants.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_01
 //   * quest_Dashboard.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_11
 // * jwc 25-0210-1500 TYJ 19 Char Max for MbRadioNetwork
+// * jwc 25-0625-1750
+//   * Oled Fix
+//   * Network Driver Dashboard
 
 
 // enum MyEnum {
@@ -159,12 +162,12 @@ enum quest_PortSingle_ServoArm_PortId_Enum {
 }
 
 enum quest_ServoArm_DegreesInDirection_Enum {
-    //% block="Up"
-    Up,
-    //% block="Down"
-    Down,
-    //% block="Back"
-    Back,
+    //% block="Degree_000"
+    Degree_000,
+    //% block="Degree_045"
+    Degree_045,
+    //% block="Degree_090"
+    Degree_090,
 }
 
 enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
@@ -1539,15 +1542,18 @@ namespace quest_Motors {
             case quest_PortSingle_ServoArm_PortId_Enum.S7_ServoArm_Left:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
-                    case quest_ServoArm_DegreesInDirection_Enum.Up:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
                         //// jwc y servoArm_Degrees_Local = 90
-                        servoArm_Degrees_Local = 135
-                        break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Down:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
                         servoArm_Degrees_Local = 180
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Back:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
+                        servoArm_Degrees_Local = 135
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
                         //// jwc y servoArm_Degrees_Local = 45
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
                         servoArm_Degrees_Local = 90
                         break  // out of these case statements
                 }
@@ -1568,15 +1574,18 @@ namespace quest_Motors {
             case quest_PortSingle_ServoArm_PortId_Enum.S6_ServoArm_Right:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
-                    case quest_ServoArm_DegreesInDirection_Enum.Up:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
                         //// jwc y servoArm_Degrees_Local = 90
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
+                       servoArm_Degrees_Local = 0
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
                         servoArm_Degrees_Local = 45
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Down:
-                        servoArm_Degrees_Local = 0
-                        break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Back:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
                         //// jwc y servoArm_Degrees_Local = 135
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
                         servoArm_Degrees_Local = 90
                         break  // out of these case statements
                 }
