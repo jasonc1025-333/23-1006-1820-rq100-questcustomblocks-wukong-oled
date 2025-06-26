@@ -315,6 +315,8 @@ namespace quest_Dashboard {
     //% inlineInputMode=external
     export function quest_Show_Oled_Cleared_Func() {
         OLED12864_I2C.clear()
+        //// jwc y? move down half-row: 64/8 = 8px >> / 2 = 4px: \/ OLED12864_I2C.hline(0, 32, 128, 1)
+        OLED12864_I2C.hline(0, 36, 128, 1)
     }
     /**
     * quest_Show_String_For_Oled_BigFont_Fn
