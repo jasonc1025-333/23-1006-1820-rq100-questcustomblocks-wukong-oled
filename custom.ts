@@ -413,6 +413,8 @@ namespace quest_Dashboard {
 
 
     //// jwc y //% weight=50 blockGap=8
+    //// jwc 25-0626-2250 export function quest_Show_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum): void {
+
 
     /**
      * quest_Show_GroupChannelOfMe_Func
@@ -423,9 +425,10 @@ namespace quest_Dashboard {
     //% block="set quest\\_Show\\_GroupChannelOfMe\\_Func:|* debug_Show_In: $debug_Show_In"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Show_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Get_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum){
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
+        return network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
     }
 
 
@@ -1435,27 +1438,27 @@ namespace quest_Motors {
                 break
         }
 
-        // diagnostics
-        switch (debug_Show_In) {
-            case quest_Debug_Show_Enum.Dashboard_OLED:
-                //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) +" "+ convertToText(motor_Power_R) +" "+ convertToText(turn_Duration), 0, 0)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.MicroBit_Screen:
-                // diagnostics
-                basic.showIcon(IconNames.Happy)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.Off:
-
-                break  // out of these case statements
-            default:
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0209-0922 quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
-                }
-                break
-        }
+        //// jwc 25-0626-1400 // diagnostics
+        //// jwc 25-0626-1400 switch (debug_Show_In) {
+        //// jwc 25-0626-1400     case quest_Debug_Show_Enum.Dashboard_OLED:
+        //// jwc 25-0626-1400         //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
+        //// jwc 25-0626-1400         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) +" "+ convertToText(motor_Power_R) +" "+ convertToText(turn_Duration), 0, 0)
+        //// jwc 25-0626-1400 
+        //// jwc 25-0626-1400         break  // out of these case statements
+        //// jwc 25-0626-1400     case quest_Debug_Show_Enum.MicroBit_Screen:
+        //// jwc 25-0626-1400         // diagnostics
+        //// jwc 25-0626-1400         basic.showIcon(IconNames.Happy)
+        //// jwc 25-0626-1400 
+        //// jwc 25-0626-1400         break  // out of these case statements
+        //// jwc 25-0626-1400     case quest_Debug_Show_Enum.Off:
+        //// jwc 25-0626-1400 
+        //// jwc 25-0626-1400         break  // out of these case statements
+        //// jwc 25-0626-1400     default:
+        //// jwc 25-0626-1400         if (_debug_Serial_Print_Bool_QuestGlobal) {
+        //// jwc 25-0626-1400             serial.writeLine("* ERROR: 25-0209-0922 quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
+        //// jwc 25-0626-1400         }
+        //// jwc 25-0626-1400         break
+        //// jwc 25-0626-1400 }
 
         // timer
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(turn_Duration, quest_Time_Units_Enum.Milliseconds)
@@ -1633,27 +1636,27 @@ namespace quest_Motors {
                 break  // out of these case statements
         }
 
-        // diagnostics
-        switch (debug_Show_In) {
-            case quest_Debug_Show_Enum.Dashboard_OLED:
-                //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) +" "+ convertToText(motor_Power_R) +" "+ convertToText(turn_Duration), 0, 3)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.MicroBit_Screen:
-                // diagnostics
-                basic.showIcon(IconNames.Fabulous)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.Off:
-
-                break  // out of these case statements
-            default:
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0209-1020: quest_Set_Turn_WithTimer_Func: "+ motor_Power_L +" "+ motor_Power_R +" "+ turn_Duration)
-                }
-                break
-        }
+        //// jwc 25-0628-1400 // diagnostics
+        //// jwc 25-0628-1400 switch (debug_Show_In) {
+        //// jwc 25-0628-1400     case quest_Debug_Show_Enum.Dashboard_OLED:
+        //// jwc 25-0628-1400         //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
+        //// jwc 25-0628-1400         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(convertToText(motor_Power_L) +" "+ convertToText(motor_Power_R) +" "+ convertToText(turn_Duration), 0, 3)
+        //// jwc 25-0628-1400 
+        //// jwc 25-0628-1400         break  // out of these case statements
+        //// jwc 25-0628-1400     case quest_Debug_Show_Enum.MicroBit_Screen:
+        //// jwc 25-0628-1400         // diagnostics
+        //// jwc 25-0628-1400         basic.showIcon(IconNames.Fabulous)
+        //// jwc 25-0628-1400 
+        //// jwc 25-0628-1400         break  // out of these case statements
+        //// jwc 25-0628-1400     case quest_Debug_Show_Enum.Off:
+        //// jwc 25-0628-1400 
+        //// jwc 25-0628-1400         break  // out of these case statements
+        //// jwc 25-0628-1400     default:
+        //// jwc 25-0628-1400         if (_debug_Serial_Print_Bool_QuestGlobal) {
+        //// jwc 25-0628-1400             serial.writeLine("* ERROR: 25-0209-1020: quest_Set_Turn_WithTimer_Func: "+ motor_Power_L +" "+ motor_Power_R +" "+ turn_Duration)
+        //// jwc 25-0628-1400         }
+        //// jwc 25-0628-1400         break
+        //// jwc 25-0628-1400 }
 
         // turn
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, motor_Power_L, motor_Power_R)
@@ -1751,28 +1754,28 @@ namespace quest_Motors {
                 break  // out of these case statements
         }
 
-        // diagnostics
-        switch (debug_Show_In) {
-            case quest_Debug_Show_Enum.Dashboard_OLED:
-                //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
-                //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 3)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.MicroBit_Screen:
-                // diagnostics
-                basic.showIcon(IconNames.Fabulous)
-
-                break  // out of these case statements
-            case quest_Debug_Show_Enum.Off:
-
-                break  // out of these case statements
-            default:
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0309-0900: quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
-                }
-                break
-        }
+        //// jwc 25-0626-1200 // diagnostics
+        //// jwc 25-0626-1200 switch (debug_Show_In) {
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Dashboard_OLED:
+        //// jwc 25-0626-1200         //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
+        //// jwc 25-0626-1200         //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
+        //// jwc 25-0626-1200         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 3)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.MicroBit_Screen:
+        //// jwc 25-0626-1200         // diagnostics
+        //// jwc 25-0626-1200         basic.showIcon(IconNames.Fabulous)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Off:
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     default:
+        //// jwc 25-0626-1200         if (_debug_Serial_Print_Bool_QuestGlobal) {
+        //// jwc 25-0626-1200             serial.writeLine("* ERROR: 25-0309-0900: quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+        //// jwc 25-0626-1200         }
+        //// jwc 25-0626-1200         break
+        //// jwc 25-0626-1200 }
     }
 
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': /**
