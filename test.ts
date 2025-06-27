@@ -54,17 +54,23 @@ input.onButtonPressed(Button.A, function () {
     )
 
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
-    //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+    serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
 
 })
 // Valid GroupChannelNum
 input.onButtonPressed(Button.B, function () {
+    //// jwc 25-0626-1400 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
+    //// jwc 25-0626-1400     //// jwc y "A:ThisIsADataTest",
+    //// jwc 25-0626-1400     //// jwc y "A:3456789012345678901234567890",
+    //// jwc 25-0626-1400     //// jwc Test Max Len = 19 \/
+    //// jwc 25-0626-1400     "A:34567890123456789",
+    //// jwc 25-0626-1400     quest_Debug_Show_Enum.Dashboard_OLED,
+    //// jwc 25-0626-1400 )
     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
         //// jwc y "A:ThisIsADataTest",
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/
         "A:34567890123456789",
-        quest_Debug_Show_Enum.Dashboard_OLED,
     )
     serial.writeLine('* 5: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     //// jwc ? serial.writeLine('* 6: ' + convertToText(quest_Public_Variables_N_Constants.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_01) + " " + convertToText(quest_Public_Variables_N_Constants_01.prototype.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_02))
@@ -74,24 +80,31 @@ input.onButtonPressed(Button.B, function () {
 })
 
 input.onGesture(Gesture.TiltLeft, function () {
-    quest_Motors.quest_Set_Turn_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        quest_Turn_Type_Enum.Pivot,
-        quest_Turn_Direction_Enum.right,
-        quest_Turn_Power_Enum.Lo,
-        quest_Turn_Duration_Enum.msec_3000,
-        quest_Debug_Show_Enum.Dashboard_OLED,
-    )
+    //// jwc 25-0626-1900 quest_Motors.quest_Set_Turn_WithTimer_Func(
+    //// jwc 25-0626-1900     quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+    //// jwc 25-0626-1900     quest_Turn_Type_Enum.Pivot,
+    //// jwc 25-0626-1900     quest_Turn_Direction_Enum.right,
+    //// jwc 25-0626-1900     quest_Turn_Power_Enum.Lo,
+    //// jwc 25-0626-1900     quest_Turn_Duration_Enum.msec_3000,
+    //// jwc 25-0626-1900     quest_Debug_Show_Enum.Dashboard_OLED,
+    //// jwc 25-0626-1900 )
+    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 50, 60)
+    quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, -60, -50)
+    quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
+    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 0)
+
+
 })
 input.onGesture(Gesture.TiltRight, function () {
-    quest_Motors.quest_Set_Turn_WithTimer_Func(
-        quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
-        quest_Turn_Type_Enum.Spin,
-        quest_Turn_Direction_Enum.left,
-        quest_Turn_Power_Enum.Mi,
-        quest_Turn_Duration_Enum.msec_5000,
-        quest_Debug_Show_Enum.MicroBit_Screen,
-    )
+    //// jwc 25-0626-1900 quest_Motors.quest_Set_Turn_WithTimer_Func(
+    //// jwc 25-0626-1900     quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
+    //// jwc 25-0626-1900     quest_Turn_Type_Enum.Spin,
+    //// jwc 25-0626-1900     quest_Turn_Direction_Enum.left,
+    //// jwc 25-0626-1900     quest_Turn_Power_Enum.Mi,
+    //// jwc 25-0626-1900     quest_Turn_Duration_Enum.msec_5000,
+    //// jwc 25-0626-1900     quest_Debug_Show_Enum.MicroBit_Screen,
+    //// jwc 25-0626-1900 )
 })
 input.onGesture(Gesture.LogoUp, function () {
     quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
@@ -153,5 +166,5 @@ quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("6", 0, 6)
 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("7", 0, 7)
 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(5, quest_Time_Units_Enum.Seconds)
 
-quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
-quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000, quest_Debug_Show_Enum.Dashboard_OLED)
