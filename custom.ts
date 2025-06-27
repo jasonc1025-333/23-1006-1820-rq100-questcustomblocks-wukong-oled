@@ -255,9 +255,10 @@ let network_Message_Old_Str_QuestGlobal = ""
 
 let network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL = 255
 
-//
 //// jwc 25-0626-1800 \/ let _debug_Serial_Print_Bool_QuestGlobal = false
-let _debug_Serial_Print_Bool_QuestGlobal = true
+//// jwc 25-0627-0300 Can cause great performant-loss: let _debug_Serial_Print_Bool_QuestGlobal = true
+let _debug_Serial_Print_Bool_QuestGlobal = false
+
 //
 let motor_Power_No_QuestGlobal = 0
 let motor_Power_Lo_QuestGlobal = 30
