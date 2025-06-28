@@ -437,15 +437,15 @@ namespace quest_Dashboard {
     //// jwc 25-0626-2250     * @param debug_Show_In quest_Debug_Show_Enum
 
     /**
-     * quest_Get_GroupChannel_OfMyBot_Func
+     * quest_Get_GroupChannel_BotId_OfMyBot_Func
      * @param 
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Get\\_GroupChannel_OfMyBot\\_Func"
+    //% block="set quest\\_Get\\_GroupChannel_BotId_OfMyBot\\_Func"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_GroupChannel_OfMyBot_Func(){
+    export function quest_Get_GroupChannel_BotId_OfMyBot_Func(){
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
         return network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
@@ -460,7 +460,7 @@ namespace quest_Dashboard {
     //% block="set quest\\_Get\\_SerialName_OfMyBot\\_Func"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_SerialId_OfMyBot_Func() {
+    export function quest_Get_SerialName_OfMyBot_Func() {
         return control.deviceName()
     }
 
