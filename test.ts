@@ -44,13 +44,15 @@ input.onButtonPressed(Button.A, function () {
     //// jwc 25-0626-1400     //// jwc y quest_Debug_Show_Enum.MicroBit_Screen,
     //// jwc 25-0626-1400     quest_Debug_Show_Enum.Dashboard_OLED,
     //// jwc 25-0626-1400 )
-    quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(
+    //// jwc 25-0627-0900 quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(
+        quest_Dashboard.quest_Dashboard_Network_SendLogin_Func(
         // randint: inclusive boundaries
         //// jwc y randint(101, 200),
         //// jwc y? randint(-1, 3),
         //// jwc yy 0,1,2,3 randint(0, 3),
         //// jwc yy randint(0, 0),
-        randint(0, 3)
+        randint(0, 3),
+        //// jwc 25-0627-0900 ""
     )
 
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
@@ -66,7 +68,8 @@ input.onButtonPressed(Button.B, function () {
     //// jwc 25-0626-1400     "A:34567890123456789",
     //// jwc 25-0626-1400     quest_Debug_Show_Enum.Dashboard_OLED,
     //// jwc 25-0626-1400 )
-    quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
+    //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(
+    quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
         //// jwc y "A:ThisIsADataTest",
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/

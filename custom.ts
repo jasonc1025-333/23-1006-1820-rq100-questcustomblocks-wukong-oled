@@ -55,6 +55,7 @@
 //     * 'S6_ServoArm_Right' -> 'S6_ServoArmBeam_Right'
 //   * Network Driver Dashboard
 // * jwc 25-0626-1400 Fix 'quest_Send_LoginOfBot...', 'quest_Send_DataOfBot...'
+// * jwc 25-0627-0900 *** New Message_Mini_Network.. & Message_Full_Display.. *** Add '..SerialName_OfMyBot..'
 
 
 // enum MyEnum {
@@ -205,10 +206,15 @@ enum quest_String_Justify_Type_Enum {
 
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 
-    basic.showString("Z")
-    basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
+    //// jwc 25-0627-0900 basic.showString("Z")
+    //// jwc 25-0627-0900 basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
+    basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
+
+    //// jwc 25-0627-0900 Toggle '_debug_Serial_Print_Bool_QuestGlobal'
+    _debug_Serial_Print_Bool_QuestGlobal = !(_debug_Serial_Print_Bool_QuestGlobal)
 
 })
+
 
 
 // * Though it seems that can define global vars here, but not advised 
@@ -232,7 +238,9 @@ let network_GroupChannel_MyBotId_Base0_Int_QuestGlobal = 0
 let network_GroupChannel_MyBotId_ManualSet_Override_Bool_QuestGlobal = false
 let network_GroupChannel_MyBotId_AutoSet_Default_Bool_QuestGlobal = false
 
-let network_DeviceSerialId_MyBotId_Str_QuestGlobal = ""
+let network_DeviceSerialName_MyBotId_Str_QuestGlobal = ""
+
+let network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = ""
 
 //// jwc n public network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
 //// jwc n var network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
@@ -377,6 +385,9 @@ namespace quest_Dashboard {
             colorIntIn
         )
     }
+
+    //// jwc 25-0626-1400 y limite user to only 2 bottom rows: //% yRowBase0In.min=0 yRowBase0In.max=7
+
     /**
      * quest_Show_String_For_Oled_SmallFont_Fn
      * @param textStrIn string
@@ -386,7 +397,7 @@ namespace quest_Dashboard {
     //% '\\' escape character to deactivate special character processing
     //% block="show oled small_font (AutoSetup I2cAddress=60, SCL=Pin19, SDA=Pin20)|text\\_Str\\_In: $textStrIn|x\\_Col\\_Base0\\_In[0..24]: $xColBase0In|y\\_Row\\_Base0\\_In[0..7]: $yRowBase0In"
     //% xColBase0In.min=0 xColBase0In.max=24
-    //% yRowBase0In.min=0 yRowBase0In.max=7
+    //% yRowBase0In.min=0 yRowBase0In.max=1
     //% weight=51 blockGap=8
     //% inlineInputMode=external
     export function quest_Show_String_For_Oled_SmallFont_Func(textStrIn: string, xColBase0In: number, yRowBase0In: number) {
@@ -396,7 +407,12 @@ namespace quest_Dashboard {
 
         let textStrInLen = textStrIn.length
 
-        // post blank-pad 'textStrIn' to full text width max
+        // Insure 'textStrIn' is within max, so no residue beyond max
+        if (textStrInLen > textStrInLenMAX){
+            textStrIn = textStrIn.substr(0, textStrInLenMAX)
+        }
+
+        // post blank-pad 'textStrIn' to full text width max, to erase within max
         //
         while (textStrIn.length < textStrInLenMAX) {
             textStrIn += " "
@@ -415,24 +431,38 @@ namespace quest_Dashboard {
 
 
     //// jwc y //% weight=50 blockGap=8
-    //// jwc 25-0626-2250 export function quest_Show_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum): void {
-
+    //// jwc 25-0626-2250 export function quest_Show_GroupChannelOfMyBot_Func(debug_Show_In: quest_Debug_Show_Enum): void {
+    //// jwc 25-0626-2250 //% block="set quest\\_Show\\_GroupChannelOfMyBot\\_Func:|* debug_Show_In: $debug_Show_In"
+    //// jwc 25-0626-2250  * quest_Show_GroupChannelOfMyBot_Func
+    //// jwc 25-0626-2250     * @param debug_Show_In quest_Debug_Show_Enum
 
     /**
-     * quest_Show_GroupChannelOfMe_Func
-     * @param debug_Show_In quest_Debug_Show_Enum
+     * quest_Get_GroupChannel_OfMyBot_Func
+     * @param 
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Show\\_GroupChannelOfMe\\_Func:|* debug_Show_In: $debug_Show_In"
+    //% block="set quest\\_Get\\_GroupChannel_OfMyBot\\_Func"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
-    export function quest_Get_GroupChannelOfMe_Func(debug_Show_In: quest_Debug_Show_Enum){
+    export function quest_Get_GroupChannel_OfMyBot_Func(){
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
         return network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
     }
 
+    /**
+     * quest_Get_SerialName_OfMyBot_Func
+     * @param
+     *
+     */
+    // '\\' = escape character to deactivate following special character
+    //% block="set quest\\_Get\\_SerialName_OfMyBot\\_Func"
+    //% weight=50 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_SerialId_OfMyBot_Func() {
+        return control.deviceName()
+    }
 
     //// jwc 25-0626-1400 @param send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In quest_Toggle_OnOff_Enum
     //// jwc 25-0626-1400 @param debug_Show_In quest_Debug_Show_Enum
@@ -451,17 +481,28 @@ namespace quest_Dashboard {
     //% inlineInputMode=external
     //// jwc n default only seems to work w/ number: export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In: boolean = true, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
     //// jwc 25-0626-1400 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In: quest_Toggle_OnOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
-    export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): void {
+    //// jwc 25-0627-1500 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): void {
+    //// jwc 25-0627-0900 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number, network_SerialId_MyBotId_StrIn: string): void {
+    export function quest_Dashboard_Network_SendLogin_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): void {
+
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
-        serial.writeLine("")  //// create a newline to start debug-report
+        //// jwc 25-0627-0900 serial.writeLine("")  //// create a newline to start debug-report
 
         //// jwc 25-0626-1400 serial.writeLine("* 10-: " + convertToText(network_GroupChannel_MyBotId_Base0_IntIn) + " >> " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " | " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In) + " >> " + convertToText(send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In) + " | " + convertToText(debug_Show_In))
-//// jwc 25-0626-1400 serial.writeLine("* 10-: " + convertToText(network_GroupChannel_MyBotId_Base0_IntIn) + " >> " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+        //// jwc 25-0626-1400 serial.writeLine("* 10-: " + convertToText(network_GroupChannel_MyBotId_Base0_IntIn) + " >> " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
         network_GroupChannel_MyBotId_Base0_Int_QuestGlobal = network_GroupChannel_MyBotId_Base0_IntIn
 
-        network_DeviceSerialId_MyBotId_Str_QuestGlobal = control.deviceName()
+        //// jwc 25-0627-0900 \/ 
+        //// jwc 25-0627-0900 if (network_SerialId_MyBotId_StrIn.length = 0){     
+        //// jwc 25-0627-0900     network_DeviceSerialName_MyBotId_Str_QuestGlobal = control.deviceName()
+        //// jwc 25-0627-0900 } else {
+        //// jwc 25-0627-0900     network_DeviceSerialName_MyBotId_Str_QuestGlobal = network_SerialId_MyBotId_StrIn
+        //// jwc 25-0627-0900 }
+        network_DeviceSerialName_MyBotId_Str_QuestGlobal = control.deviceName()
+
+        network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "(" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + ")"
 
 //// jwc 25-0626-1400 network_GroupChannel_MyBotId_ManualSet_Override_Bool_QuestGlobal = true
 //// jwc 25-0626-1400 network_GroupChannel_MyBotId_AutoSet_Default_Bool_QuestGlobal = false
@@ -551,7 +592,10 @@ namespace quest_Dashboard {
             // 'Z:' = Register Header
             // * 
             //// jwc 25-0626-1400 network_Message_Str = "Z:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",L:+" + convertToText(randint(1, 100)) + ",R:-" + convertToText(randint(1, 100))
-            network_Message_Str = "A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",SerId:" + network_DeviceSerialId_MyBotId_Str_QuestGlobal
+            //// jwc 25-0627-09000 network_Message_Str = "A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",BotIdSerId:" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
+
+            //// jwc 25-0627-0900 network_Message_Str = "A:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
+            network_Message_Str = "BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
 
             quest_Note_3.quest_Show_String_For_Note_Big_Func(
                 "Network_Message Max Length or will be cut off"
@@ -559,9 +603,12 @@ namespace quest_Dashboard {
             if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
                 basic.showString("ERROR: 25-0209-0400 Network Message > Max Len.")
             }
-            radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
-            radio.sendString(network_Message_Str)
-            radio.setGroup(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
+
+            quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str)
+
+            //// jwc 25-0627-0900 radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
+            //// jwc 25-0627-0900 radio.sendString(network_Message_Str)
+            //// jwc 25-0627-0900 radio.setGroup(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
 
             network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
 
@@ -574,9 +621,13 @@ namespace quest_Dashboard {
 
             //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 38A: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str, 0, 3)
             //// jwc 25-0626-1400 serial.writeLine("* 38B: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str)
-            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("*0:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal), 0, 0)
+            //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("*0:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal), 0, 0)
+            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(network_Message_Str, 0, 0)
+
             if (_debug_Serial_Print_Bool_QuestGlobal) {
-                serial.writeLine                                     ("*0:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                serial.writeLine("")  //// create a newline to start debug-report
+                //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str +"'")
             }
         }
     }
@@ -586,27 +637,32 @@ namespace quest_Dashboard {
 
     //// jwc 25-0626-1400 * @param debug_Show_In quest_Debug_Show_Enum
     //// jwc 25-0626-1400 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
+    //// jwc 25-0627-0900 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
 
 
     /**
-     * quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
+     * quest_Dashboard_Network_SendData_WithMyBotHeader_Func
      * @param send_DataOfBot_ToXrayDashboardOfMb_Message_String string
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
+    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
     //% weight=48 blockGap=8
     //% inlineInputMode=external
     //// jwc n default: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
     //// jwc n default only seems to work w/ number: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
     //// jwc 25-0626-1400 export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
-    export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
+    //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
+    //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
+    export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str_In: string): void {
+
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
 
-        serial.writeLine("")  //// create a newline to start debug-report
+        //// jwc 25-0627-0900 y serial.writeLine("")  //// create a newline to start debug-report
 
-        let network_Message_Str = send_DataOfBot_ToXrayDashboardOfMb_Message_String
+        //// jwc 25-0627-0900 y let network_Message_Str = network_Message_Str_In
+        let network_Message_WithHeader_Str = "A_BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal +",B_Data:"+ network_Message_Str_In
 
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION // Avoid sending redundant messages to not overload network
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION if (network_Message_Str != network_Message_Old_Str_QuestGlobal){
@@ -699,7 +755,8 @@ namespace quest_Dashboard {
     
         //// jwc 25-0626-1900 TODO Obsolete? if (!(network_GroupChannel_MyBotId_ManualSet_Override_Bool_QuestGlobal) && !(network_GroupChannel_MyBotId_AutoSet_Default_Bool_QuestGlobal)) {
         if(!network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal){
-            quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
+            //// jwc 25-0627-0900 quest_Dashboard.quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, "")
+            quest_Dashboard.quest_Dashboard_Network_SendLogin_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
         }
 
         //// jwc send data
@@ -711,11 +768,11 @@ namespace quest_Dashboard {
             quest_Note_3.quest_Show_String_For_Note_Big_Func(
                 "Network_Message Max Length or will be cut off"
             )
-            if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
+            if (network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
                 basic.showString("ERROR: 25-0209-0410 Network Message > Max Len.")
             }
             radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
-            radio.sendString(network_Message_Str)
+            radio.sendString(network_Message_WithHeader_Str)
             radio.setGroup(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
             //// jwc 25-0626-1400 if (debug_Show_In = quest_Debug_Show_Enum.Dashboard_OLED) {
             //// jwc 25-0626-1400     //// jwc o quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_Message_Str: " + network_Message_Str, 0, 3)
@@ -723,13 +780,17 @@ namespace quest_Dashboard {
             //// jwc 25-0626-1400     //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 58A: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str, 0, 3)
             //// jwc 25-0626-1400     //// jwc 25-0626-1400 serial.writeLine("* 58B: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str)
             //// jwc 25-0626-1400 }
-            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("*2:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal), 0, 1)
+            //// jwc 25-0627-0900 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("*2:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal), 0, 1)
+
+            //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(network_Message_WithHeader_Str, 0, 1)
+
             if (_debug_Serial_Print_Bool_QuestGlobal) {
-                serial.writeLine                                     ("*2:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                //// jwc 25-0726-0900 serial.writeLine("** quest_Dashboard_Network_SendData_WithMyBotHeader_Func:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_WithHeader_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                serial.writeLine("** quest_Dashboard_Network_SendData_WithMyBotHeader_Func: '" + network_Message_WithHeader_Str + "' >> " + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)   + " | " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
             }
         }
         //// jwc to prevent redundant data on dashboard, to mitigate network traffic
-        network_Message_Old_Str_QuestGlobal = network_Message_Str
+        //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION network_Message_Old_Str_QuestGlobal = network_Message_WithHeader_Str
 
     }
 
@@ -1286,6 +1347,11 @@ namespace quest_Motors {
         // Motor-Right Conversion: Opposite Rotational Direction
         let motor_Power_R = Math.map(powerRightIn, -100, 100, 360, 0)
 
+        let network_Message_Str = ""
+        let message_Mini_Network_Str = ""
+        let message_Full_Display_Str = ""
+
+
         switch (portIdsIn) {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
@@ -1295,14 +1361,18 @@ namespace quest_Motors {
                 //// * jwc 25-0626-1400     //// * jwc 25-0626-1400 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L:" + convertToText(powerLeftIn) + ",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// * jwc 25-0626-1400 }
 
-                quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
+                //// jwc 25-0627-0900 network_Message_Str = "WL: " + convertToText(powerLeftIn) + ", WR: " + convertToText(powerRightIn)
+                message_Mini_Network_Str = "WL:" + convertToText(powerLeftIn) + ", WR:" + convertToText(powerRightIn)
+                message_Full_Display_Str = "Wheel_L: " + convertToText(powerLeftIn) + ", Wheel_R: " + convertToText(powerRightIn)
 
-                //// jwc y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn), 0, 2)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",Wheel_L:" + convertToText(powerLeftIn) + ",Wheel_R:" + convertToText(powerRightIn), 0, 2)
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
-                    serial.writeLine                                     ("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
-                }
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
+
+                //// jwc 25-0627-0900 //// jwc y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn), 0, 2)
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",Wheel_L:" + convertToText(powerLeftIn) + ",Wheel_R:" + convertToText(powerRightIn), 0, 2)
+                //// jwc 25-0627-0900 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0627-0900     //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0627-0900     serial.writeLine                                     ("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
+                //// jwc 25-0627-0900 }
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
@@ -1312,24 +1382,42 @@ namespace quest_Motors {
                 //// * jwc 25-0626-1400     //// * jwc 25-0626-1400 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// * jwc 25-0626-1400 }
 
-                quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
+                message_Mini_Network_Str = "W2L:" + convertToText(powerLeftIn) + ", W2R:" + convertToText(powerRightIn)
+                message_Full_Display_Str = "Wheel_2_L: " + convertToText(powerLeftIn) + ", Wheel_2_R: " + convertToText(powerRightIn)
 
-                //// jwc y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn), 0, 4)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",Whee_L2:" + convertToText(powerLeftIn) + ",Whee_R2:" + convertToText(powerRightIn), 0, 4)
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
-                    serial.writeLine("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
-                }
+
+                //// jwc 25-0627-0900 //// jwc y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn), 0, 4)
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",Whee_L2:" + convertToText(powerLeftIn) + ",Whee_R2:" + convertToText(powerRightIn), 0, 4)
+                //// jwc 25-0627-0900 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0627-0900     //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
+                //// jwc 25-0627-0900     serial.writeLine("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
+                //// jwc 25-0627-0900 }
                 break
             default:
                 //// * jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) {
                 //// * jwc 25-0626-1400     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("ERROR:  25-0209-0822: "+ convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// * jwc 25-0626-1400 }
-                quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + "ERROR: 25-0209-0822: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
-                if (_debug_Serial_Print_Bool_QuestGlobal) {
-                    serial.writeLine("* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
-                }
+
+                message_Mini_Network_Str = "* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn
+                message_Full_Display_Str = "* ERROR: 25-0209-0821: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn
+
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + "ERROR: 25-0209-0822: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0627-0900 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0627-0900     //// jwc 25-0627-0900 serial.writeLine("* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0627-0900     serial.writeLine("* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0627-0900 }
                 break
+        }
+
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+
+        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+            //// jwc 25-0627-0900 serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str + "'")
+            serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: '" + message_Full_Display_Str + "'")
         }
     }
 
@@ -1712,7 +1800,8 @@ namespace quest_Motors {
                 //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func( "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400 }
-                quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -1746,7 +1835,8 @@ namespace quest_Motors {
                 //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400      quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400 }
-                quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
                 if (_debug_Serial_Print_Bool_QuestGlobal) {
                     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
