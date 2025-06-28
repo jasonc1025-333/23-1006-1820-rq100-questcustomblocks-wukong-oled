@@ -73,7 +73,8 @@ input.onButtonPressed(Button.B, function () {
         //// jwc y "A:ThisIsADataTest",
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/
-        "A:34567890123456789",
+        //// jwc 25-0628-1400 "A:34567890123456789",
+        "A:3456789",
     )
     serial.writeLine('* 5: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     //// jwc ? serial.writeLine('* 6: ' + convertToText(quest_Public_Variables_N_Constants.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_01) + " " + convertToText(quest_Public_Variables_N_Constants_01.prototype.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_02))

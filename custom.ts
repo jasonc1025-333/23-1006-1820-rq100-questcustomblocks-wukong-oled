@@ -56,6 +56,7 @@
 //   * Network Driver Dashboard
 // * jwc 25-0626-1400 Fix 'quest_Send_LoginOfBot...', 'quest_Send_DataOfBot...'
 // * jwc 25-0627-0900 *** New Message_Mini_Network.. & Message_Full_Display.. *** Add '..SerialName_OfMyBot..'
+// * jwc 25-0628-1400 Important to prevent recursion: stack overflow: network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
 
 
 // enum MyEnum {
@@ -209,9 +210,9 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     //// jwc 25-0627-0900 basic.showString("Z")
     //// jwc 25-0627-0900 basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
     basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
-
     //// jwc 25-0627-0900 Toggle '_debug_Serial_Print_Bool_QuestGlobal'
     _debug_Serial_Print_Bool_QuestGlobal = !(_debug_Serial_Print_Bool_QuestGlobal)
+    serial.writeLine("* input.onLogoEvent: _debug_Serial_Print_Bool_QuestGlobal=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
 
 })
 
@@ -504,7 +505,9 @@ namespace quest_Dashboard {
         //// jwc 25-0627-0900 }
         network_DeviceSerialName_MyBotId_Str_QuestGlobal = control.deviceName()
 
-        network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "(" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + ")"
+        //// jwc 25-0628-1400 network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "(" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + ")"
+        //// jwc 25-0628-1400 network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = "[" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + "]" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0)
+        network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithZeroPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "-" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
 
 //// jwc 25-0626-1400 network_GroupChannel_MyBotId_ManualSet_Override_Bool_QuestGlobal = true
 //// jwc 25-0626-1400 network_GroupChannel_MyBotId_AutoSet_Default_Bool_QuestGlobal = false
@@ -597,14 +600,20 @@ namespace quest_Dashboard {
             //// jwc 25-0627-09000 network_Message_Str = "A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",BotIdSerId:" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
 
             //// jwc 25-0627-0900 network_Message_Str = "A:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
-            network_Message_Str = "BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
+            //// jwc 25-0628-1400 network_Message_Str = "BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
+            network_Message_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
 
             quest_Note_3.quest_Show_String_For_Note_Big_Func(
                 "Network_Message Max Length or will be cut off"
             )
             if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
-                basic.showString("ERROR: 25-0209-0400 Network Message > Max Len.")
+                basic.showString("* ERROR: 25-0209-0400 Network Message > Max Len.")
+                serial.writeLine("* 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+
             }
+
+            //// jwc25-0628-1400 Important to prevent recursion: stack overflow: 
+            network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
 
             quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str)
 
@@ -612,7 +621,7 @@ namespace quest_Dashboard {
             //// jwc 25-0627-0900 radio.sendString(network_Message_Str)
             //// jwc 25-0627-0900 radio.setGroup(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
 
-            network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
+            //// jwc25-0628-1400 Important to prevent recursion: stack overflow: network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
 
             //// jwc 25-0626-1400 if (debug_Show_In == quest_Debug_Show_Enum.Dashboard_OLED) {
             //// jwc 25-0626-1400     //// jwc o quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 40: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: "+ network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +" | network_Message_Str: "+ network_Message_Str, 0, 3)
@@ -664,7 +673,8 @@ namespace quest_Dashboard {
         //// jwc 25-0627-0900 y serial.writeLine("")  //// create a newline to start debug-report
 
         //// jwc 25-0627-0900 y let network_Message_Str = network_Message_Str_In
-        let network_Message_WithHeader_Str = "A_BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal +",B_Data:"+ network_Message_Str_In
+        //// jwc 25-0628-1400 let network_Message_WithHeader_Str = "A_BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ",B_Data:" + network_Message_Str_In
+        let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ":"+ network_Message_Str_In
 
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION // Avoid sending redundant messages to not overload network
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION if (network_Message_Str != network_Message_Old_Str_QuestGlobal){
@@ -706,7 +716,7 @@ namespace quest_Dashboard {
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION             "Network_Message Max Length or will be cut off"
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION         )
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION         if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
-        //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION             basic.showString("ERROR: 25-0209-0410 Network Message > Max Len.")
+        //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION             basic.showString("* ERROR: 25-0209-0410 Network Message > Max Len.")
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION         }
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION         radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION         radio.sendString(network_Message_Str)
@@ -771,7 +781,8 @@ namespace quest_Dashboard {
                 "Network_Message Max Length or will be cut off"
             )
             if (network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
-                basic.showString("ERROR: 25-0209-0410 Network Message > Max Len.")
+                basic.showString("* ERROR: 25-0209-0410 Network Message > Max Len.")
+                serial.writeLine("* 'network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_WithHeader_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
             }
             radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
             radio.sendString(network_Message_WithHeader_Str)
@@ -787,8 +798,8 @@ namespace quest_Dashboard {
             //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(network_Message_WithHeader_Str, 0, 1)
 
             if (_debug_Serial_Print_Bool_QuestGlobal) {
-                //// jwc 25-0726-0900 serial.writeLine("** quest_Dashboard_Network_SendData_WithMyBotHeader_Func:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_WithHeader_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
-                serial.writeLine("** quest_Dashboard_Network_SendData_WithMyBotHeader_Func: '" + network_Message_WithHeader_Str + "' >> " + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)   + " | " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                //// jwc 25-0726-0900 serial.writeLine("*** quest_Dashboard_Network_SendData_WithMyBotHeader_Func:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_WithHeader_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+                serial.writeLine("*** quest_Dashboard_Network_SendData_WithMyBotHeader_Func: '" + network_Message_WithHeader_Str + "' >> " + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)   + " | " + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
             }
         }
         //// jwc to prevent redundant data on dashboard, to mitigate network traffic
@@ -891,6 +902,30 @@ namespace quest_General {
         return local_string_out
     }
     
+    /**
+    * quest_Get_Number_WithZeroPadding_AsStringOut_Fn
+    * @param number_in number
+    * @param string_len_max_in number
+    * @param decimal_places_in number
+    */
+    ////jwc m //% block="get number with_zero_padding as_string_out|number_in: $number_in|string_len_max_in: $string_len_max_in|decimal_places_in  $decimal_places_in"
+    // '\\' escape character to deactivate special character processing
+    //% block="get number w/ zero\\_padding as string\\_out|number_in: $number_in|string\\_len\\_max\\_in: $string_len_max_in|decimal\\_places\\_in  $decimal_places_in"
+    //% weight=62 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_Number_WithZeroPadding_AsStringOut_Func(number_in: number, string_len_max_in: number, decimal_places_in: number = 0) {
+        let local_number_with_fixed_decimal_deci = Math.round(number_in * 10 ** decimal_places_in) / 10 ** decimal_places_in
+
+        let local_string_out = convertToText(local_number_with_fixed_decimal_deci)
+
+        let local_loop_count_max = string_len_max_in - local_string_out.length
+
+        for (let index = 0; index < local_loop_count_max; index++) {
+            local_string_out = "0" + local_string_out
+        }
+        return local_string_out
+    }
+
     /**
     * quest_Get_String_WithColumnPadding_AsStringOut_Fn
     * @param string_in string
