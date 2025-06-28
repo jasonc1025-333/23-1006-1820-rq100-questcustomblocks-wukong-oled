@@ -468,14 +468,16 @@ namespace quest_Dashboard {
     //// jwc 25-0626-1400 @param debug_Show_In quest_Debug_Show_Enum
     //// jwc 25-0626-1400 //% block="set quest\\_Send\\_LoginOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn|* send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In: $send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In|* debug_Show_In: $debug_Show_In"
     //// jwc y //% weight=50 blockGap=8
+    //// jwc 25-0628-0900 * quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func
+    //// jwc 25-0628-0900 //% block="set quest\\_Send\\_LoginOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
 
     /**
-     * quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func
+     * quest_Dashboard_Network_SendLogin_Func
      * @param network_GroupChannel_MyBotId_Base0_IntIn number
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Send\\_LoginOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
+    //% block="quest\\_Dashboard\\_Network\\_SendLogin\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
     //% network_GroupChannel_MyBotId_Base0_IntIn.min=0 network_GroupChannel_MyBotId_Base0_IntIn.max=254
     //% weight=49 blockGap=8
     //% inlineInputMode=external
@@ -638,7 +640,7 @@ namespace quest_Dashboard {
     //// jwc 25-0626-1400 * @param debug_Show_In quest_Debug_Show_Enum
     //// jwc 25-0626-1400 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
     //// jwc 25-0627-0900 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
-
+    //// jwc 25-0628-0900 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
 
     /**
      * quest_Dashboard_Network_SendData_WithMyBotHeader_Func
@@ -646,7 +648,7 @@ namespace quest_Dashboard {
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
+    //% block="quest\\_Dashboard\\_Network\\_SendData\\_WithMyBotHeader\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
     //% weight=48 blockGap=8
     //% inlineInputMode=external
     //// jwc n default: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
