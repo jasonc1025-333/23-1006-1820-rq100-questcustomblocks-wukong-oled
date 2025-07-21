@@ -57,6 +57,11 @@
 // * jwc 25-0626-1400 Fix 'quest_Send_LoginOfBot...', 'quest_Send_DataOfBot...'
 // * jwc 25-0627-0900 *** New Message_Mini_Network.. & Message_Full_Display.. *** Add '..SerialName_OfMyBot..'
 // * jwc 25-0628-1400 Important to prevent recursion: stack overflow: network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
+// * jwc 25-0720-1900 
+//   * 'S7_ServoArmBeam_Left' -> 'S7_ServoArm_Left'
+//   * 'S6_ServoArmBeam_Right' -> 'S6_ServoArm_Right'
+//   * Switch from Big-Gray-ServoArm to Small-Gray-ServoArm
+
 
 
 // enum MyEnum {
@@ -164,10 +169,10 @@ enum quest_Turn_Power_Enum {
 }
 
 enum quest_PortSingle_ServoArmBeam_PortId_Enum {
-    //% block="S7_ServoArmBeam_Left"
-    S7_ServoArmBeam_Left,
-    //% block="S6_ServoArmBeam_Right"
-    S6_ServoArmBeam_Right,
+    //% block="S7_ServoArm_Left"
+    S7_ServoArm_Left,
+    //% block="S6_ServoArm_Right"
+    S6_ServoArm_Right,
 }
 
 enum quest_ServoArm_DegreesInDirection_Enum {
@@ -1818,25 +1823,29 @@ namespace quest_Motors {
         let servoArm_Degrees_Local = 0
 
         switch (port_Id_In) {
-            case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArmBeam_Left:
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
-                        servoArm_Degrees_Local = 180
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 180
+                        servoArm_Degrees_Local = 135
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
-                        servoArm_Degrees_Local = 135
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 135
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
                         //// jwc y servoArm_Degrees_Local = 45
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        servoArm_Degrees_Local = 90
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 45
                         break  // out of these case statements
                 }
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, servoArm_Degrees_Local)
                 //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
                 //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
@@ -1859,25 +1868,29 @@ namespace quest_Motors {
                 //// jwc 25-0628-1400 }
                 break  // out of these case statements
 
-            case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArmBeam_Right:
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
-                       servoArm_Degrees_Local = 0
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 0
+                        servoArm_Degrees_Local = 45
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
-                        servoArm_Degrees_Local = 45
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 45
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
                         //// jwc y servoArm_Degrees_Local = 135
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        servoArm_Degrees_Local = 90
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 135
                         break  // out of these case statements
                 }
-                wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                 //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, servoArm_Degrees_Local)
                 //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
                 //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
