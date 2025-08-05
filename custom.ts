@@ -176,12 +176,12 @@ enum quest_PortSingle_ServoArmBeam_PortId_Enum {
 }
 
 enum quest_ServoArm_DegreesInDirection_Enum {
-    //% block="Degree_000"
-    Degree_000,
-    //% block="Degree_045"
-    Degree_045,
-    //% block="Degree_090"
-    Degree_090,
+    //% block="Degree_000_Down"
+    Degree_000_Down,
+    //% block="Degree_045_Up_Half"
+    Degree_045_Up_Half,
+    //% block="Degree_090_Up_Full"
+    Degree_090_Up_Full,
 }
 
 enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
@@ -1368,16 +1368,18 @@ namespace quest_Motors {
         }
     }
 
+    ////jwc yy //% block="set manual:servo_motors:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn"
+    // '\\' = escape character to deactivate following special character
+    ////jwc y //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn"
+    ////jwc 25-0805-1500 //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
+
     /**
      * quest_Set_PowerMotorsViaBlueRedBlackPins_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
      * @param powerLeftIn number
      * @param powerRightIn number
      */
-    ////jwc yy //% block="set manual:servo_motors:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn"
-    // '\\' = escape character to deactivate following special character
-    ////jwc y //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn"
-    //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
+    //% block="set manual\\_servo\\_motor\\_wheels:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=80 blockGap=8
@@ -1465,6 +1467,14 @@ namespace quest_Motors {
         }
     }
 
+    ////jwc o //% block="set servo_motors w/ timer: $portIdsIn|@ left motor power: $powerLeftIn|@ right motor power: $powerRightIn|turn_Duration_In $turn_Duration_In"
+    ////jwc y //% block="set servo_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
+    // '\\' = escape character to deactivate following special character
+    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    ////jwc 25-0805-1500 //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+
     /**
      * quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
@@ -1474,13 +1484,7 @@ namespace quest_Motors {
      * @param debug_Show_In quest_Debug_Show_Enum
      *
      */
-    ////jwc o //% block="set servo_motors w/ timer: $portIdsIn|@ left motor power: $powerLeftIn|@ right motor power: $powerRightIn|turn_Duration_In $turn_Duration_In"
-    ////jwc y //% block="set servo_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
-    ////jwc y //% block="set manual'_servo\\_motors w/ timer:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
-    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In"
-    // '\\' = escape character to deactivate following special character
-    ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
-    //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% block="set manual\\_servo\\_motor\\_wheels w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=78 blockGap=8
@@ -1600,6 +1604,9 @@ namespace quest_Motors {
         quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, 0, 0)
     }
 
+    ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
+    ////jwc 25-0805-1500 //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+
     /**
     * quest_Set_Turn_WithTimer_Fn
     * @param port_Ids_In quest_PortGroup_BlueRedBlack_PortIds_Enum
@@ -1608,10 +1615,8 @@ namespace quest_Motors {
     * @param turn_Power_In quest_Turn_Power_Enum
     * @param turn_Duration_In quest_Turn_Duration_Enum
     * @param debug_Show_In quest_Debug_Show_Enum
-
     */
-    ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
-    //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% block="set auto\\_servo\\_motor\\_wheels\\_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     //% weight=76 blockGap=8
     //% inlineInputMode=external
     export function quest_Set_Turn_WithTimer_Func(port_Ids_In: quest_PortGroup_BlueRedBlack_PortIds_Enum, turn_Type_In: quest_Turn_Type_Enum, turn_Direction_In: quest_Turn_Direction_Enum, turn_Power_In: quest_Turn_Power_Enum, turn_Duration_In: quest_Turn_Duration_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
@@ -1677,7 +1682,6 @@ namespace quest_Motors {
             ////jwc y TODO case quest_Turn_Type_Enum.Spin:
             ////jwc n case turn_Type_02_Enum.Spin:
             case quest_Turn_Type_Enum.Spin:
-
 
                 switch (turn_Direction_In) {
                     case quest_Turn_Direction_Enum.left:
@@ -1802,16 +1806,16 @@ namespace quest_Motors {
     }
 
     /**
-    * quest_Set_AutoDegrees_ForServoArm_Fn
+    * quest_Set_AutoDegrees_ForServoArm_BIG_Func
     * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
     * @param servoArm_DegreesInDirection_Enum_In quest_ServoArm_DegreesInDirection_Enum
     * @param debug_Show_In quest_Debug_Show_Enum
 
     */
-    //% block="set auto_degrees for_servo_arm:|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In"
+    //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|* OrangeWire=BluePin(S), RedWire=RedPin(V), BrownWire=BlackPin(G)|* Battery>=75%|* Power-Off When Wiring"
     //% weight=74 blockGap=8
     //% inlineInputMode=external
-    export function quest_Set_AutoDegrees_ForServoArm_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Set_AutoDegrees_ForServoArm_BIG_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -1826,22 +1830,32 @@ namespace quest_Motors {
             case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 180
-                        servoArm_Degrees_Local = 135
+                        //// jwc n servoArm_Degrees_Local = 180
+                        //// jwc n servoArm_Degrees_Local = 225
+                        //// jwc n servoArm_Degrees_Local = 200
+                        //// 0 + 180
+                       //// jwc n servoArm_Degrees_Local = 180
+                        servoArm_Degrees_Local = 200
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 135
-                        servoArm_Degrees_Local = 90
+                        //// jwc n servoArm_Degrees_Local = 135
+                        //// jwc n servoArm_Degrees_Local = 180
+                        //// 45 + 90 = 
+                        //// jwc n servoArm_Degrees_Local = 135
+                        servoArm_Degrees_Local = 155
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
                         //// jwc y servoArm_Degrees_Local = 45
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
-                        servoArm_Degrees_Local = 45
+                        //// jwc n servoArm_Degrees_Local = 90
+                        //// jwc n servoArm_Degrees_Local = 135
+                        //// 90 + 45
+                        //// jwc n servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 110
                         break  // out of these case statements
                 }
                 //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
@@ -1871,22 +1885,19 @@ namespace quest_Motors {
             case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 0
+                        servoArm_Degrees_Local = 0
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
                         servoArm_Degrees_Local = 45
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 45
-                        servoArm_Degrees_Local = 90
-                        break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
                         //// jwc y servoArm_Degrees_Local = 135
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
-                        servoArm_Degrees_Local = 135
+                        servoArm_Degrees_Local = 90
                         break  // out of these case statements
                 }
                  //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
@@ -1945,6 +1956,152 @@ namespace quest_Motors {
         //// jwc 25-0626-1200 }
     }
 
+
+    /**
+    * quest_Set_AutoDegrees_ForServoArm_SMALL_Func
+    * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
+    * @param servoArm_DegreesInDirection_Enum_In quest_ServoArm_DegreesInDirection_Enum
+    * @param debug_Show_In quest_Debug_Show_Enum
+
+    */
+    //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|* OrangeWire=BluePin(S), RedWire=RedPin(V), BrownWire=BlackPin(G)|* Battery>=75%|* Power-Off When Wiring"
+    //% weight=74 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Set_AutoDegrees_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+        let network_Message_Str = ""
+        let message_Mini_Network_Str = ""
+        let message_Full_Display_Str = ""
+
+        let servoArm_Degrees_Local = 0
+
+        switch (port_Id_In) {
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
+
+                switch (servoArm_DegreesInDirection_Enum_In) {
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
+                        //// jwc y servoArm_Degrees_Local = 90
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 180
+                        servoArm_Degrees_Local = 135
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 135
+                        servoArm_Degrees_Local = 90
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                        //// jwc y servoArm_Degrees_Local = 45
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 45
+                        break  // out of these case statements
+                }
+                //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func( "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400 }
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+
+                message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                // Special Location: For 'Arm_L" 
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+
+                //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0628-1400     //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     //// jwc y serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + message_Full_Display_Str)
+                //// jwc 25-0628-1400 }
+                break  // out of these case statements
+
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right:
+
+                switch (servoArm_DegreesInDirection_Enum_In) {
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
+                        //// jwc y servoArm_Degrees_Local = 90
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 0
+                        servoArm_Degrees_Local = 45
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 45
+                        servoArm_Degrees_Local = 90
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                        //// jwc y servoArm_Degrees_Local = 135
+                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
+                        //// jwc 25-0720-1800 switch from large-gray to small-gray: servoArm_Degrees_Local = 90
+                        servoArm_Degrees_Local = 135
+                        break  // out of these case statements
+                }
+                //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400      quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400 }
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+
+                message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                // Special Location: For 'Arm_R"
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
+
+                //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0628-1400     //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 }
+                break  // out of these case statements 
+        }
+
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+            //// jwc 25-0627-0900 serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str + "'")
+            serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: '" + message_Full_Display_Str + "'")
+        }
+
+        //// jwc 25-0626-1200 // diagnostics
+        //// jwc 25-0626-1200 switch (debug_Show_In) {
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Dashboard_OLED:
+        //// jwc 25-0626-1200         //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
+        //// jwc 25-0626-1200         //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
+        //// jwc 25-0626-1200         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 3)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.MicroBit_Screen:
+        //// jwc 25-0626-1200         // diagnostics
+        //// jwc 25-0626-1200         basic.showIcon(IconNames.Fabulous)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Off:
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     default:
+        //// jwc 25-0626-1200         if (_debug_Serial_Print_Bool_QuestGlobal) {
+        //// jwc 25-0626-1200             serial.writeLine("* ERROR: 25-0309-0900: quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+        //// jwc 25-0626-1200         }
+        //// jwc 25-0626-1200         break
+        //// jwc 25-0626-1200 }
+    }
+
+
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': /**
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':  * set_Settings_Fn
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':  * @param deviceTypeBotBoolIn boolean
@@ -1966,6 +2123,8 @@ namespace quest_Motors {
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks':     )
     //////jwc 23-0612-2020 Obsolete since too complicated to change global_var of 'main.blocks': }
 }
+
+
 
 // dark blue #0000ff TOO DARK, CANNOT SEE BLACK BOUNDARY LINES
 // light blue rgb(127, 190, 255) #7fbeff TOO LIGHT
