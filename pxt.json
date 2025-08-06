@@ -9,7 +9,8 @@
         "pxt-wuKong--ForkedFrom_Wukong": "github:eande-jasonc1025/pxt-wukong--ForkedFrom_Wukong#v2.0.0",
         "OLED12864_I2C--ForkedFrom_Makecode-Extensions": "github:eande-jasonc1025/OLED12864_I2C--ForkedFrom_Makecode-Extensions#v2.0.1",
         "joystickbit": "github:tinkertanker/pxt-joystickbit#v1.0.2",
-        "microbit-pxt-rotate": "github:bsiever/microbit-pxt-rotate#v0.1.6"
+        "microbit-pxt-rotate": "github:bsiever/microbit-pxt-rotate#v0.1.6",
+        "25-0805-1750-Makecode_microbit-Comments-Extension": "github:jasonc1025-333/25-0805-1750-makecode_microbit-comments-extension#v0.0.2"
     },
     "files": [
         "main.blocks",
