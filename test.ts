@@ -55,6 +55,10 @@ input.onButtonPressed(Button.A, function () {
         //// jwc 25-0627-0900 ""
     )
 
+    //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
+    serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
+
+
     //// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
     ////
     wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
@@ -72,8 +76,6 @@ input.onButtonPressed(Button.A, function () {
     serial.writeLine('* test.ts: 12: ' + convertToText(67.5))
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
 
-    //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
-    serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
     
     for (let i = 0; i <= 270; i += 10 ){
         wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, i)

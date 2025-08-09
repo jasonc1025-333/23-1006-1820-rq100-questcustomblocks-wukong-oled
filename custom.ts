@@ -1477,6 +1477,25 @@ namespace quest_Motors {
         let message_Mini_Network_Str = ""
         let message_Full_Display_Str = ""
 
+
+        //// jwc 25-0809-1450 y: //// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
+        //// jwc 25-0809-1450 y: ////
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(0))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+        //// jwc 25-0809-1450 y: 
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 33.75)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 33.75)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(33.75))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+        //// jwc 25-0809-1450 y: 
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 67.5)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 67.5)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(67.5))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+
+
         let servoArm_Degrees_Local = 0
 
         switch (port_Id_In) {
@@ -1486,34 +1505,19 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
-                        //// jwc n servoArm_Degrees_Local = 180
-                        //// jwc n servoArm_Degrees_Local = 225
-                        //// jwc n servoArm_Degrees_Local = 200
-                        //// 0 + 180
-                        //// jwc n servoArm_Degrees_Local = 180
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 200
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 110, 120, 140
-                        servoArm_Degrees_Local = 150
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 0
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
-                        //// jwc n servoArm_Degrees_Local = 135
-                        //// jwc n servoArm_Degrees_Local = 180
-                        //// 45 + 90 = 
-                        //// jwc n servoArm_Degrees_Local = 135
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 155
-                        servoArm_Degrees_Local = 165
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 33.75
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
                         //// jwc y servoArm_Degrees_Local = 45
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc n servoArm_Degrees_Local = 90
-                        //// jwc n servoArm_Degrees_Local = 135
-                        //// 90 + 45
-                        //// jwc n servoArm_Degrees_Local = 90
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 110
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 200, 210
-                        servoArm_Degrees_Local = 205
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 67.5
                         break  // out of these case statements
                 }
                 //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
@@ -1546,20 +1550,19 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
                         //// jwc y servoArm_Degrees_Local = 90
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 0
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 90, 80
-                        servoArm_Degrees_Local = 70
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 0
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 45
-                        servoArm_Degrees_Local = 35
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 33.75
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
                         //// jwc y servoArm_Degrees_Local = 135
                         //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc 25-0808-1800 New Servo Positoning \/ servoArm_Degrees_Local = 0, 270, -10 N, 360 N
-                        servoArm_Degrees_Local = 280
+                        //// jwc 25-0808-1800 New Servo Positoning \/ 
+                        servoArm_Degrees_Local = 67.5
                         break  // out of these case statements
                 }
                  //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
