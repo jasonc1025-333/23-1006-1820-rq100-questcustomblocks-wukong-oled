@@ -58,33 +58,65 @@ input.onButtonPressed(Button.A, function () {
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
 
+    //// jwc 25-0922-0100 
+    //// jwc 25-0922-0120 y let degrees_MAX_INT = 270
+    //// jwc 25-0922-0140 n let degrees_MAX_INT = 360
+    let degrees_MAX_INT = 270
 
     //// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
     ////
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+    //// jwc 25-0922-0100wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 0)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - 0)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 0)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 0)
     wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
-    serial.writeLine('* test.ts: 12: ' + convertToText(0))
+    serial.writeLine('* test.ts: 12a: ' + convertToText(0))
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
 
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 33.75)
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 33.75)
-    serial.writeLine('* test.ts: 12: ' + convertToText(33.75))
+    //// jwc 25-0922-0100wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 33.75)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 33.75)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 33.75)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - 45)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 45)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 45)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 45)
+    //// jwc 25-0922-0120 serial.writeLine('* test.ts: 12b: ' + convertToText(33.75))
+    serial.writeLine('* test.ts: 12b: ' + convertToText(45))
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
 
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 67.5)
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 67.5)
-    serial.writeLine('* test.ts: 12: ' + convertToText(67.5))
+    //// jwc 25-0922-0100wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 67.5)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 67.5)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 67.5)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - 90)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 90)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 90)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 90)
+    //// jwc 25-0922-0120 serial.writeLine('* test.ts: 12c: ' + convertToText(67.5))
+    serial.writeLine('* test.ts: 12c: ' + convertToText(90))
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
 
-    
-    for (let i = 0; i <= 270; i += 10 ){
-        wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, i)
+    //// jwc 25-0922-0100 for (let i = 0; i <= 270; i += 10) {
+    for (let i = 0; i <= degrees_MAX_INT; i += 45) {
+       //// jwc 25-0922-0100  y wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, i)
         //// jwc y wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 270 - i)
+        //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
+        //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - i)
+        wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
+
+        //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
+        //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, i)
         wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
         serial.writeLine('* test.ts: 14: ' + convertToText(i))
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
     }
-    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+    //// jwc 25-0922-0100 y wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 0)
+    //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - 0)
+    //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, 0)
+    wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - 0)
     wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
     serial.writeLine('* test.ts: 16: ' + convertToText(0))
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(5, quest_Time_Units_Enum.Seconds)
@@ -218,3 +250,11 @@ quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(5, quest_Time_Uni
 
 //// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 //// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+
+//// jwc 25-0922-0100
+serial.writeLine('* test.ts: 000: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
+
+//// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
+////
+wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
