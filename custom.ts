@@ -1489,6 +1489,7 @@ namespace quest_Motors {
 
     //// jwc y 25-0805-2000 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|* OrangeWire=BluePin(S), RedWire=RedPin(V), BrownWire=BlackPin(G)|* Battery>=75%|* Power-Off When Wiring"
     //// jwc y 25-0806-0050 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - Orange Wire = Blue Pin (Signal)|  - Red Wire = Red Pin (Volt)|  - Brown Wire = Black Pin (Ground)|  - When Wiring, Power-Off |  - When Operating, Battery >= 75\\%"
+    //// jwc y 25-1011-1540 //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
 
 
     /**
@@ -1498,7 +1499,7 @@ namespace quest_Motors {
     * @param debug_Show_In quest_Debug_Show_Enum
 
     */
-    //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
+    //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - White-Axle-Nub Towards Bot's Front for Code-Sync|  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
     //% weight=74 blockGap=8
     //% inlineInputMode=external
     export function quest_Set_AutoDegrees_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
