@@ -179,10 +179,42 @@ enum quest_PortSingle_ServoArmBeam_PortId_Enum {
 enum quest_ServoArm_DegreesInDirection_Enum {
     //% block="Degree_000_Down"
     Degree_000_Down,
+    //% block="Degree_015"
+    Degree_015,
+    //% block="Degree_030"
+    Degree_030,
     //% block="Degree_045_Up_Half"
     Degree_045_Up_Half,
+    //% block="Degree_060"
+    Degree_060,
+    //% block="Degree_075"
+    Degree_075,
     //% block="Degree_090_Up_Full"
     Degree_090_Up_Full,
+    //% block="Degree_105"
+    Degree_105,
+    //% block="Degree_120"
+    Degree_120,
+    //% block="Degree_135"
+    Degree_135,
+    //% block="Degree_150"
+    Degree_150,
+    //% block="Degree_165"
+    Degree_165,
+    //% block="Degree_180"
+    Degree_180,
+    //% block="Degree_195"
+    Degree_195,
+    //% block="Degree_210"
+    Degree_210,
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: Degree_225,
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_240"
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: Degree_240,
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_255"
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: Degree_255,
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_270"
+    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: Degree_270,
 }
 
 enum quest_Controller_Joystick_Directional_AngelDegree_Increment_Enum {
@@ -1500,31 +1532,134 @@ namespace quest_Motors {
         let servoArm_Degrees_Local = 0
         //// 25-0922-0250 
         let servoArm_Degrees_Max = 270
+        let servoArm_Degrees_Offset_For_Down = 50
+
+        //// jwc 25-1010-1700 enum quest_ServoArm_DegreesInDirection_Enum {
+        //// jwc 25-1010-1700     //% block="Degree_000_Down"
+        //// jwc 25-1010-1700     Degree_000_Down,
+        //// jwc 25-1010-1700     //% block="Degree_015"
+        //// jwc 25-1010-1700     Degree_015,
+        //// jwc 25-1010-1700     //% block="Degree_030"
+        //// jwc 25-1010-1700     Degree_030,
+        //// jwc 25-1010-1700     //% block="Degree_045_Up_Half"
+        //// jwc 25-1010-1700     Degree_045_Up_Half,
+        //// jwc 25-1010-1700     //% block="Degree_060"
+        //// jwc 25-1010-1700     Degree_060,
+        //// jwc 25-1010-1700     //% block="Degree_075"
+        //// jwc 25-1010-1700     Degree_075,
+        //// jwc 25-1010-1700     //% block="Degree_090_Up_Full"
+        //// jwc 25-1010-1700     Degree_090_Up_Full,
+        //// jwc 25-1010-1700     //% block="Degree_105"
+        //// jwc 25-1010-1700     Degree_105,
+        //// jwc 25-1010-1700     //% block="Degree_120"
+        //// jwc 25-1010-1700     Degree_120,
+        //// jwc 25-1010-1700     //% block="Degree_135"
+        //// jwc 25-1010-1700     Degree_135,
+        //// jwc 25-1010-1700     //% block="Degree_150"
+        //// jwc 25-1010-1700     Degree_150,
+        //// jwc 25-1010-1700     //% block="Degree_165"
+        //// jwc 25-1010-1700     Degree_165,
+        //// jwc 25-1010-1700     //% block="Degree_180"
+        //// jwc 25-1010-1700     Degree_180,
+        //// jwc 25-1010-1700     //% block="Degree_195"
+        //// jwc 25-1010-1700     Degree_195,
+        //// jwc 25-1010-1700     //% block="Degree_210"
+        //// jwc 25-1010-1700     Degree_210,
+        //// jwc 25-1010-1700     //% block="Degree_225"
+        //// jwc 25-1010-1700     Degree_225,
+        //// jwc 25-1010-1700     //% block="Degree_240"
+        //// jwc 25-1010-1700     Degree_240,
+        //// jwc 25-1010-1700     //% block="Degree_255"
+        //// jwc 25-1010-1700     Degree_255,
+        //// jwc 25-1010-1700     //% block="Degree_270"
+        //// jwc 25-1010-1700     Degree_270,
+        //// jwc 25-1010-1700 }
 
         switch (port_Id_In) {
             case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
+                    //// jwc 25-1010-1700     //// jwc y servoArm_Degrees_Local = 90
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 0
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = servoArm_Degrees_Max - 50
+                    //// jwc 25-1010-1700     break  // out of these case statements
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 33.75
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = servoArm_Degrees_Max - 95
+                    //// jwc 25-1010-1700     break  // out of these case statements
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                    //// jwc 25-1010-1700     //// jwc y servoArm_Degrees_Local = 45
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 67.5
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = servoArm_Degrees_Max - 140
+                    //// jwc 25-1010-1700     break  // out of these case statements
+
+                    //// Delta of 50-degrees
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
-                        //// jwc y servoArm_Degrees_Local = 90
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 135
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 0
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 50
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_015:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 65
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 80
+                        break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 180
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 33.75
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 95
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 110
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 125
+                        break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
-                        //// jwc y servoArm_Degrees_Local = 45
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 67.5
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 140
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 155
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_120:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 170
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_135:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 185
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_150:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 200
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 215
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 230
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 245
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_210:
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - 260
+                        break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_225:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     //// jwc 25-1010-2210 n since below 0 min >> -5:  servoArm_Degrees_Local = servoArm_Degrees_Max - 275
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 270
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_240:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 290
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_255:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 205
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_270:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 220
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+
                 }
                 //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
                 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, servoArm_Degrees_Local)
@@ -1553,26 +1688,86 @@ namespace quest_Motors {
             case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right:
 
                 switch (servoArm_DegreesInDirection_Enum_In) {
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
+                    //// jwc 25-1010-1700     //// jwc y servoArm_Degrees_Local = 90
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 0
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = 50
+                    //// jwc 25-1010-1700     break  // out of these case statements
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 33.75
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = 95
+                    //// jwc 25-1010-1700     break  // out of these case statements
+                    //// jwc 25-1010-1700 case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                    //// jwc 25-1010-1700     //// jwc y servoArm_Degrees_Local = 135
+                    //// jwc 25-1010-1700     //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
+                    //// jwc 25-1010-1700     //// jwc 25-0808-1800 New Servo Positoning \/ 
+                    //// jwc 25-1010-1700     //// 25-0922-0250 servoArm_Degrees_Local = 67.5
+                    //// jwc 25-1010-1700     servoArm_Degrees_Local = 140
+                    //// jwc 25-1010-1700     break  // out of these case statements
+
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
-                        //// jwc y servoArm_Degrees_Local = 90
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 45
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 0
                         servoArm_Degrees_Local = 50
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_015:
+                        servoArm_Degrees_Local = 65
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
+                        servoArm_Degrees_Local = 80
+                        break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 0
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 33.75
                         servoArm_Degrees_Local = 95
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
+                        servoArm_Degrees_Local = 110
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
+                        servoArm_Degrees_Local = 125
+                        break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
-                        //// jwc y servoArm_Degrees_Local = 135
-                        //// jwc 25-0625-1800 servoArm_Degrees_Local = 90
-                        //// jwc 25-0808-1800 New Servo Positoning \/ 
-                        //// 25-0922-0250 servoArm_Degrees_Local = 67.5
                         servoArm_Degrees_Local = 140
                         break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
+                        servoArm_Degrees_Local = 155
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_120:
+                        servoArm_Degrees_Local = 170
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_135:
+                        servoArm_Degrees_Local = 185
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_150:
+                        servoArm_Degrees_Local = 200
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
+                        servoArm_Degrees_Local = 215
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180:
+                        servoArm_Degrees_Local = 230
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
+                        servoArm_Degrees_Local = 245
+                        break  // out of these case statements
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_210:
+                        servoArm_Degrees_Local = 260
+                        break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_225:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     //// jwc 25-1010-2210 n since below 0 min >> -5:  servoArm_Degrees_Local = servoArm_Degrees_Max - 275
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 270
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_240:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 290
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_255:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 205
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_270:
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     servoArm_Degrees_Local = servoArm_Degrees_Max - 220
+                    //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     break  // out of these case statements
+
                 }
                  //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
                 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, servoArm_Degrees_Local)
