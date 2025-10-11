@@ -1,5 +1,5 @@
 {
-    "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (v0.31.1, 25-1011-1600)",
+    "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (v0.32.0, 25-1010-2300)",
     "version": "0.31.1",
     "description": "",
     "dependencies": {
@@ -17,7 +17,9 @@
         "main.ts",
         "README.md",
         "main.py",
-        "custom.ts"
+        "custom.ts",
+        "custom_VersionLog.ts",
+        "custom_Motors.ts"
     ],
     "testFiles": [
         "test.ts"
