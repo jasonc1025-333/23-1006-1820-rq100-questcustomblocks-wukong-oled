@@ -65,8 +65,10 @@ namespace quest_Motors {
 
                 //// jwc 25-0627-0900 network_Message_Str = "WL: " + convertToText(powerLeftIn) + ", WR: " + convertToText(powerRightIn)
                 //// jwc 25-0628-1400 message_Mini_Network_Str = "WL:" + convertToText(powerLeftIn) + ", WR:" + convertToText(powerRightIn)
-                message_Mini_Network_Str = "1" + convertToText(powerLeftIn) + "0" + convertToText(powerRightIn)
-                message_Full_Display_Str = "Wheel_L: " + convertToText(powerLeftIn) + ", Wheel_R: " + convertToText(powerRightIn)
+                //// jwc 25-1012-2000 message_Mini_Network_Str = "1" + convertToText(powerLeftIn) + "0" + convertToText(powerRightIn)
+                //// jwc 25-1012-2030 with neg #, could exceed network_max_length: message_Mini_Network_Str = "1:" + convertToText(powerLeftIn) + ",0:" + convertToText(powerRightIn)
+                //// jwc 25-1012-2200 y message_Mini_Network_Str = "1" + convertToText(powerLeftIn) + ",0" + convertToText(powerRightIn)
+                //// jwc 25-1012-2200 y message_Full_Display_Str = "Wheel_L: " + convertToText(powerLeftIn) + ", Wheel_R: " + convertToText(powerRightIn)
 
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
 
@@ -76,6 +78,18 @@ namespace quest_Motors {
                 //// jwc 25-0627-0900     //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 //// jwc 25-0627-0900     serial.writeLine                                     ("B:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL:" + convertToText(powerLeftIn) + ",WR:" + convertToText(powerRightIn))
                 //// jwc 25-0627-0900 }
+
+                //// jwc 25-1012-2200 Since Message_Length_Max is limited, Not Combine both Motors \/\/
+                message_Mini_Network_Str = "S1L:" + convertToText(powerLeftIn)
+                message_Full_Display_Str = "Wheel_L: " + convertToText(powerLeftIn)
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+
+                message_Mini_Network_Str = ",S0R:" + convertToText(powerRightIn)
+                message_Full_Display_Str = ",Wheel_R: " + convertToText(powerRightIn)
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 2)
+
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
@@ -87,8 +101,10 @@ namespace quest_Motors {
 
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
                 //// jwc 25-0628-1400 message_Mini_Network_Str = "W2L:" + convertToText(powerLeftIn) + ", W2R:" + convertToText(powerRightIn)
-                message_Mini_Network_Str = "3" + convertToText(powerLeftIn) + "2" + convertToText(powerRightIn)
-                message_Full_Display_Str = "Wheel_2_L: " + convertToText(powerLeftIn) + ", Wheel_2_R: " + convertToText(powerRightIn)
+                //// jwc 25-1012-2000 message_Mini_Network_Str = "3" + convertToText(powerLeftIn) + "2" + convertToText(powerRightIn)
+                //// jwc 25-1012-2030 with neg #, could exceed network_max_length: message_Mini_Network_Str = "3:" + convertToText(powerLeftIn) + ",2:" + convertToText(powerRightIn)
+                //// jwc 25-1012-2200 y message_Mini_Network_Str = "3" + convertToText(powerLeftIn) + ",2" + convertToText(powerRightIn)
+                //// jwc 25-1012-2200 y message_Full_Display_Str = "Wheel_2_L: " + convertToText(powerLeftIn) + ", Wheel_2_R: " + convertToText(powerRightIn)
 
 
                 //// jwc 25-0627-0900 //// jwc y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn), 0, 4)
@@ -97,6 +113,18 @@ namespace quest_Motors {
                 //// jwc 25-0627-0900     //// * jwc 25-0626-1400 serial.writeLine("* quest_Set_PowerMotorsViaBlueRedBlackPins_Func: "+ powerLeftIn +" "+ powerRightIn +" >> "+ motor_Power_L +" "+ motor_Power_R)
                 //// jwc 25-0627-0900     serial.writeLine("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + ",WL2:" + convertToText(powerLeftIn) + ",WR2:" + convertToText(powerRightIn))
                 //// jwc 25-0627-0900 }
+
+                //// jwc 25-1012-2200 Since Message_Length_Max is limited, Not Combine both Motors \/\/
+                message_Mini_Network_Str = "S3L:" + convertToText(powerLeftIn)
+                message_Full_Display_Str = "Wheel_2_L: " + convertToText(powerLeftIn)
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+
+                message_Mini_Network_Str = ",S2R:" + convertToText(powerRightIn)
+                message_Full_Display_Str = ",Wheel_2_R: " + convertToText(powerRightIn)
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 4)
+
                 break
             default:
                 //// * jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) {
@@ -106,6 +134,9 @@ namespace quest_Motors {
                 message_Mini_Network_Str = "* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn
                 message_Full_Display_Str = "* ERROR: 25-0209-0821: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn
 
+                quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + "ERROR: 25-0209-0822: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 //// jwc 25-0627-0900 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0627-0900     //// jwc 25-0627-0900 serial.writeLine("* ERROR: 25-0209-0820: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -114,9 +145,8 @@ namespace quest_Motors {
                 break
         }
 
-        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-
-        quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+        //// jwc 25-1012-2200 Since Message_Length_Max is limited, Not Combine both Motors y quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+        //// jwc 25-1012-2200 Since Message_Length_Max is limited, Not Combine both Motors y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
 
         if (_debug_Serial_Print_Bool_QuestGlobal) {
             //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
@@ -546,7 +576,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 80
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 95
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
@@ -555,7 +585,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 125
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 140
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
@@ -573,7 +603,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 215
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full:
                         servoArm_Degrees_Local = servoArm_Degrees_Max - 230
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
@@ -608,10 +638,12 @@ namespace quest_Motors {
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
-                message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 25-1012-2000 y message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In)
                 // Special Location: For 'Arm_L" 
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+                //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -654,7 +686,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
                         servoArm_Degrees_Local = 80
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
                         servoArm_Degrees_Local = 95
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
@@ -663,7 +695,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
                         servoArm_Degrees_Local = 125
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half:
                         servoArm_Degrees_Local = 140
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
@@ -681,7 +713,7 @@ namespace quest_Motors {
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
                         servoArm_Degrees_Local = 215
                         break  // out of these case statements
-                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180:
+                    case quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full:
                         servoArm_Degrees_Local = 230
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
@@ -716,10 +748,12 @@ namespace quest_Motors {
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
                 //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
-                message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 25-1012-2000 y message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
                 // Special Location: For 'Arm_R"
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
+                //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)

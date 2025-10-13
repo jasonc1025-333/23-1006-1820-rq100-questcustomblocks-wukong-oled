@@ -149,14 +149,18 @@ enum quest_ServoArm_DegreesInDirection_Enum {
     Degree_015,
     //% block="Degree_030"
     Degree_030,
-    //% block="Degree_045_Up_Half"
-    Degree_045_Up_Half,
+    ////jwc 25-1012-1930 //% block="Degree_045_Up_Half"
+    ////jwc 25-1012-1930 Degree_045_Up_Half,
+    //% block="Degree_045"
+    Degree_045,
     //% block="Degree_060"
     Degree_060,
     //% block="Degree_075"
     Degree_075,
-    //% block="Degree_090_Up_Full"
-    Degree_090_Up_Full,
+    ////jwc 25-1012-1930 //% block="Degree_090_Up_Full"
+    ////jwc 25-1012-1930 Degree_090_Up_Full,
+    //% block="Degree_090_Up_Half"
+    Degree_090_Up_Half,
     //% block="Degree_105"
     Degree_105,
     //% block="Degree_120"
@@ -167,8 +171,10 @@ enum quest_ServoArm_DegreesInDirection_Enum {
     Degree_150,
     //% block="Degree_165"
     Degree_165,
-    //% block="Degree_180"
-    Degree_180,
+    ////jwc 25-1012-1930 //% block="Degree_180"
+    ////jwc 25-1012-1930 Degree_180,
+    //% block="Degree_180_Up_Full"
+    Degree_180_Up_Full,
     //% block="Degree_195"
     Degree_195,
     //% block="Degree_210"
