@@ -288,7 +288,69 @@ basic.forever(function () {
     
     //// jwc yy serial.writeLine('* 1: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))    
     //// jwc yyy serial.writeLine('.')
+
+    serial.writeNumber(quest_Sensors.getButtonStatus(quest_Sensors.buttonType.Button_C))
+    serial.writeNumber(quest_Sensors.getButtonStatus(quest_Sensors.buttonType.Button_D))
     serial.writeString('.')
+
+    serial.writeString("c:")
+    serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
+    serial.writeString("d:")
+    serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
+
+
+    //// jwc yn only 0: if (pins.digitalReadPin(DigitalPin.P12) == 0) {
+    //// jwc yn only 0:     basic.showString("a")
+    //// jwc yn only 0: } else if (pins.digitalReadPin(DigitalPin.P12) == 1) {
+    //// jwc yn only 0:     basic.showString("A")
+    //// jwc yn only 0: } else {
+    //// jwc yn only 0:     basic.showString(".")
+    //// jwc yn only 0: }
+    if (pins.digitalReadPin(DigitalPin.P12) == 1) {
+        basic.showString("a")
+    } else if (pins.digitalReadPin(DigitalPin.P12) == 0) {
+        basic.showString("A")
+    } else {
+        basic.showString(".")
+    }
+
+    serial.writeString("b12:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
+
+    serial.writeString("b13:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
+
+    serial.writeString("b14:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
+
+    serial.writeString("b15:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
+
+
+    serial.writeString("c12:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
+
+    serial.writeString("c13:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
+
+    serial.writeString("c14:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
+
+    serial.writeString("c15:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
+
+    serial.writeLine("")
+
+    serial.writeLine("")
+
 })
 
 // TYJ these will auto-run like an on-start stack

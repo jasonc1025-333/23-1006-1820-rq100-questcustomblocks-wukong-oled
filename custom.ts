@@ -1244,4 +1244,53 @@ namespace quest_Sensors {
         led.plotBarGraph(input.magneticForce(Dimension.Strength), rawSensorReadMaxIn)
     }
 
+
+    export enum buttonType {
+        //% block="Button_C"
+        Button_C,
+        //% block="Button_D"
+        Button_D,
+        //% block="Button_E"
+        Button_E,
+        //% block="Button_F"
+        Button_F
+    }
+
+    /**
+    * get Button
+    */
+    //% blockId=getButton block="button %button is pressed"
+    //// jwc o export function getButtonStatus(button: buttonType): boolean {
+    export function getButtonStatus(button: buttonType): number {
+        //// jwc o return (pins.digitalReadPin(<number>button) == 0 ? true : false)
+    
+        switch (button) {
+            case buttonType.Button_C: 
+                serial.writeString("C:")
+                serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
+                return pins.digitalReadPin(DigitalPin.P12)
+                break
+            case buttonType.Button_D: 
+                serial.writeString("D:")
+                serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
+                return pins.digitalReadPin(DigitalPin.P13);
+                break
+            case buttonType.Button_E: 
+                serial.writeString("E:")
+                serial.writeNumber(pins.digitalReadPin(DigitalPin.P14))
+                return pins.digitalReadPin(DigitalPin.P14);
+                break
+            case buttonType.Button_F: 
+                serial.writeString("F:")
+                serial.writeNumber(pins.digitalReadPin(DigitalPin.P15))
+                return pins.digitalReadPin(DigitalPin.P15);
+                break
+            default: return 0;
+        }
+
+    }
+
+
+
+
 }

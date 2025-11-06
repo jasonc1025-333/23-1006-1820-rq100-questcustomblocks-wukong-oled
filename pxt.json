@@ -1,5 +1,5 @@
 {
-    "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (v0.33.0, 25-1012-2240)",
+    "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled (v0.34.0, 25-1105-1600)",
     "version": "0.33.0",
     "description": "",
     "dependencies": {
@@ -25,7 +25,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "8.0.16",
+        "target": "8.0.18",
         "targetId": "microbit"
     },
     "supportedTargets": [
