@@ -314,36 +314,36 @@ basic.forever(function () {
         basic.showString(".")
     }
 
-    serial.writeString("b12:")
+    serial.writeString("Z12:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
 
-    serial.writeString("b13:")
+    serial.writeString("Z13:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
 
-    serial.writeString("b14:")
+    serial.writeString("Z14:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
 
-    serial.writeString("b15:")
+    serial.writeString("Z15:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
 
 
-    serial.writeString("c12:")
+    serial.writeString("Y12:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
 
-    serial.writeString("c13:")
+    serial.writeString("Y13:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
 
-    serial.writeString("c14:")
+    serial.writeString("Y14:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
 
-    serial.writeString("c15:")
+    serial.writeString("Y15:")
     serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
 

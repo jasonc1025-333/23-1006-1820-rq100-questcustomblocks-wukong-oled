@@ -1278,21 +1278,25 @@ namespace quest_Sensors {
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_C:
                 serial.writeString("C:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
+                serial.writeString(".")
                 return pins.digitalReadPin(DigitalPin.P12)
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_D:
                 serial.writeString("D:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
+                serial.writeString(".")
                 return pins.digitalReadPin(DigitalPin.P13);
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_E:
                 serial.writeString("E:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P14))
+                serial.writeString(".")
                 return pins.digitalReadPin(DigitalPin.P14);
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_F:
                 serial.writeString("F:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P15))
+                serial.writeString(".")
                 return pins.digitalReadPin(DigitalPin.P15);
                 break
             default: return 0;
