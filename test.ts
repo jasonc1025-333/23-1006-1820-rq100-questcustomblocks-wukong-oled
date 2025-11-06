@@ -289,8 +289,8 @@ basic.forever(function () {
     //// jwc yy serial.writeLine('* 1: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))    
     //// jwc yyy serial.writeLine('.')
 
-    serial.writeNumber(quest_Sensors.getButtonStatus(quest_Sensors.buttonType.Button_C))
-    serial.writeNumber(quest_Sensors.getButtonStatus(quest_Sensors.buttonType.Button_D))
+    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_C))
+    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_D))
     serial.writeString('.')
 
     serial.writeString("c:")

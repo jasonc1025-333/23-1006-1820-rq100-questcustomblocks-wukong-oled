@@ -1245,7 +1245,7 @@ namespace quest_Sensors {
     }
 
 
-    export enum buttonType {
+    export enum quest_Get_Controller_Joystick_Button_Status_Enum {
         //% block="Button_C"
         Button_C,
         //% block="Button_D"
@@ -1257,40 +1257,46 @@ namespace quest_Sensors {
     }
 
     /**
-    * get Button
+    * quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func
+    * @param button_status_enum_in quest_Get_Controller_Joystick_Button_Status_Enum
     */
-    //% blockId=getButton block="button %button is pressed"
-    //// jwc o export function getButtonStatus(button: buttonType): boolean {
-    export function getButtonStatus(button: buttonType): number {
-        //// jwc o return (pins.digitalReadPin(<number>button) == 0 ? true : false)
-    
-        switch (button) {
-            case buttonType.Button_C: 
+    // '\\' escape character to deactivate special character processing
+    //% block="get controller\\_joystick button\\_status:| * button: $button_status_enum_in as int\\_out|"
+    //% weight=80 blockGap=8
+    //% inlineInputMode=external
+    export function quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(button_status_enum_in: quest_Get_Controller_Joystick_Button_Status_Enum) {
+
+        //// jwc o /**
+        //// jwc o * get Button
+        //// jwc o */
+        //// jwc o //% blockId=getButton block="button %button is pressed"
+        //// jwc o //// jwc o export function getButtonStatus(button: buttonType): boolean {
+        //// jwc o export function getButtonStatus(button: buttonType): number {
+            //// jwc o return (pins.digitalReadPin(<number>button) == 0 ? true : false)
+
+        switch (button_status_enum_in) {
+            case quest_Get_Controller_Joystick_Button_Status_Enum.Button_C:
                 serial.writeString("C:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
                 return pins.digitalReadPin(DigitalPin.P12)
                 break
-            case buttonType.Button_D: 
+            case quest_Get_Controller_Joystick_Button_Status_Enum.Button_D:
                 serial.writeString("D:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
                 return pins.digitalReadPin(DigitalPin.P13);
                 break
-            case buttonType.Button_E: 
+            case quest_Get_Controller_Joystick_Button_Status_Enum.Button_E:
                 serial.writeString("E:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P14))
                 return pins.digitalReadPin(DigitalPin.P14);
                 break
-            case buttonType.Button_F: 
+            case quest_Get_Controller_Joystick_Button_Status_Enum.Button_F:
                 serial.writeString("F:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P15))
                 return pins.digitalReadPin(DigitalPin.P15);
                 break
             default: return 0;
         }
-
     }
-
-
-
 
 }
