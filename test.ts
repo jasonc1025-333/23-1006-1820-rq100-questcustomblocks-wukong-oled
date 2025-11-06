@@ -282,6 +282,10 @@ input.onGesture(Gesture.ScreenDown, function () {
 ////jwc y     serial.writeLine(' > quest_Sensors.quest_Get_Controller_Joystick_Directional_MagnitudePixel_AsIntOut_Func(): ' + convertToText(quest_Sensors.quest_Get_Controller_Joystick_Directional_MagnitudePixel_AsIntOut_Func()))
 ////jwc y })
 
+
+
+//// jwc 25-1105-1700 Weirdly, the following will not work: No response from Buttons C, D, E, F.  Yet 'robot100_200-RemoteControl-Beginner' does work.  
+////
 basic.forever(function () {
     //// jwc y serial.writeLine('* 1: > L: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
     //// jwc y serial.writeLine('* 2: > R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
@@ -348,9 +352,6 @@ basic.forever(function () {
     serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
 
     serial.writeLine("")
-
-    serial.writeLine("")
-
 })
 
 // TYJ these will auto-run like an on-start stack
