@@ -493,10 +493,10 @@ namespace quest_Motors {
 
     }
 
+
     //// jwc y 25-0805-2000 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|* OrangeWire=BluePin(S), RedWire=RedPin(V), BrownWire=BlackPin(G)|* Battery>=75%|* Power-Off When Wiring"
     //// jwc y 25-0806-0050 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - Orange Wire = Blue Pin (Signal)|  - Red Wire = Red Pin (Volt)|  - Brown Wire = Black Pin (Ground)|  - When Wiring, Power-Off |  - When Operating, Battery >= 75\\%"
     //// jwc y 25-1011-1540 //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
-
 
     /**
     * quest_Set_AutoDegrees_ForServoArm_SMALL_Func
@@ -538,8 +538,10 @@ namespace quest_Motors {
 
         let servoArm_Degrees_Local = 0
         //// 25-0922-0250 
-        let servoArm_Degrees_Max = 270
+        //// 26-0111-1930 Due to 50 offset, max is decreased by that much = 270-50=220: let servoArm_Degrees_Max = 270
+        let servoArm_Degrees_Max = 220
         let servoArm_Degrees_Offset_For_Down = 50
+        let servoArm_Degrees_Factor_For_Increment = 15
 
         switch (port_Id_In) {
             case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
@@ -568,49 +570,64 @@ namespace quest_Motors {
 
                     //// Delta of 50-degrees
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 50
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 50
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 0))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_015:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 65
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 65
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 1))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 80
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 80
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 2))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 95
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 95
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 3))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 110
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 110
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 4))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 125
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 125
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 5))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 140
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 140
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 6))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 155
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 155
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 7))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_120:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 170
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 170
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 8))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_135:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 185
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 185
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 9))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_150:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 200
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 200
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 10))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 215
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 215
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 11))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 230
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 230
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 12))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 245
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 245
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 13))
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_210:
-                        servoArm_Degrees_Local = servoArm_Degrees_Max - 260
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = servoArm_Degrees_Max - 260
+                        servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 14))
                         break  // out of these case statements
                     //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_225:
                     //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     //// jwc 25-1010-2210 n since below 0 min >> -5:  servoArm_Degrees_Local = servoArm_Degrees_Max - 275
@@ -678,49 +695,64 @@ namespace quest_Motors {
                     //// jwc 25-1010-1700     break  // out of these case statements
 
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down:
-                        servoArm_Degrees_Local = 50
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 50
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 0)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_015:
-                        servoArm_Degrees_Local = 65
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 65
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 1)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_030:
-                        servoArm_Degrees_Local = 80
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 80
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 2)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_045:
-                        servoArm_Degrees_Local = 95
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 95
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 3)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_060:
-                        servoArm_Degrees_Local = 110
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 110
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 4)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_075:
-                        servoArm_Degrees_Local = 125
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 125
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 5)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half:
-                        servoArm_Degrees_Local = 140
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 140
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 6)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_105:
-                        servoArm_Degrees_Local = 155
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 155
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 7)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_120:
-                        servoArm_Degrees_Local = 170
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 170
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 8)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_135:
-                        servoArm_Degrees_Local = 185
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 185
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 9)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_150:
-                        servoArm_Degrees_Local = 200
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 200
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 10)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_165:
-                        servoArm_Degrees_Local = 215
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 215
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 11)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full:
-                        servoArm_Degrees_Local = 230
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 230
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 12)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_195:
-                        servoArm_Degrees_Local = 245
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 245
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 13)
                         break  // out of these case statements
                     case quest_ServoArm_DegreesInDirection_Enum.Degree_210:
-                        servoArm_Degrees_Local = 260
+                        //// jwc 26-0111-1630 y servoArm_Degrees_Local = 260
+                        servoArm_Degrees_Local = servoArm_Degrees_Offset_For_Down + (servoArm_Degrees_Factor_For_Increment * 14)
                         break  // out of these case statements
                     //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225" case quest_ServoArm_DegreesInDirection_Enum.Degree_225:
                     //// jwc 25-1010-1700 225 + 50 = 275 > 270_Max, so will not work: //% block="Degree_225"     //// jwc 25-1010-2210 n since below 0 min >> -5:  servoArm_Degrees_Local = servoArm_Degrees_Max - 275
@@ -751,6 +783,151 @@ namespace quest_Motors {
                 //// jwc 25-1012-2000 y message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                // Special Location: For 'Arm_R"
+                //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
+
+                //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0628-1400     //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 }
+                break  // out of these case statements 
+        }
+
+        quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
+
+        if (_debug_Serial_Print_Bool_QuestGlobal) {
+            //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
+            //// jwc 25-0627-0900 serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str + "'")
+            serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: '" + message_Full_Display_Str + "'")
+        }
+
+        //// jwc 25-0626-1200 // diagnostics
+        //// jwc 25-0626-1200 switch (debug_Show_In) {
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Dashboard_OLED:
+        //// jwc 25-0626-1200         //// jwc 25-0626-1830 Only clear target-row: quest_Dashboard.quest_Show_Oled_Cleared_Func()
+        //// jwc 25-0626-1200         //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 0)
+        //// jwc 25-0626-1200         quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("CD:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), 0, 3)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.MicroBit_Screen:
+        //// jwc 25-0626-1200         // diagnostics
+        //// jwc 25-0626-1200         basic.showIcon(IconNames.Fabulous)
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     case quest_Debug_Show_Enum.Off:
+        //// jwc 25-0626-1200 
+        //// jwc 25-0626-1200         break  // out of these case statements
+        //// jwc 25-0626-1200     default:
+        //// jwc 25-0626-1200         if (_debug_Serial_Print_Bool_QuestGlobal) {
+        //// jwc 25-0626-1200             serial.writeLine("* ERROR: 25-0309-0900: quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+        //// jwc 25-0626-1200         }
+        //// jwc 25-0626-1200         break
+        //// jwc 25-0626-1200 }
+    }
+
+
+    //// jwc 26-0111-1730 TODO export function quest_Set_Degrees_ByMenu_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+
+    //// 26-0111-1940 y //% servoArm_DegreesInDirection_Int_In.min=0 servoArm_DegreesInDirection_Int_In.max=270
+
+    /**
+    * quest_Set_Degrees_ByInteger_ForServoArm_SMALL_Func
+    * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
+    * @param servoArm_DegreesInDirection_Int_In number
+    * @param debug_Show_In quest_Debug_Show_Enum
+
+    */
+    //% block="set degrees_by_integer_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Int_In: $servoArm_DegreesInDirection_Int_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - White-Axle-Nub Towards Bot's Front for Code-Sync|  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
+    //% servoArm_DegreesInDirection_Int_In.min=0 servoArm_DegreesInDirection_Int_In.max=220
+    //% weight=72 blockGap=8
+    //% inlineInputMode=external
+        export function quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Int_In: number, debug_Show_In: quest_Debug_Show_Enum): void {
+
+        ///jwc y if(quest_Debug_Show_Enum)
+        ///jwc y basic.showIcon(IconNames.SmallHeart)
+
+        let network_Message_Str = ""
+        let message_Mini_Network_Str = ""
+        let message_Full_Display_Str = ""
+
+
+        //// jwc 25-0809-1450 y: //// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
+        //// jwc 25-0809-1450 y: ////
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(0))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+        //// jwc 25-0809-1450 y: 
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 33.75)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 33.75)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(33.75))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+        //// jwc 25-0809-1450 y: 
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 67.5)
+        //// jwc 25-0809-1450 y: wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 67.5)
+        //// jwc 25-0809-1450 y: serial.writeLine('* test.ts: 12: ' + convertToText(67.5))
+        //// jwc 25-0809-1450 y: quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+
+
+        let servoArm_Degrees_Local = 0
+        //// 25-0922-0250 
+        let servoArm_Degrees_Max = 270
+        let servoArm_Degrees_Offset_For_Down = 50
+        let servoArm_Degrees_Factor_For_Increment = 15
+
+        switch (port_Id_In) {
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left:
+
+                servoArm_Degrees_Local = servoArm_Degrees_Max - (servoArm_DegreesInDirection_Int_In + servoArm_Degrees_Offset_For_Down)
+
+                //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, servoArm_Degrees_Local)
+                //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func( "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400 }
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+
+                //// jwc 25-1012-2000 y message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Int_In)
+                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Int_In) +"->"+ convertToText(servoArm_Degrees_Local)
+                // Special Location: For 'Arm_L" 
+                //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
+
+                //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
+                //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
+                //// jwc 25-0628-1400     //// jwc 25-0325-1600 obsolete: serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     //// jwc y serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + "C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400     serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + message_Full_Display_Str)
+                //// jwc 25-0628-1400 }
+                break  // out of these case statements
+
+            case quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right:
+
+                servoArm_Degrees_Local = servoArm_DegreesInDirection_Int_In + servoArm_Degrees_Offset_For_Down
+
+                //// jwc 25-0720-1800 switch from large-gray to small-gray: wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, servoArm_Degrees_Local)
+                //// jwc 25-0626-1400 if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
+                //// jwc 25-0626-1400     //// jwc y quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc ny quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",Arm_Port:" + convertToText(port_Id_In) + ",Arm_Deg:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400     //// jwc 25-0325-1600 obsolete: quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",P:" + convertToText(port_Id_In) + ",D:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400      quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)), quest_Debug_Show_Enum.Dashboard_OLED)
+                //// jwc 25-0626-1400 }
+                //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+                //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
+
+                //// jwc 25-1012-2000 y message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 26-0111-1930 y message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Int_In)
+                //// jwc 26-0111-1930 y message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "->" + convertToText(servoArm_Degrees_Local)
+                message_Mini_Network_Str = "S6R:" + convertToText(servoArm_DegreesInDirection_Int_In)
+                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "->" + convertToText(servoArm_Degrees_Local)
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)

@@ -143,6 +143,28 @@ input.onButtonPressed(Button.B, function () {
     serial.writeLine('* 6: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
     serial.writeLine('* 6_01: ' + convertToText(quest_Public_Variables_N_Constants.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_01))
     serial.writeLine('* 6_11: ' + convertToText(quest_Dashboard.network_GroupChannel_MyBotId_Base0_Int_QuestGlobal_11))
+
+    //// jwc 26-0111-1930 let degrees_MAX_INT = 270
+    let degrees_MAX_INT = 220
+
+    //// jwc 26-0111-1930 y for (let i = 0; i <= degrees_MAX_INT; i += 45) {
+    for (let i = 0; i <= degrees_MAX_INT; i += 5) {
+        //// jwc 25-0922-0100  y wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, i)
+        //// jwc y wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 270 - i)
+        //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
+        //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - i)
+        //// jwc y 26-0111-1900 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
+        quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, i, quest_Debug_Show_Enum.Dashboard_OLED)
+
+        //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
+        //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, i)
+        //// jwc y 26-0111-1900 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
+        quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, i, quest_Debug_Show_Enum.Dashboard_OLED)
+
+        serial.writeLine('* test.ts: 26-0111-1: ' + convertToText(i))
+        quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
+    }
+
 })
 
 input.onGesture(Gesture.TiltLeft, function () {
