@@ -497,18 +497,20 @@ namespace quest_Motors {
     //// jwc y 25-0805-2000 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|* OrangeWire=BluePin(S), RedWire=RedPin(V), BrownWire=BlackPin(G)|* Battery>=75%|* Power-Off When Wiring"
     //// jwc y 25-0806-0050 //% block="set auto_servo_arm_BIG|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - Orange Wire = Blue Pin (Signal)|  - Red Wire = Red Pin (Volt)|  - Brown Wire = Black Pin (Ground)|  - When Wiring, Power-Off |  - When Operating, Battery >= 75\\%"
     //// jwc y 25-1011-1540 //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
+    //// jwc y 26-0112-1800 export function quest_Set_AutoDegrees_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    //// jwc y 26-0112-1800 //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - White-Axle-Nub Towards Bot's Front for Code-Sync|  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
 
     /**
-    * quest_Set_AutoDegrees_ForServoArm_SMALL_Func
+    * quest_Set_AutoDegrees_By_Menu_ForServoArm_SMALL_Func
     * @param port_Id_In quest_PortGroup_ServoArm_PortId_Enum
     * @param servoArm_DegreesInDirection_Enum_In quest_ServoArm_DegreesInDirection_Enum
     * @param debug_Show_In quest_Debug_Show_Enum
 
     */
-    //% block="set auto_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - White-Axle-Nub Towards Bot's Front for Code-Sync|  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
+    //% block="set degrees_by_menu_servo_arm_SMALL|* port_Id_In: $port_Id_In|* servoArm_DegreesInDirection_Enum_In: $servoArm_DegreesInDirection_Enum_In|* debug_Show_In: $debug_Show_In|Key Tips: |  - White-Axle-Nub Towards Bot's Front for Code-Sync|  - OrangeW.ire=BlueP.in(S), RedW.=RedP.(V), BrownW.=BlackP.(G)|  - S=Signal, V=Volts, G=Ground|  - When Wiring, Power-Off -&- When Operating, Battery >= 75\\%"
     //% weight=74 blockGap=8
     //% inlineInputMode=external
-    export function quest_Set_AutoDegrees_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Enum_In: quest_ServoArm_DegreesInDirection_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -539,7 +541,8 @@ namespace quest_Motors {
         let servoArm_Degrees_Local = 0
         //// 25-0922-0250 
         //// 26-0111-1930 Due to 50 offset, max is decreased by that much = 270-50=220: let servoArm_Degrees_Max = 270
-        let servoArm_Degrees_Max = 220
+        //// 26-0112-1750 Restore orig value: let servoArm_Degrees_Max = 220
+        let servoArm_Degrees_Max = 270
         let servoArm_Degrees_Offset_For_Down = 50
         let servoArm_Degrees_Factor_For_Increment = 15
 
@@ -656,9 +659,11 @@ namespace quest_Motors {
                 //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("C:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",L_S7:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
                 //// jwc 25-1012-2000 y message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In)
-                // Special Location: For 'Arm_L" 
+                //// jwc 26-0112-1750 y message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 26-0112-1750 y message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Max - servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
+                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Max - servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
+                // Special Location: For 'Arm_L"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
 
@@ -781,8 +786,10 @@ namespace quest_Motors {
                 //// jwc 25-0628-1400 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + ",R_S6:" + convertToText(servoArm_DegreesInDirection_Enum_In)))
 
                 //// jwc 25-1012-2000 y message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 26-0112-1750 y message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In)
+                //// jwc 26-0112-1750 y message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
+                message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
+                message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
@@ -843,7 +850,7 @@ namespace quest_Motors {
     //% servoArm_DegreesInDirection_Int_In.min=0 servoArm_DegreesInDirection_Int_In.max=220
     //% weight=72 blockGap=8
     //% inlineInputMode=external
-        export function quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Int_In: number, debug_Show_In: quest_Debug_Show_Enum): void {
+    export function quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(port_Id_In: quest_PortSingle_ServoArmBeam_PortId_Enum, servoArm_DegreesInDirection_Int_In: number, debug_Show_In: quest_Debug_Show_Enum): void {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -895,7 +902,7 @@ namespace quest_Motors {
 
                 //// jwc 25-1012-2000 y message_Mini_Network_Str = "7" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 message_Mini_Network_Str = "S7L:" + convertToText(servoArm_DegreesInDirection_Int_In)
-                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Int_In) +"->"+ convertToText(servoArm_Degrees_Local)
+                message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Int_In) +"("+ convertToText(servoArm_Degrees_Local) +")"
                 // Special Location: For 'Arm_L" 
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
@@ -927,7 +934,7 @@ namespace quest_Motors {
                 //// jwc 26-0111-1930 y message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Int_In)
                 //// jwc 26-0111-1930 y message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "->" + convertToText(servoArm_Degrees_Local)
                 message_Mini_Network_Str = "S6R:" + convertToText(servoArm_DegreesInDirection_Int_In)
-                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "->" + convertToText(servoArm_Degrees_Local)
+                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "(" + convertToText(servoArm_Degrees_Local) + ")"
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
@@ -945,7 +952,7 @@ namespace quest_Motors {
         if (_debug_Serial_Print_Bool_QuestGlobal) {
             //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
             //// jwc 25-0627-0900 serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str + "'")
-            serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: '" + message_Full_Display_Str + "'")
+            serial.writeLine("* quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func: '" + message_Full_Display_Str + "'")
         }
 
         //// jwc 25-0626-1200 // diagnostics

@@ -221,8 +221,8 @@ input.onGesture(Gesture.TiltRight, function () {
 
 input.onGesture(Gesture.LogoUp, function () {
     
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 
 })
 input.onGesture(Gesture.ScreenUp, function () {
@@ -239,8 +239,8 @@ input.onGesture(Gesture.ScreenUp, function () {
    
     //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
     //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 input.onGesture(Gesture.LogoDown, function () {
     //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
@@ -263,8 +263,8 @@ input.onGesture(Gesture.LogoDown, function () {
     //// jwc yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
     //// jwc 25-1012-2000 yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
     //// jwc 25-1012-2000 yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
 
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -283,8 +283,8 @@ input.onGesture(Gesture.ScreenDown, function () {
     //// jwc 25-1010-2100 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_270, quest_Debug_Show_Enum.Dashboard_OLED)
     //// jwc 25-1010-2200 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_255, quest_Debug_Show_Enum.Dashboard_OLED)
     //// jwc 25-1010-2200 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_225, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
+    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 
 
@@ -305,77 +305,6 @@ input.onGesture(Gesture.ScreenDown, function () {
 ////jwc y })
 
 
-
-//// jwc 25-1105-1700 Weirdly, the following will not work: No response from Buttons C, D, E, F.  Yet 'robot100_200-RemoteControl-Beginner' does work.  
-////
-basic.forever(function () {
-    //// jwc y serial.writeLine('* 1: > L: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
-    //// jwc y serial.writeLine('* 2: > R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
-    
-    //// jwc yy serial.writeLine('* 1: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))    
-    //// jwc yyy serial.writeLine('.')
-
-    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_C))
-    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_D))
-    serial.writeString('.')
-
-    serial.writeString("c:")
-    serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
-    serial.writeString("d:")
-    serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
-
-
-    //// jwc yn only 0: if (pins.digitalReadPin(DigitalPin.P12) == 0) {
-    //// jwc yn only 0:     basic.showString("a")
-    //// jwc yn only 0: } else if (pins.digitalReadPin(DigitalPin.P12) == 1) {
-    //// jwc yn only 0:     basic.showString("A")
-    //// jwc yn only 0: } else {
-    //// jwc yn only 0:     basic.showString(".")
-    //// jwc yn only 0: }
-    if (pins.digitalReadPin(DigitalPin.P12) == 1) {
-        basic.showString("a")
-    } else if (pins.digitalReadPin(DigitalPin.P12) == 0) {
-        basic.showString("A")
-    } else {
-        basic.showString(".")
-    }
-
-    serial.writeString("Z12:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
-
-    serial.writeString("Z13:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
-
-    serial.writeString("Z14:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
-
-    serial.writeString("Z15:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
-
-
-    serial.writeString("Y12:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
-
-    serial.writeString("Y13:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
-
-    serial.writeString("Y14:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
-
-    serial.writeString("Y15:")
-    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
-    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
-
-    serial.writeLine("")
-})
-
 // TYJ these will auto-run like an on-start stack
 //
 /// jwc y basic.showIcon(IconNames.SmallHeart)
@@ -384,7 +313,14 @@ basic.forever(function () {
 
 
 // Start Stack
+// Start Stack
+// Start Stack
+
 serial.writeLine("* 00_B: On-Start: test.ts")
+
+//// jwc 26-0112-1950
+//// jwc n missing '()': joystickbit.initJoystickBit
+//// jwc moved to 'main.ts': joystickbit.initJoystickBit()
 
 quest_Dashboard.quest_Show_Oled_Cleared_Func()
 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("0", 0, 0)
@@ -401,9 +337,100 @@ quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(5, quest_Time_Uni
 //// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 
 //// jwc 25-0922-0100
-serial.writeLine('* test.ts: 000: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
+serial.writeLine("* test.ts: 00_B1: " + "|network_GroupChannel_MyBotId_Base0_Int_QuestGlobal:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + "|control.deviceName():" + convertToText(control.deviceName()) + "|control.deviceSerialNumber():" + convertToText(control.deviceSerialNumber()))
 
 //// jwc 25-0809-1400 270/360 = 0.75 >> 0 x 0.75 = 0 | 45 x 0.75 = 33.75 } 90 x 0.75 - 67.5 | 180 x 0.75 = 135 \/\/
 ////
 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 0)
 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 0)
+
+//// jwc 25-1105-1700 Weirdly, the following will not work: No response from Buttons C, D, E, F.  Yet 'robot100_200-RemoteControl-Beginner' does work.  
+////
+basic.forever(function () {
+    //// jwc y serial.writeLine('* 1: > L: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Left) + ' < ')
+    //// jwc y serial.writeLine('* 2: > R: ' + quest_General.quest_Get_String_WithColumnPadding_AsStringOut_Func(convertToText(randint(0, 999)), 10, quest_String_Justify_Type_Enum.justify_Right) + ' < ')
+
+    //// jwc yy serial.writeLine('* 1: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboardOfMb_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))    
+    //// jwc yyy serial.writeLine('.')
+
+    serial.writeString("|Button Status:")
+    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_C))
+    serial.writeNumber(quest_Sensors.quest_Get_Controller_Joystick_ButtonStatus_AsIntOut_Func(quest_Sensors.quest_Get_Controller_Joystick_Button_Status_Enum.Button_D))
+
+    serial.writeString("||Button Pin Status:")
+    serial.writeString("|C_P12:")
+    serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
+    serial.writeString("|D_P13:")
+    serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
+
+
+    //// jwc yn only 0: if (pins.digitalReadPin(DigitalPin.P12) == 0) {
+    //// jwc yn only 0:     basic.showString("a")
+    //// jwc yn only 0: } else if (pins.digitalReadPin(DigitalPin.P12) == 1) {
+    //// jwc yn only 0:     basic.showString("A")
+    //// jwc yn only 0: } else {
+    //// jwc yn only 0:     basic.showString(".")
+    //// jwc yn only 0: }
+    if (pins.digitalReadPin(DigitalPin.P12) == 1) {
+        basic.showString("1")
+    } else if (pins.digitalReadPin(DigitalPin.P12) == 0) {
+        basic.showString("0")
+    } else {
+        basic.showString(".")
+    }
+
+    serial.writeString("|P12a:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
+    serial.writeString("|P12b:")
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
+
+    serial.writeString("|P13a:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
+    serial.writeString("|P13b:")
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
+
+    serial.writeString("|P14a:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
+    serial.writeString("|P14b:")
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
+
+    serial.writeString("|P15a:")
+    serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
+    serial.writeString("|P15b:")
+    serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Z12:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Z13:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Z14:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Z15:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
+
+
+   //// jwc 26-0112-1840 y serial.writeString("Y12:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P12)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P12)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Y13:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P13)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P13)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Y14:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P14)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P14)))
+
+   //// jwc 26-0112-1840 y serial.writeString("Y15:")
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(joystickbit.getButton(joystickbit.JoystickBitPin.P15)))
+   //// jwc 26-0112-1840 y serial.writeString(convertToText(pins.digitalReadPin(DigitalPin.P15)))
+
+    serial.writeLine("")
+})

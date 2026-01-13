@@ -304,6 +304,8 @@ let motor_Power_Hi_QuestGlobal = 100
 serial.writeLine("")  // Insure starting a new line
 serial.writeLine("* 00_A: On-Start: custom.ts")
 
+serial.writeLine("* 00_A1: KEY!!! 'joystickbit.initJoystickBit()' Enables Digital-Pin Reads for Button-Triggering ")
+joystickbit.initJoystickBit()
 
 
 //// jwc n NOT WORK, SINCE ONLY CREATES 'PROTOTYPE': class quest_Public_Variables_N_Constants_01 {
@@ -1276,27 +1278,27 @@ namespace quest_Sensors {
 
         switch (button_status_enum_in) {
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_C:
-                serial.writeString("C:")
+                serial.writeString("|C:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P12))
-                serial.writeString(".")
+                serial.writeString("|")
                 return pins.digitalReadPin(DigitalPin.P12)
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_D:
-                serial.writeString("D:")
+                serial.writeString("|D:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P13))
-                serial.writeString(".")
+                serial.writeString("|")
                 return pins.digitalReadPin(DigitalPin.P13);
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_E:
-                serial.writeString("E:")
+                serial.writeString("|E:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P14))
-                serial.writeString(".")
+                serial.writeString("|")
                 return pins.digitalReadPin(DigitalPin.P14);
                 break
             case quest_Get_Controller_Joystick_Button_Status_Enum.Button_F:
-                serial.writeString("F:")
+                serial.writeString("|F:")
                 serial.writeNumber(pins.digitalReadPin(DigitalPin.P15))
-                serial.writeString(".")
+                serial.writeString("|")
                 return pins.digitalReadPin(DigitalPin.P15);
                 break
             default: return 0;
