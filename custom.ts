@@ -519,7 +519,8 @@ namespace quest_Dashboard {
 
         //// jwc 25-0628-1400 network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "(" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + ")"
         //// jwc 25-0628-1400 network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = "[" + network_DeviceSerialName_MyBotId_Str_QuestGlobal + "]" + quest_General.quest_Get_Number_WithColumnPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0)
-        network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithZeroPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "-" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
+        //// jwc 26-0119-0400 y but convert to 'key:value' format \/ network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = quest_General.quest_Get_Number_WithZeroPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0) + "-" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
+        network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal = network_DeviceSerialName_MyBotId_Str_QuestGlobal + ":" + quest_General.quest_Get_Number_WithZeroPadding_AsStringOut_Func(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal, 3, 0)
 
         //// jwc 25-0626-1400 network_GroupChannel_MyBotId_ManualSet_Override_Bool_QuestGlobal = true
         //// jwc 25-0626-1400 network_GroupChannel_MyBotId_AutoSet_Default_Bool_QuestGlobal = false
@@ -686,7 +687,8 @@ namespace quest_Dashboard {
 
         //// jwc 25-0627-0900 y let network_Message_Str = network_Message_Str_In
         //// jwc 25-0628-1400 let network_Message_WithHeader_Str = "A_BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ",B_Data:" + network_Message_Str_In
-        let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ":"+ network_Message_Str_In
+        //// jwc 26-0119-0400 y yet use standard separator between fields \/ let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ":" + network_Message_Str_In
+        let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + "," + network_Message_Str_In
 
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION // Avoid sending redundant messages to not overload network
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION if (network_Message_Str != network_Message_Old_Str_QuestGlobal){
