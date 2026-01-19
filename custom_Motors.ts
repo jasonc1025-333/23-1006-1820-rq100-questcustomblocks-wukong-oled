@@ -85,8 +85,8 @@ namespace quest_Motors {
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
 
-                message_Mini_Network_Str = ",S0R:" + convertToText(powerRightIn)
-                message_Full_Display_Str = ",Wheel_R: " + convertToText(powerRightIn)
+                message_Mini_Network_Str = "S0R:" + convertToText(powerRightIn)
+                message_Full_Display_Str = "Wheel_R: " + convertToText(powerRightIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 2)
 
@@ -120,8 +120,8 @@ namespace quest_Motors {
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
 
-                message_Mini_Network_Str = ",S2R:" + convertToText(powerRightIn)
-                message_Full_Display_Str = ",Wheel_2_R: " + convertToText(powerRightIn)
+                message_Mini_Network_Str = "S2R:" + convertToText(powerRightIn)
+                message_Full_Display_Str = "Wheel_2_R: " + convertToText(powerRightIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 4)
 
@@ -788,8 +788,8 @@ namespace quest_Motors {
                 //// jwc 25-1012-2000 y message_Mini_Network_Str = "6" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 //// jwc 26-0112-1750 y message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In)
                 //// jwc 26-0112-1750 y message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In)
-                message_Mini_Network_Str = ",S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
-                message_Full_Display_Str = ",Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
+                message_Mini_Network_Str = "S6R:" + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
+                message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
                 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
