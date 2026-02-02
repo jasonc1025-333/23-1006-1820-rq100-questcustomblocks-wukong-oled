@@ -678,7 +678,8 @@ namespace quest_Dashboard {
     //// jwc 25-0626-1400 export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum): void {
     //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
     //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
-    export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str_In: string): void {
+    //// jwc 26-0202-1310 y? export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str_In: string): void {
+    export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -688,7 +689,8 @@ namespace quest_Dashboard {
         //// jwc 25-0627-0900 y let network_Message_Str = network_Message_Str_In
         //// jwc 25-0628-1400 let network_Message_WithHeader_Str = "A_BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ",B_Data:" + network_Message_Str_In
         //// jwc 26-0119-0400 y yet use standard separator between fields \/ let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + ":" + network_Message_Str_In
-        let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + "," + network_Message_Str_In
+        //// jwc 26-0202-1300 y? let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + "," + network_Message_Str_In
+        let network_Message_WithHeader_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal + "," + send_DataOfBot_ToXrayDashboardOfMb_Message_String
 
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION // Avoid sending redundant messages to not overload network
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION if (network_Message_Str != network_Message_Old_Str_QuestGlobal){
