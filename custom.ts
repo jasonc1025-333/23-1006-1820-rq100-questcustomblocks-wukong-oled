@@ -359,7 +359,7 @@ namespace quest_Dashboard {
         OLED12864_I2C.clear()
         //// jwc y? move down half-row: 64/8 = 8px >> / 2 = 4px: \/ OLED12864_I2C.hline(0, 32, 128, 1)
         // Divider Line between Upper-System's TextArea and Lower-Human's TextArea
-        OLED12864_I2C.hline(0, 36, 128, 1)
+        //// jwc 26-0202-1000 UX done at FrontEnd-UserLevel (main.py/.ts) not at this BackEnd-CompanyLevel (custom.ts level): OLED12864_I2C.hline(0, 36, 128, 1)
     }
     /**
     * quest_Show_String_For_Oled_BigFont_Fn
@@ -646,7 +646,7 @@ namespace quest_Dashboard {
             //// jwc 25-0626-1400 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("* 38A: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str, 0, 3)
             //// jwc 25-0626-1400 serial.writeLine("* 38B: network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL: " + network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL + " | network_GroupChannel_MyBotId_Base0_Int_QuestGlobal: " + network_GroupChannel_MyBotId_Base0_Int_QuestGlobal + " | network_Message_Str: " + network_Message_Str)
             //// jwc 25-0627-0900 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("*0:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal), 0, 0)
-            quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(network_Message_Str, 0, 0)
+            //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(network_Message_Str, 0, 0)
 
             if (_debug_Serial_Print_Bool_QuestGlobal) {
                 serial.writeLine("")  //// create a newline to start debug-report

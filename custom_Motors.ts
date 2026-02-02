@@ -83,12 +83,12 @@ namespace quest_Motors {
                 message_Mini_Network_Str = "S1L:" + convertToText(powerLeftIn)
                 message_Full_Display_Str = "Wheel_L: " + convertToText(powerLeftIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
 
                 message_Mini_Network_Str = "S0R:" + convertToText(powerRightIn)
                 message_Full_Display_Str = "Wheel_R: " + convertToText(powerRightIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 2)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 2)
 
                 break
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
@@ -118,12 +118,12 @@ namespace quest_Motors {
                 message_Mini_Network_Str = "S3L:" + convertToText(powerLeftIn)
                 message_Full_Display_Str = "Wheel_2_L: " + convertToText(powerLeftIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
 
                 message_Mini_Network_Str = "S2R:" + convertToText(powerRightIn)
                 message_Full_Display_Str = "Wheel_2_R: " + convertToText(powerRightIn)
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 4)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 4)
 
                 break
             default:
@@ -135,7 +135,7 @@ namespace quest_Motors {
                 message_Full_Display_Str = "* ERROR: 25-0209-0821: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn
 
                 quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(message_Mini_Network_Str)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 1)
 
                 //// jwc 25-0627-0900 quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + "ERROR: 25-0209-0822: quest_Set_PowerMotorsViaBlueRedBlackPins_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
                 //// jwc 25-0627-0900 if (_debug_Serial_Print_Bool_QuestGlobal) {
@@ -665,7 +665,7 @@ namespace quest_Motors {
                 message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Max - servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
                 // Special Location: For 'Arm_L"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -792,7 +792,7 @@ namespace quest_Motors {
                 message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Enum_In) + "_" + convertToText(servoArm_Degrees_Local - servoArm_Degrees_Offset_For_Down)
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -905,7 +905,7 @@ namespace quest_Motors {
                 message_Full_Display_Str = "Arm_L: " + convertToText(servoArm_DegreesInDirection_Int_In) +"("+ convertToText(servoArm_Degrees_Local) +")"
                 // Special Location: For 'Arm_L" 
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 3)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 5)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
@@ -937,7 +937,7 @@ namespace quest_Motors {
                 message_Full_Display_Str = "Arm_R: " + convertToText(servoArm_DegreesInDirection_Int_In) + "(" + convertToText(servoArm_Degrees_Local) + ")"
                 // Special Location: For 'Arm_R"
                 //// jwc 25-1012-2200 y quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 10, 3)
-                quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
+                //// jwc 26-0202-1130 Oled better controlled at user-level, not here: quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func(message_Full_Display_Str, 0, 6)
 
                 //// jwc 25-0628-1400 if (_debug_Serial_Print_Bool_QuestGlobal) {
                 //// jwc 25-0628-1400     //// jwc o serial.writeLine("* quest_Set_AutoDegrees_ForServoArm_Func: " + powerLeftIn + " " + powerRightIn + " >> " + motor_Power_L + " " + motor_Power_R)
