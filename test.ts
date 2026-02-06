@@ -82,13 +82,21 @@ input.onButtonPressed(Button.A, function () {
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/
         //// jwc 25-0628-1400 "A:34567890123456789",
-        "BB:456789"
+        "B:456789"
     )
-    quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("ABCD")
-
 
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))
+
+    ///// jwc ? quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("Name:" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func)
+    ///// jwc ? quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func("Id:" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func)
+    ///// jwc ?? quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(convertToText(quest_Dashboard.quest_Get_SerialName_OfMyBot_Func))
+    ///// jwc ?? quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(convertToText(quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func))
+
+    serial.writeLine('* test.ts: 01: ' + "Name:" + quest_Dashboard.quest_Get_SerialName_OfMyBot_Func)
+    serial.writeLine('* test.ts: 02: ' + "Id:" + quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func)
+    serial.writeLine('* test.ts: 01A: ' + "Name:" + convertToText(quest_Dashboard.quest_Get_SerialName_OfMyBot_Func))
+    serial.writeLine('* test.ts: 02A: ' + "Id:" + convertToText(quest_Dashboard.quest_Get_GroupChannel_BotId_OfMyBot_Func))
 
     //// jwc 25-0922-0100 
     //// jwc 25-0922-0120 y let degrees_MAX_INT = 270
