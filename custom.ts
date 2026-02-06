@@ -304,7 +304,7 @@ let motor_Power_Hi_QuestGlobal = 100
 serial.writeLine("")  // Insure starting a new line
 serial.writeLine("* 00_A: On-Start: custom.ts")
 
-serial.writeLine("* 00_A1: KEY!!! 'joystickbit.initJoystickBit()' Enables Digital-Pin Reads for Button-Triggering ")
+serial.writeLine("* 00_A1: KeyNote!!! 'joystickbit.initJoystickBit()' Enables Digital-Pin Reads for Button-Triggering ")
 joystickbit.initJoystickBit()
 
 
