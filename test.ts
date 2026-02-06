@@ -66,7 +66,8 @@ input.onButtonPressed(Button.A, function () {
         randint(100,199)
         //// jwc 25-0627-0900 ""
     )
-    quest_Dashboard.quest_Dashboard_Network_SendLogin_Func(100)
+    //// use some max id #
+    quest_Dashboard.quest_Dashboard_Network_SendLogin_Func(254)
 
     serial.writeLine("")
     serial.writeLine("* quest_Dashboard_Network_SendData_WithMyBotHeader_Func(): ")
@@ -75,6 +76,7 @@ input.onButtonPressed(Button.A, function () {
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/
         //// jwc 25-0628-1400 "A:34567890123456789",
+        //// GOOD: Over Max by 0 (19char max) \/ 
         "A:3456789",
     )
     quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
@@ -82,8 +84,21 @@ input.onButtonPressed(Button.A, function () {
         //// jwc y "A:3456789012345678901234567890",
         //// jwc Test Max Len = 19 \/
         //// jwc 25-0628-1400 "A:34567890123456789",
-        "B:456789"
+        //// jwc 26-0206-1300 "B:456789"
+        //// jwc 25-0628-1400 
+        //// BAD: Over Max by 1 (20char max) \/
+        "B:34567890",
     )
+    //// jwc ? quest_Dashboard.quest_Dashboard_Network_SendData_WithMyBotHeader_Func(
+    //// jwc ?     //// jwc y "A:ThisIsADataTest",
+    //// jwc ?     //// jwc y "A:3456789012345678901234567890",
+    //// jwc ?     //// jwc Test Max Len = 19 \/
+    //// jwc ?     //// jwc 25-0628-1400 "A:34567890123456789",
+    //// jwc ?     //// jwc 26-0206-1300 "B:456789"
+    //// jwc ?     //// jwc 25-0628-1400 
+    //// jwc ?     //// BAD: Over Max by 1 \/
+    //// jwc ?     "C:345678901234567890",
+    //// jwc ? )
 
     //// jwc ? serial.writeLine('* 0: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal) + " " + convertToText(control.deviceSerialNumber()))
     serial.writeLine('* test.ts: 00: ' + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + " " + convertToText(control.deviceName()) + " " + convertToText(control.deviceSerialNumber()))

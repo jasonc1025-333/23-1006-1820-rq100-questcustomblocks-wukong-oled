@@ -214,16 +214,19 @@ enum quest_String_Justify_Type_Enum {
     justify_Right,
 }
 
-
-input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
+// Ideally, following Gesture is Reserved for Below Function
+input.onGesture(Gesture.Shake, function () {
+    //// jwc input.onGesture(Gesture.ScreenDown, function () {
+    //// jwc 26-0206-1250 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 
     //// jwc 25-0627-0900 basic.showString("Z")
     //// jwc 25-0627-0900 basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
-    basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
+    
+    //// jwc 26-0206-1300 y basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
     //// jwc 25-0627-0900 Toggle '_debug_Serial_Print_Bool_QuestGlobal'
     _debug_Serial_Print_Bool_QuestGlobal = !(_debug_Serial_Print_Bool_QuestGlobal)
-    serial.writeLine("* input.onLogoEvent: _debug_Serial_Print_Bool_QuestGlobal=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
-
+    basic.showString("Debug=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
+    serial.writeLine("* 26-0206-1320: _debug_Serial_Print_Bool_QuestGlobal=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
 })
 
 
@@ -620,9 +623,14 @@ namespace quest_Dashboard {
                 "Network_Message Max Length or will be cut off"
             )
             if (network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
-                basic.showString("* ERROR: 25-0209-0400 Network Message > Max Len.")
-                serial.writeLine("* 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
-
+                //// jwc 26-0206-1330 Disable since scrolling delays microbit: basic.showString("* ERROR: 25-0209-0400 Network Message > Max Len.")
+                //// jwc 26-0206-1200 y serial.writeLine("* 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                serial.writeLine("")  // New Line
+                serial.writeLine("* ERROR: 25-0209-0400A: Fixing Old: 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                //// jwc Fix Error by Truncating Message to Not Exceed Max Length
+                network_Message_Str = network_Message_Str.substr(0, network_Message_LENGTH_MAX_INT_QUESTGLOBAL)
+                serial.writeLine("* ERROR: 25-0209-0400B: Fixed  New: 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                serial.writeLine("")  // New Line
             }
 
             //// jwc25-0628-1400 Important to prevent recursion: stack overflow: 
@@ -797,8 +805,14 @@ namespace quest_Dashboard {
                 "Network_Message Max Length or will be cut off"
             )
             if (network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL) {
-                basic.showString("* ERROR: 25-0209-0410 Network Message > Max Len.")
-                serial.writeLine("* 'network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_WithHeader_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                //// jwc 26-0206-1330 Disable since scrolling delays microbit: basic.showString("* ERROR: 25-0209-0410 Network Message > Max Len.")
+                //// jwc 26-0206-1200 y serial.writeLine("* 'network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_WithHeader_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                serial.writeLine("")  // New Line
+                serial.writeLine("* ERROR: 25-0209-0410A: Fixing Old: 'network_Message_WithHeader_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_WithHeader_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                //// jwc Fix Error by Truncating Message to Not Exceed Max Length
+                network_Message_WithHeader_Str = network_Message_WithHeader_Str.substr(0, network_Message_LENGTH_MAX_INT_QUESTGLOBAL)
+                serial.writeLine("* ERROR: 25-0209-0410B: Fixed  New: 'network_Message_Str.length > network_Message_LENGTH_MAX_INT_QUESTGLOBAL'" + network_Message_WithHeader_Str + "," + network_Message_LENGTH_MAX_INT_QUESTGLOBAL.toString())
+                serial.writeLine("")  // New Line
             }
             radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
             radio.sendString(network_Message_WithHeader_Str)
