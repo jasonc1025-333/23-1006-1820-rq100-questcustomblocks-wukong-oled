@@ -455,7 +455,7 @@ namespace quest_Dashboard {
      *
      */
     // '\\' = escape character to deactivate following special character
-    //% block="set quest\\_Get\\_GroupChannel_BotId_OfMyBot\\_Func"
+    //% block="set quest\\_Get\\_GroupChannel\\_BotId\\_OfMyBot\\_Func"
     //% weight=50 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_GroupChannel_BotId_OfMyBot_Func(){
