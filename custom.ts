@@ -214,20 +214,21 @@ enum quest_String_Justify_Type_Enum {
     justify_Right,
 }
 
-// Ideally, following Gesture is Reserved for Below Function
-input.onGesture(Gesture.Shake, function () {
-    //// jwc input.onGesture(Gesture.ScreenDown, function () {
-    //// jwc 26-0206-1250 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
-
-    //// jwc 25-0627-0900 basic.showString("Z")
-    //// jwc 25-0627-0900 basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
-    
-    //// jwc 26-0206-1300 y basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
-    //// jwc 25-0627-0900 Toggle '_debug_Serial_Print_Bool_QuestGlobal'
-    _debug_Serial_Print_Bool_QuestGlobal = !(_debug_Serial_Print_Bool_QuestGlobal)
-    basic.showString("Debug=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
-    serial.writeLine("* 26-0206-1320: _debug_Serial_Print_Bool_QuestGlobal=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
-})
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed: // Ideally, following Gesture is Reserved for Below Function
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed: input.onGesture(Gesture.Shake, function () {
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc 26-0206-1700 Too Sensitive: input.onGesture(Gesture.Shake, function () {
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc Too Popular: input.onGesture(Gesture.ScreenDown, function () {
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc Already Used: 26-0206-1250 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed: 
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc 25-0627-0900 basic.showString("Z")
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc 25-0627-0900 basic.showNumber(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal)
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc 26-0206-1300 y basic.showString(network_DeviceSerialName_MyBotId_Str_QuestGlobal)
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     //// jwc 25-0627-0900 Toggle '_debug_Serial_Print_Bool_QuestGlobal'
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     _debug_Serial_Print_Bool_QuestGlobal = !(_debug_Serial_Print_Bool_QuestGlobal)
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     basic.showString("Debug=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed:     serial.writeLine("* 26-0206-1320: _debug_Serial_Print_Bool_QuestGlobal=" + _debug_Serial_Print_Bool_QuestGlobal.toString())
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode above if needed: })
 
 
 
@@ -279,6 +280,7 @@ let network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL =
 
 //// jwc 25-0626-1800 \/ let _debug_Serial_Print_Bool_QuestGlobal = false
 //// jwc 25-0627-0300 Can cause great performant-loss: let _debug_Serial_Print_Bool_QuestGlobal = true
+//// jwc 26-0206-1700 Cannot find a reserved input: just hardcode 'true' below if needed: 
 let _debug_Serial_Print_Bool_QuestGlobal = false
 
 //
