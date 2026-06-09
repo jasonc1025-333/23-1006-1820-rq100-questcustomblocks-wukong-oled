@@ -1,6 +1,6 @@
 {
     "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled",
-    "version": "0.37.0",
+    "version": "0.38.0",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -10,7 +10,7 @@
         "OLED12864_I2C--ForkedFrom_Makecode-Extensions": "github:eande-jasonc1025/OLED12864_I2C--ForkedFrom_Makecode-Extensions#v2.0.1",
         "joystickbit": "github:tinkertanker/pxt-joystickbit#v1.0.2",
         "microbit-pxt-rotate": "github:bsiever/microbit-pxt-rotate#v0.1.6",
-        "25-0805-1750-makecode_microbit-comments-extension--26-0607-1040-ene": "github:jasonc1025-333/25-0805-1750-makecode_microbit-comments-extension--26-0607-1040-ene#v0.1.2"
+        "25-0805-1750-makecode_microbit-comments-extension--26-0607-1040-ene": "github:jasonc1025-333/25-0805-1750-makecode_microbit-comments-extension--26-0607-1040-ene#v0.2.0"
     },
     "files": [
         "main.blocks",
