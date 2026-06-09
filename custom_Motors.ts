@@ -2,7 +2,7 @@
 // custom_Motors.ts
 //
 
-////jwc y //% weight=51 color=#7f7fff icon="Q"
+////jwc y //% weight=51 color=#7f7fff icon="E"
 // dark blue #0000ff TOO DARK, CANNOT SEE BLACK BOUNDARY LINES
 // light blue rgb(127, 190, 255) #7fbeff TOO LIGHT
 // less_light blue rgb(0, 127, 255) ##007fff to dark that matches other groups
@@ -13,7 +13,12 @@
 /**
  * quest_Motors blocks
  */
-//% weight=69 color=#7f7fff icon="Q"
+// jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
+// OLD: (no //% block= override)
+// OLD: //% weight=69 color=#7f7fff icon="Q"
+//% block="EnE_Motors"
+//% weight=69 color=#7f7fff icon="E"
+// jwc-26-0608-2000: REPLACED /\
 namespace quest_Motors {
     /// //
     /// // * Global Variables Q Constants
@@ -31,12 +36,15 @@ namespace quest_Motors {
     ////jwc y //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn"
     ////jwc 25-0805-1500 //% block="set manual\\_servo\\_motors:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Set_PowerMotorsViaBlueRedBlackPins_Fn
     /**
-     * quest_Set_PowerMotorsViaBlueRedBlackPins_Fn
+     * EnE_Set_PowerMotorsViaBlueRedBlackPins_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
      * @param powerLeftIn number
      * @param powerRightIn number
      */
+    // jwc-26-0608-2000: REPLACED /\
     //% block="set manual\\_servo\\_wheels:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
@@ -163,8 +171,10 @@ namespace quest_Motors {
     ////jwc y //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power: $powerLeftIn|* right_motor power: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     ////jwc 25-0805-1500 //% block="set manual\\_servo\\_motors w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
     /**
-     * quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
+     * EnE_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
      * @param powerLeftIn number
      * @param powerRightIn number
@@ -172,6 +182,7 @@ namespace quest_Motors {
      * @param debug_Show_In quest_Debug_Show_Enum
      *
      */
+    // jwc-26-0608-2000: REPLACED /\
     //% block="set manual\\_servo\\_wheels w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
@@ -295,8 +306,10 @@ namespace quest_Motors {
     ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
     ////jwc 25-0805-1500 //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Set_Turn_WithTimer_Fn
     /**
-    * quest_Set_Turn_WithTimer_Fn
+    * EnE_Set_Turn_WithTimer_Fn
     * @param port_Ids_In quest_PortGroup_BlueRedBlack_PortIds_Enum
     * @param turn_Type_In quest_Turn_Type_Enum
     * @param turn_Direction_In quest_Turn_Direction_Enum
@@ -304,6 +317,7 @@ namespace quest_Motors {
     * @param turn_Duration_In quest_Turn_Duration_Enum
     * @param debug_Show_In quest_Debug_Show_Enum
     */
+    // jwc-26-0608-2000: REPLACED /\
     //% block="set auto\\_servo\\_wheels\\_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
     //% weight=76 blockGap=8
     //% inlineInputMode=external

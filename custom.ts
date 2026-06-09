@@ -339,7 +339,12 @@ namespace quest_Public_Variables_N_Constants {
 /**
  * quest_Dashboard blocks
  */
-//% weight=65 color=#7f3f00 icon="Q"
+// jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
+// OLD: (no //% block= override)
+// OLD: //% weight=65 color=#7f3f00 icon="Q"
+//% block="EnE_Dashboard"
+//% weight=65 color=#7f3f00 icon="E"
+// jwc-26-0608-2000: REPLACED /\
 namespace quest_Dashboard {
 
     //// jwc yy public persistent variable, yet needs 'quest_Dashboard.' namespace-prefix to access \/
@@ -354,9 +359,12 @@ namespace quest_Dashboard {
     OLED12864_I2C.zoom(false)
     OLED12864_I2C.clear()
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Show_Oled_Cleared_Fn
     /**
-    * quest_Show_Oled_Cleared_Fn
+    * EnE_Show_Oled_Cleared_Fn
     */
+    // jwc-26-0608-2000: REPLACED /\
     //% block="show oled cleared"
     //% weight=53 blockGap=8
     //% inlineInputMode=external
@@ -366,12 +374,15 @@ namespace quest_Dashboard {
         // Divider Line between Upper-System's TextArea and Lower-Human's TextArea
         //// jwc 26-0202-1000 UX done at FrontEnd-UserLevel (main.py/.ts) not at this BackEnd-CompanyLevel (custom.ts level): OLED12864_I2C.hline(0, 36, 128, 1)
     }
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Show_String_For_Oled_BigFont_Fn
     /**
-    * quest_Show_String_For_Oled_BigFont_Fn
+    * EnE_Show_String_For_Oled_BigFont_Fn
     * @param textStrIn string
     * @param xColBase0In number
     * @param yRowBase0In number
     */
+    // jwc-26-0608-2000: REPLACED /\
     ////jwc y //% block="show oled big_font (AutoSetup I2cAddress=60, SCL=Pin19, SDA=Pin20)|textStrIn: $textStrIn|xColBase0In[0..11]: $xColBase0In|yRowBase0In[0..3]: $yRowBase0In"
     //% '\\' escape character to deactivate special character processing
     //% block="show oled big_font (AutoSetup I2cAddress=60, SCL=Pin19, SDA=Pin20)|text\\_Str\\_In: $textStrIn|x\\_Col\\_Base0\\_In[0..11]: $xColBase0In|y\\_Row\\_Base0\\_In[0..3]: $yRowBase0In"
@@ -406,12 +417,15 @@ namespace quest_Dashboard {
 
     //// jwc 25-0626-1400 y limite user to only 2 bottom rows: //% yRowBase0In.min=0 yRowBase0In.max=7
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Show_String_For_Oled_SmallFont_Fn
     /**
-     * quest_Show_String_For_Oled_SmallFont_Fn
+     * EnE_Show_String_For_Oled_SmallFont_Fn
      * @param textStrIn string
      * @param xColBase0In number
      * @param yRowBase0In number
      */
+    // jwc-26-0608-2000: REPLACED /\
     //% '\\' escape character to deactivate special character processing
     //% block="show oled small_font (AutoSetup I2cAddress=60, SCL=Pin19, SDA=Pin20)|text\\_Str\\_In: $textStrIn|x\\_Col\\_Base0\\_In[0..24]: $xColBase0In|y\\_Row\\_Base0\\_In[0..7]: $yRowBase0In"
     //% xColBase0In.min=0 xColBase0In.max=24
@@ -454,11 +468,14 @@ namespace quest_Dashboard {
     //// jwc 25-0626-2250  * quest_Show_GroupChannelOfMyBot_Func
     //// jwc 25-0626-2250     * @param debug_Show_In quest_Debug_Show_Enum
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_GroupChannel_BotId_OfMyBot_Func
     /**
-     * quest_Get_GroupChannel_BotId_OfMyBot_Func
-     * @param 
+     * EnE_Get_GroupChannel_BotId_OfMyBot_Func
+     * @param
      *
      */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
     //% block="quest\\_Get\\_GroupChannel\\_BotId\\_OfMyBot\\_Func"
     //% weight=50 blockGap=8
@@ -469,11 +486,14 @@ namespace quest_Dashboard {
         return network_GroupChannel_MyBotId_Base0_Int_QuestGlobal
     }
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_SerialName_OfMyBot_Func
     /**
-     * quest_Get_SerialName_OfMyBot_Func
+     * EnE_Get_SerialName_OfMyBot_Func
      * @param
      *
      */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
     //% block="quest\\_Get\\_SerialName_OfMyBot\\_Func"
     //% weight=50 blockGap=8
@@ -489,11 +509,14 @@ namespace quest_Dashboard {
     //// jwc 25-0628-0900 * quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func
     //// jwc 25-0628-0900 //% block="set quest\\_Send\\_LoginOfBot\\_ToXrayDashboardOfMb\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Dashboard_Network_SendLogin_Func
     /**
-     * quest_Dashboard_Network_SendLogin_Func
+     * EnE_Dashboard_Network_SendLogin_Func
      * @param network_GroupChannel_MyBotId_Base0_IntIn number
      *
      */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
     //% block="quest\\_Dashboard\\_Network\\_SendLogin\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
     //% network_GroupChannel_MyBotId_Base0_IntIn.min=0 network_GroupChannel_MyBotId_Base0_IntIn.max=254
@@ -674,11 +697,14 @@ namespace quest_Dashboard {
     //// jwc 25-0627-0900 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String|* debug_Show_In: $debug_Show_In"
     //// jwc 25-0628-0900 //% block="set quest\\_Send\\_DataOfBot\\_ToXrayDashboardOfMb\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Dashboard_Network_SendData_WithMyBotHeader_Func
     /**
-     * quest_Dashboard_Network_SendData_WithMyBotHeader_Func
+     * EnE_Dashboard_Network_SendData_WithMyBotHeader_Func
      * @param send_DataOfBot_ToXrayDashboardOfMb_Message_String string
      *
      */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
     //% block="quest\\_Dashboard\\_Network\\_SendData\\_WithMyBotHeader\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
     //% weight=48 blockGap=8
@@ -866,22 +892,30 @@ namespace quest_Dashboard {
 
 }
 
-//////jwc y //% weight=67 color=#ff7f00 icon="Q"
-//////jwc y //% weight=56 color=#7f7f00 icon="Q"
-//////jwc y brown: //% weight=67 color=#7f3f00 icon="Q"
+//////jwc y //% weight=67 color=#ff7f00 icon="E"
+//////jwc y //% weight=56 color=#7f7f00 icon="E"
+//////jwc y brown: //% weight=67 color=#7f3f00 icon="E"
 //
 // Orange #ff7f00 rgb(255, 127, 0)
 //
 /**
  * quest_Timer blocks
  */
-//% weight=67 color=#7f7f00 icon="Q"
+// jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
+// OLD: (no //% block= override)
+// OLD: //% weight=67 color=#7f7f00 icon="Q"
+//% block="EnE_Timer"
+//% weight=67 color=#7f7f00 icon="E"
+// jwc-26-0608-2000: REPLACED /\
 namespace quest_Timer {
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Set_ContinueCurrentState_CountdownTimer_Fn
     /**
-     * quest_Set_ContinueCurrentState_CountdownTimer_Fn
+     * EnE_Set_ContinueCurrentState_CountdownTimer_Fn
      * @param countdownTimer number
      * @param timeUnits quest_Time_Units_Enum
      */
+    // jwc-26-0608-2000: REPLACED /\
     //% block="set current_state to continue for: $countdownTimer $timeUnits"
     //% weight=70 blockGap=8
     //// y countdownTimer.min=0 countdownTimer.max=5000
@@ -908,14 +942,22 @@ namespace quest_Timer {
 /**
  * quest_General blocks
  */
-//% weight=63 color=#3f3f3f icon="Q"
+// jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
+// OLD: (no //% block= override)
+// OLD: //% weight=63 color=#3f3f3f icon="Q"
+//% block="EnE_General"
+//% weight=63 color=#3f3f3f icon="E"
+// jwc-26-0608-2000: REPLACED /\
 namespace quest_General {
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_Number_WithColumnPadding_AsStringOut_Fn
     /**
-    * quest_Get_Number_WithColumnPadding_AsStringOut_Fn
+    * EnE_Get_Number_WithColumnPadding_AsStringOut_Fn
     * @param number_in number
     * @param string_len_max_in number
     * @param decimal_places_in number
     */
+    // jwc-26-0608-2000: REPLACED /\
     ////jwc m //% block="get number with_column_padding as_string_out|number_in: $number_in|string_len_max_in: $string_len_max_in|decimal_places_in  $decimal_places_in"
     // '\\' escape character to deactivate special character processing
     //% block="get number w/ column\\_padding as string\\_out|number_in: $number_in|string\\_len\\_max\\_in: $string_len_max_in|decimal\\_places\\_in  $decimal_places_in"
@@ -934,12 +976,15 @@ namespace quest_General {
         return local_string_out
     }
     
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_Number_WithZeroPadding_AsStringOut_Fn
     /**
-    * quest_Get_Number_WithZeroPadding_AsStringOut_Fn
+    * EnE_Get_Number_WithZeroPadding_AsStringOut_Fn
     * @param number_in number
     * @param string_len_max_in number
     * @param decimal_places_in number
     */
+    // jwc-26-0608-2000: REPLACED /\
     ////jwc m //% block="get number with_zero_padding as_string_out|number_in: $number_in|string_len_max_in: $string_len_max_in|decimal_places_in  $decimal_places_in"
     // '\\' escape character to deactivate special character processing
     //% block="get number w/ zero\\_padding as string\\_out|number_in: $number_in|string\\_len\\_max\\_in: $string_len_max_in|decimal\\_places\\_in  $decimal_places_in"
@@ -958,12 +1003,15 @@ namespace quest_General {
         return local_string_out
     }
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_String_WithColumnPadding_AsStringOut_Fn
     /**
-    * quest_Get_String_WithColumnPadding_AsStringOut_Fn
+    * EnE_Get_String_WithColumnPadding_AsStringOut_Fn
     * @param string_in string
     * @param string_len_max_in number
     * @param string_justify_type_in quest_String_Justify_Type_Enum
     */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' escape character to deactivate special character processing
     //% block="get string w/ column\\_padding as string\\_out|string_in: $string_in|string\\_len\\_max\\_in: $string_len_max_in|string\\_justify\\_type\\_in: $string_justify_type_in"
     //% weight=60 blockGap=8
@@ -1000,7 +1048,12 @@ namespace quest_General {
 /**
  * quest_Sensors blocks
  */
-//% weight=68 color=#bfbfff icon="Q"
+// jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
+// OLD: (no //% block= override)
+// OLD: //% weight=68 color=#bfbfff icon="Q"
+//% block="EnE_Sensors"
+//% weight=68 color=#bfbfff icon="E"
+// jwc-26-0608-2000: REPLACED /\
 namespace quest_Sensors {
     /// //
     /// // * Global Variables Q Constants
@@ -1012,9 +1065,12 @@ namespace quest_Sensors {
     /// //
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
+    // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
+    // OLD: quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func
     /**
-    * quest_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func
+    * EnE_Get_Controller_Joystick_Directional_AngleDegree_IncrementOfDegree90_AsIntOut_Func
     */
+    // jwc-26-0608-2000: REPLACED /\
     // '\\' escape character to deactivate special character processing
     //% block="get controller\\_joystick directional angle\\_degree increment\\_of\\_degree\\_90 as int\\_out|"
     //% weight=89 blockGap=8
