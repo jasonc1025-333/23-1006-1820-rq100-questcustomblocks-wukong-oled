@@ -477,7 +477,10 @@ namespace quest_Dashboard {
      */
     // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
-    //% block="quest\\_Get\\_GroupChannel\\_BotId\\_OfMyBot\\_Func"
+    // jwc-26-0610-1800: REPLACED block label (brand-generic, drop quest_ prefix) \/
+    // OLD: //% block="quest\\_Get\\_GroupChannel\\_BotId\\_OfMyBot\\_Func"
+    //% block="get group\\_channel bot\\_id of my_bot"
+    // jwc-26-0610-1800: REPLACED /\
     //% weight=50 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_GroupChannel_BotId_OfMyBot_Func(){
@@ -495,7 +498,10 @@ namespace quest_Dashboard {
      */
     // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
-    //% block="quest\\_Get\\_SerialName_OfMyBot\\_Func"
+    // jwc-26-0610-1800: REPLACED block label (brand-generic, drop quest_ prefix) \/
+    // OLD: //% block="quest\\_Get\\_SerialName_OfMyBot\\_Func"
+    //% block="get serial\\_name of my_bot"
+    // jwc-26-0610-1800: REPLACED /\
     //% weight=50 blockGap=8
     //% inlineInputMode=external
     export function quest_Get_SerialName_OfMyBot_Func() {
@@ -518,7 +524,10 @@ namespace quest_Dashboard {
      */
     // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
-    //% block="quest\\_Dashboard\\_Network\\_SendLogin\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
+    // jwc-26-0610-1800: REPLACED block label (brand-generic, drop quest_ prefix) \/
+    // OLD: //% block="quest\\_Dashboard\\_Network\\_SendLogin\\_Func:|* network_GroupChannel_MyBotId_Base0_IntIn: $network_GroupChannel_MyBotId_Base0_IntIn"
+    //% block="send dashboard login:|* group\\_channel my_bot\\_id: $network_GroupChannel_MyBotId_Base0_IntIn"
+    // jwc-26-0610-1800: REPLACED /\
     //% network_GroupChannel_MyBotId_Base0_IntIn.min=0 network_GroupChannel_MyBotId_Base0_IntIn.max=254
     //% weight=49 blockGap=8
     //% inlineInputMode=external
@@ -706,7 +715,10 @@ namespace quest_Dashboard {
      */
     // jwc-26-0608-2000: REPLACED /\
     // '\\' = escape character to deactivate following special character
-    //% block="quest\\_Dashboard\\_Network\\_SendData\\_WithMyBotHeader\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
+    // jwc-26-0610-1800: REPLACED block label (brand-generic, drop quest_ prefix) \/
+    // OLD: //% block="quest\\_Dashboard\\_Network\\_SendData\\_WithMyBotHeader\\_Func:|* send_DataOfBot_ToXrayDashboardOfMb_Message_String: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
+    //% block="send dashboard data w/ my_bot header:|* message: $send_DataOfBot_ToXrayDashboardOfMb_Message_String"
+    // jwc-26-0610-1800: REPLACED /\
     //% weight=48 blockGap=8
     //% inlineInputMode=external
     //// jwc n default: export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string, debug_Show_In: quest_Debug_Show_Enum = quest_Debug_Show_Enum.Dashboard_OLED): void {
