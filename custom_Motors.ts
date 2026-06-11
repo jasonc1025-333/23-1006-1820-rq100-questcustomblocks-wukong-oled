@@ -10,13 +10,19 @@
 // rgb(191,191,255)  #bfbfff Good Purple to not drown out blue_borderlines
 // * not too dark since would cover thin-black-boundaries
 
+// jwc-26-0610-1800: REPLACED namespace doc comment quest_Motors→EnE_Servos \/
+// OLD: //  * quest_Motors blocks
 /**
- * quest_Motors blocks
+ * EnE_Servos blocks
  */
+// jwc-26-0610-1800: REPLACED /\
 // jwc-26-0608-2000: REPLACED namespace palette label + icon (quest→EnE branding) \/
 // OLD: (no //% block= override)
 // OLD: //% weight=69 color=#7f7fff icon="Q"
-//% block="EnE_Motors"
+// jwc-26-0610-1800: REPLACED palette label Motors→Servos \/
+// OLD: //% block="EnE_Motors"
+//% block="EnE_Servos"
+// jwc-26-0610-1800: REPLACED /\
 //% weight=69 color=#7f7fff icon="E"
 // jwc-26-0608-2000: REPLACED /\
 namespace quest_Motors {
@@ -38,14 +44,20 @@ namespace quest_Motors {
 
     // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
     // OLD: quest_Set_PowerMotorsViaBlueRedBlackPins_Fn
+    // jwc-26-0610-1800: REPLACED tooltip Motors→ServoWheels \/
+    // OLD: //  * EnE_Set_PowerMotorsViaBlueRedBlackPins_Fn
     /**
-     * EnE_Set_PowerMotorsViaBlueRedBlackPins_Fn
+     * EnE_Set_PowerServoWheelsViaBlueRedBlackPins_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
      * @param powerLeftIn number
      * @param powerRightIn number
      */
+    // jwc-26-0610-1800: REPLACED /\
     // jwc-26-0608-2000: REPLACED /\
-    //% block="set manual\\_servo\\_wheels:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
+    // jwc-26-0610-1800: REPLACED param labels left_motor/right_motor → left_wheel/right_wheel \/
+    // OLD: //% block="set manual\\_servo\\_wheels:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn"
+    //% block="set manual\\_servo\\_wheels:|* ports: $portIdsIn|* left_wheel power\\_\\%: $powerLeftIn|* right_wheel power\\_\\%: $powerRightIn"
+    // jwc-26-0610-1800: REPLACED /\
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=80 blockGap=8
@@ -173,8 +185,10 @@ namespace quest_Motors {
 
     // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
     // OLD: quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
+    // jwc-26-0610-1800: REPLACED tooltip Motors→ServoWheels \/
+    // OLD: //  * EnE_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
     /**
-     * EnE_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Fn
+     * EnE_Set_PowerServoWheelsViaBlueRedBlackPins_WithTimer_Fn
      * @param portIdsIn quest_PortGroup_BlueRedBlack_PortIds_Enum
      * @param powerLeftIn number
      * @param powerRightIn number
@@ -182,8 +196,12 @@ namespace quest_Motors {
      * @param debug_Show_In quest_Debug_Show_Enum
      *
      */
+    // jwc-26-0610-1800: REPLACED /\
     // jwc-26-0608-2000: REPLACED /\
-    //% block="set manual\\_servo\\_wheels w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    // jwc-26-0610-1800: REPLACED param labels left_motor/right_motor → left_wheel/right_wheel \/
+    // OLD: //% block="set manual\\_servo\\_wheels w/ timer:|* ports: $portIdsIn|* left_motor power\\_\\%: $powerLeftIn|* right_motor power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    //% block="set manual\\_servo\\_wheels w/ timer:|* ports: $portIdsIn|* left_wheel power\\_\\%: $powerLeftIn|* right_wheel power\\_\\%: $powerRightIn|* turn_Duration: $turn_Duration_In|* debug_Show: $debug_Show_In"
+    // jwc-26-0610-1800: REPLACED /\
     //% powerLeftIn.min=-100 powerLeftIn.max=100
     //% powerRightIn.min=-100 powerRightIn.max=100
     //% weight=78 blockGap=8

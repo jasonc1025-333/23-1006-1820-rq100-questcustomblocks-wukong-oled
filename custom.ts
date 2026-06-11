@@ -46,9 +46,15 @@ enum quest_Toggle_OnOff_Enum {
 }
 
 enum quest_PortGroup_BlueRedBlack_PortIds_Enum {
-    //% block="S1_MotorWheel_Left__S0_MotorWheel_Right"
+    // jwc-26-0610-1800: REPLACED dropdown label MotorWheel→ServoWheel (enum value name unchanged) \/
+    // OLD: //% block="S1_MotorWheel_Left__S0_MotorWheel_Right"
+    //% block="S1_ServoWheel_Left__S0_ServoWheel_Right"
+    // jwc-26-0610-1800: REPLACED /\
     S1_MotorWheel_Left__S0_MotorWheel_Right,
-    //% block="S3_MotorWheel_Left__S2_MotorWheel_Right"
+    // jwc-26-0610-1800: REPLACED dropdown label MotorWheel→ServoWheel (enum value name unchanged) \/
+    // OLD: //% block="S3_MotorWheel_Left__S2_MotorWheel_Right"
+    //% block="S3_ServoWheel_Left__S2_ServoWheel_Right"
+    // jwc-26-0610-1800: REPLACED /\
     S3_MotorWheel_Left__S2_MotorWheel_Right,
 }
 
