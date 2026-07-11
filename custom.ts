@@ -365,6 +365,9 @@ namespace quest_Dashboard {
     OLED12864_I2C.zoom(false)
     OLED12864_I2C.clear()
 
+    // jwc 26-0710-2300: populate for DriverDashboard (ETA) big-font ID row (was declared but never assigned)
+    network_DeviceSerialName_MyBotId_Str_QuestGlobal = control.deviceName()
+
     // jwc-26-0608-2000: REPLACED tooltip quest→EnE \/
     // OLD: quest_Show_Oled_Cleared_Fn
     /**
@@ -397,7 +400,8 @@ namespace quest_Dashboard {
     //% weight=52 blockGap=8
     //% inlineInputMode=external
     //// jwc 25-0626-1400 Only provide SmallFont since Oled Default Size: export function quest_Show_String_For_Oled_BigFont_Func(textStrIn: string, xColBase0In: number, yRowBase0In: number) {
-    function quest_Show_String_For_Oled_BigFont_Func(textStrIn: string, xColBase0In: number, yRowBase0In: number) {
+    // jwc 26-0710-2300: exported for DriverDashboard (ETA) big-font ID row
+    export function quest_Show_String_For_Oled_BigFont_Func(textStrIn: string, xColBase0In: number, yRowBase0In: number) {
         // Default Values
         let colorIntIn = 1 // default
         let textStrInLenMAX = 12  // Char Max with Zoom:On
