@@ -10,8 +10,8 @@
 // rgb(191,191,255)  #bfbfff Good Purple to not drown out blue_borderlines
 // * not too dark since would cover thin-black-boundaries
 
-// jwc-26-0610-1800: REPLACED namespace doc comment quest_Motors→EnE_Servos \/
-// OLD: //  * quest_Motors blocks
+// jwc-26-0610-1800: REPLACED namespace doc comment EnE_Servos→EnE_Servos \/
+// OLD: //  * EnE_Servos blocks
 /**
  * EnE_Servos blocks
  */
@@ -36,7 +36,7 @@ let motor_Power_WR2_QuestGlobal = 0
 let servoArm_Degrees_S7_Left_QuestGlobal = 0
 let servoArm_Degrees_S6_Right_QuestGlobal = 0
 
-namespace quest_Motors {
+namespace EnE_Servos {
     /// //
     /// // * Global Variables Q Constants
     /// //
@@ -284,7 +284,7 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right:
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
-                quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
+                EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
                 //// jwc 25-0325-1600 Obsolete: if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
                 //// jwc 25-0325-1600 Obsolete:     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("A:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0325-1600 Obsolete: }
@@ -295,7 +295,7 @@ namespace quest_Motors {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right:
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S3, motor_Power_L)
                 //// jwc y \/ wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S2, motor_Power_R)
-                quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
+                EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, motor_Power_L, motor_Power_R)
                 //// jwc 25-0325-1600 Obsolete: if (network_Send_DataOfBot_ToXrayDashboard_OnRemoteDisplay_OnOff_Enum_QuestGlobal == quest_Toggle_OnOff_Enum.On) {
                 //// jwc 25-0325-1600 Obsolete:     quest_Dashboard.quest_Send_DataOfBot_ToXrayDashboardOfMb_Func("D:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal +",L:" + convertToText(powerLeftIn) +",R:" + convertToText(powerRightIn)), quest_Debug_Show_Enum.Dashboard_OLED)
                 //// jwc 25-0325-1600 Obsolete: }
@@ -335,7 +335,7 @@ namespace quest_Motors {
         // timer
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(turn_Duration, quest_Time_Units_Enum.Milliseconds)
         // stop
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, 0, 0)
+        EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(portIdsIn, 0, 0)
     }
 
     ////jwc y //% block="set auto_turn w/ timer:|* ports: $port_Ids_In|* turn_Type: $turn_Type_In|* turn_Direction: $turn_Direction_In|* turn_Power: $turn_Power_In|* turn_Duration: $turn_Duration_In"
@@ -534,11 +534,11 @@ namespace quest_Motors {
         //// jwc 25-0628-1400 }
 
         // turn
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, motor_Power_L, motor_Power_R)
+        EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, motor_Power_L, motor_Power_R)
         // timer
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(turn_Duration, quest_Time_Units_Enum.Milliseconds)
         // stop
-        quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, 0, 0)
+        EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(port_Ids_In, 0, 0)
 
     }
 

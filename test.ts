@@ -6,7 +6,7 @@
 // jwc 25-0208-0300 quest_Send_DataOfBot_ToXrayDashboardOfMb_Func
 
 //// jwc 25-0208-0300 y: input.onButtonPressed(Button.A, function () {
-//// jwc 25-0208-0300 y:     quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
+//// jwc 25-0208-0300 y:     EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
 //// jwc 25-0208-0300 y:         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
 //// jwc 25-0208-0300 y:         50,
 //// jwc 25-0208-0300 y:         -50,
@@ -15,7 +15,7 @@
 //// jwc 25-0208-0300 y:     )
 //// jwc 25-0208-0300 y: })
 //// jwc 25-0208-0300 y: input.onButtonPressed(Button.B, function () {
-//// jwc 25-0208-0300 y:     quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
+//// jwc 25-0208-0300 y:     EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_WithTimer_Func(
 //// jwc 25-0208-0300 y:         quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorLeft__S0_MotorRight,
 //// jwc 25-0208-0300 y:         -50,
 //// jwc 25-0208-0300 y:         50,
@@ -209,12 +209,12 @@ input.onButtonPressed(Button.B, function () {
         //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
         //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S7, degrees_MAX_INT - i)
         //// jwc y 26-0111-1900 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, degrees_MAX_INT - i)
-        quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, i, quest_Debug_Show_Enum.Dashboard_OLED)
+        EnE_Servos.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, i, quest_Debug_Show_Enum.Dashboard_OLED)
 
         //// jwc 25-0922-0120 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
         //// jwc 25-0922-0140 n wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S6, i)
         //// jwc y 26-0111-1900 wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, i)
-        quest_Motors.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, i, quest_Debug_Show_Enum.Dashboard_OLED)
+        EnE_Servos.quest_Set_Degrees_By_Integer_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, i, quest_Debug_Show_Enum.Dashboard_OLED)
 
         serial.writeLine('* test.ts: 26-0111-1: ' + convertToText(i))
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds) //// jwc 3,2,1, 0.5
@@ -223,7 +223,7 @@ input.onButtonPressed(Button.B, function () {
 })
 
 input.onGesture(Gesture.TiltLeft, function () {
-    //// jwc 25-0626-1900 quest_Motors.quest_Set_Turn_WithTimer_Func(
+    //// jwc 25-0626-1900 EnE_Servos.quest_Set_Turn_WithTimer_Func(
     //// jwc 25-0626-1900     quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
     //// jwc 25-0626-1900     quest_Turn_Type_Enum.Pivot,
     //// jwc 25-0626-1900     quest_Turn_Direction_Enum.right,
@@ -233,34 +233,34 @@ input.onGesture(Gesture.TiltLeft, function () {
     //// jwc 25-0626-1900 )
     
     //// jwc 25-1012-2040 Stress Test < Max_Network_Message_Length, so use -100,-100
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 50, 60)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 50, 60)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, -50, -60)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, -50, -60)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 0)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 0)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
     //// jwc 25-1012-2040 
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, 60, 50)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, 60, 50)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, -60, -50)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, -60, -50)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    //// jwc 25-1012-2040 quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, 0, 0)
+    //// jwc 25-1012-2040 EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S3_MotorWheel_Left__S2_MotorWheel_Right, 0, 0)
     //// jwc 25-1012-2040 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
 
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 100, 0)
+    EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 100, 0)
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 100)
+    EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 100)
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 100, 100)
+    EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 100, 100)
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, -100, -100)
+    EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, -100, -100)
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
-    quest_Motors.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 0)
+    EnE_Servos.quest_Set_PowerMotorsViaBlueRedBlackPins_Func(quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right, 0, 0)
     quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(3, quest_Time_Units_Enum.Seconds)
 
 })
 input.onGesture(Gesture.TiltRight, function () {
-    //// jwc 25-0626-1900 quest_Motors.quest_Set_Turn_WithTimer_Func(
+    //// jwc 25-0626-1900 EnE_Servos.quest_Set_Turn_WithTimer_Func(
     //// jwc 25-0626-1900     quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right,
     //// jwc 25-0626-1900     quest_Turn_Type_Enum.Spin,
     //// jwc 25-0626-1900     quest_Turn_Direction_Enum.left,
@@ -272,74 +272,74 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 
 
-    //// jwc 25-1010-2200 n not change past '210',  not 225 >> makes sense 225 + 50 = 270 max-borderline-issue, nor 240, nor 255, nor 270 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_225, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2200 n not change past '210',  not 225 >> makes sense 225 + 50 = 270 max-borderline-issue, nor 240, nor 255, nor 270 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_225, quest_Debug_Show_Enum.Dashboard_OLED)
 
 input.onGesture(Gesture.LogoUp, function () {
     
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 
 })
 input.onGesture(Gesture.ScreenUp, function () {
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 
     //// jwc 25-0922-0300 yy //// jwc 25-0922-0230, 45 >> 55 >> 50
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 270 - 50)
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 50)
 
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
    
-    //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2100 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2100 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 input.onGesture(Gesture.LogoDown, function () {
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
 
     //// jwc 25-0922-0300 yy //// jwc 25-0922-0230, 90 >> 100 >> 95
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 270 - 95)
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 95)
     
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-1700 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-1700 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-1700 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-1700 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_045_Up_Half, quest_Debug_Show_Enum.Dashboard_OLED)
    
-    //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-2100 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc nn quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_240, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc nn quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_270, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1012-2000 yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1012-2000 yy quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2100 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2100 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc yy EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc nn EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_240, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc nn EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_270, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc yy EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1012-2000 yy EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1012-2000 yy EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_195, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_180_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
 
 })
 input.onGesture(Gesture.ScreenDown, function () {
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// 25-0922-0150 y quest_Motors.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// 25-0922-0150 y EnE_Servos.quest_Set_AutoDegrees_ForServoArm_BIG_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
     
     //// jwc 25-0922-0300 yy //// jwc 25-0922-0230, 135 >> 145 >> 140
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S7, 270 - 140)
     //// jwc 25-0922-0300 yy wuKong.setServoAngle(wuKong.ServoTypeList._270, wuKong.ServoList.S6, 140)
 
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-0805-1600 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-1700 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-1700 quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-0805-1600 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-1700 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-1700 EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_090_Up_Full, quest_Debug_Show_Enum.Dashboard_OLED)
     
-    //// jwc 25-1010-2100 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_270, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-2200 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_255, quest_Debug_Show_Enum.Dashboard_OLED)
-    //// jwc 25-1010-2200 n quest_Motors.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_225, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
-    quest_Motors.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2100 n EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_270, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2200 n EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_255, quest_Debug_Show_Enum.Dashboard_OLED)
+    //// jwc 25-1010-2200 n EnE_Servos.quest_Set_AutoDegrees_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_225, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
+    EnE_Servos.quest_Set_Degrees_By_Menu_ForServoArm_SMALL_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_210, quest_Debug_Show_Enum.Dashboard_OLED)
 })
 
 
@@ -388,8 +388,8 @@ quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("6", 0, 6)
 quest_Dashboard.quest_Show_String_For_Oled_SmallFont_Func("7", 0, 7)
 quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(5, quest_Time_Units_Enum.Seconds)
 
-//// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
-//// jwc 25-0626-1400 Obsolete Test: quest_Motors.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc 25-0626-1400 Obsolete Test: EnE_Servos.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S7_ServoArm_Left, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
+//// jwc 25-0626-1400 Obsolete Test: EnE_Servos.quest_Set_AutoDegrees_ForServoArm_Func(quest_PortSingle_ServoArmBeam_PortId_Enum.S6_ServoArm_Right, quest_ServoArm_DegreesInDirection_Enum.Degree_000_Down, quest_Debug_Show_Enum.Dashboard_OLED)
 
 //// jwc 25-0922-0100
 serial.writeLine("* test.ts: 00_B1: " + "|network_GroupChannel_MyBotId_Base0_Int_QuestGlobal:" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal) + "|control.deviceName():" + convertToText(control.deviceName()) + "|control.deviceSerialNumber():" + convertToText(control.deviceSerialNumber()))
