@@ -414,7 +414,7 @@ namespace quest_Dashboard {
             textStrIn += " "
         }
 
-        // always setup 'zoom'_in appropriately
+        // jwc 26-0712-1600: BigFont is self-contained — zoom(true) -> write -> zoom(false) back — so the display returns to its zoom(false) resting state and SmallFont writes need no zoom() at all.
         OLED12864_I2C.zoom(true)
 
         OLED12864_I2C.showString(
@@ -423,6 +423,8 @@ namespace quest_Dashboard {
             textStrIn,
             colorIntIn
         )
+        // jwc 26-0712-1600: restore the default zoom(false) resting state
+        OLED12864_I2C.zoom(false)
     }
 
     //// jwc 25-0626-1400 y limite user to only 2 bottom rows: //% yRowBase0In.min=0 yRowBase0In.max=7
@@ -460,8 +462,8 @@ namespace quest_Dashboard {
             textStrIn += " "
         }
 
-        // always setup 'zoom'_in appropriately
-        OLED12864_I2C.zoom(false)
+        // jwc 26-0712-1600: no zoom() here anymore — the display's resting state is zoom(false) (set at init, and BigFont restores it after each big write), so small-font writes (the common case) skip the redundant zoom(false) I2C command entirely. This is the OLED-lag fix.
+        //// jwc 26-0712-1600 OLED12864_I2C.zoom(false)
 
         OLED12864_I2C.showString(
             xColBase0In,
