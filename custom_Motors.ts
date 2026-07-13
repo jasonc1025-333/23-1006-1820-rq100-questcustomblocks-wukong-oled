@@ -21,14 +21,16 @@
 // OLD: //% weight=69 color=#7f7fff icon="Q"
 // jwc-26-0610-1800: REPLACED palette label Motors→Servos \/
 // OLD: //% block="EnE_Motors"
-//% block="EnE_Servos"
 // jwc-26-0610-1800: REPLACED /\
-//% weight=69 color=#7f7fff icon="E"
-// jwc-26-0608-2000: REPLACED /\
 
 // jwc 26-0710-2300: DriverDashboard (ETA) persistent globals — capture the transient
 // motor_Power_L/R and servoArm_Degrees_Local values right where setServoAngle is called,
-// so the OLED can read them "anytime" instead of only inside these function calls
+// so the OLED can read them "anytime" instead of only inside these function calls.
+// jwc 26-0712-2200: MOVED these globals to ABOVE the namespace annotation. They previously
+// sat BETWEEN //% weight=69 and `namespace`, which disassociated the annotation (pxt requires
+// //% block/weight to be contiguous with the declaration) — so EnE_Servos silently lost its
+// weight=69/color/icon and sank to the bottom of the toolbox. Restored: weight 69 > EnE_Sensors'
+// 68, so EnE_Servos now sits above EnE_Sensors in the palette.
 let motor_Power_WL_QuestGlobal = 0
 let motor_Power_WR_QuestGlobal = 0
 let motor_Power_WL2_QuestGlobal = 0
@@ -36,6 +38,9 @@ let motor_Power_WR2_QuestGlobal = 0
 let servoArm_Degrees_S7_Left_QuestGlobal = 0
 let servoArm_Degrees_S6_Right_QuestGlobal = 0
 
+// jwc-26-0608-2000 / jwc 26-0712-2200: keep these two //% lines DIRECTLY above the namespace (no code/blank between) or the annotation disassociates and the category loses its weight/color/icon.
+//% block="EnE_Servos"
+//% weight=69 color=#7f7fff icon="E"
 namespace EnE_Servos {
     /// //
     /// // * Global Variables Q Constants
