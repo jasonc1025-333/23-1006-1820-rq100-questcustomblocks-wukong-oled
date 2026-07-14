@@ -52,6 +52,24 @@ namespace EnE_Servos {
     /// //
     /// let _debug_Serial_Print_Bool_QuestGlobal = false
 
+    // jwc 26-0713: DriverDashboard (ETA) — clear the OLED capture globals from OUTSIDE this
+    // extension SAFELY. The bot calls this once at boot to keep the wheel/arm rows blank until a
+    // real controller command re-sets them. Exposed as a FUNCTION (a proper block) rather than
+    // having the bot write these globals by bare name: a MakeCode blocks round-trip in the bot
+    // was shadowing bare cross-file writes as phantom "*_QuestGlobal2" locals, silently breaking
+    // the reset. Function calls decompile cleanly and can't be shadowed.
+    //% block="EnE_Servos: clear OLED captures (blank rows)"
+    //% blockId=ene_servos_clear_oled_captures
+    //% weight=10 blockGap=8
+    export function quest_ClearOledCaptures_Func(): void {
+        motor_Power_WL_QuestGlobal = ""
+        motor_Power_WR_QuestGlobal = ""
+        motor_Power_WL2_QuestGlobal = ""
+        motor_Power_WR2_QuestGlobal = ""
+        servoArm_Degrees_S7_Left_QuestGlobal = ""
+        servoArm_Degrees_S6_Right_QuestGlobal = ""
+    }
+
 
     ////jwc yy //% block="set manual:servo_motors:|* ports: $portIdsIn|* left motor power: $powerLeftIn|* right motor power: $powerRightIn"
     // '\\' = escape character to deactivate following special character
