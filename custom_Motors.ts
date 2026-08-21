@@ -112,6 +112,17 @@ namespace EnE_Servos {
             case quest_PortGroup_BlueRedBlack_PortIds_Enum.S1_MotorWheel_Left__S0_MotorWheel_Right:
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S1, motor_Power_L)
                 wuKong.setServoAngle(wuKong.ServoTypeList._360, wuKong.ServoList.S0, motor_Power_R)
+                // jwc-26-0821-0300: NEW - mirror the same commands onto micro:bit pins P1/P0, for
+                // a servo whose "motor mode" needs a pulse width Wukong's I2C protocol has no
+                // field for (single 0-180 angle byte only -- see setServoAngle in the wuKong
+                // extension). Direct micro:bit PWM has no such limit. 3000-4000us is that servo's
+                // documented motor-mode range (3500 = stop); direction on each pin mirrors its S1/
+                // S0 counterpart exactly -- P1 increasing with power like S1's motor_Power_L,
+                // P0 inverted like S0's motor_Power_R (the right wheel is physically reversed).
+                // Additive: S0/S1 keep working unchanged whether or not anything is on P0/P1. \/
+                pins.servoSetPulse(AnalogPin.P1, Math.map(powerLeftIn, -100, 100, 3000, 4000))
+                pins.servoSetPulse(AnalogPin.P0, Math.map(powerRightIn, -100, 100, 4000, 3000))
+                // jwc-26-0821-0300: NEW /\
                 // jwc 26-0710-2300: DriverDashboard (ETA) capture for OLED WL/WR row
                 motor_Power_WL_QuestGlobal = "" + powerLeftIn
                 motor_Power_WR_QuestGlobal = "" + powerRightIn

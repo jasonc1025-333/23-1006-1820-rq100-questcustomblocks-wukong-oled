@@ -1,7 +1,8 @@
 {
     "name": "23-1006-1820-RQ100-QuestCustomBlocks-Wukong-Oled",
-    "version": "0.49.0",
+    "version": "0.50.0",
     "_comment": "jwc-26-0820-1640: OLED12864_I2C fork pin v2.0.1 -> v2.0.2, which ADDS buffered drawing primitives (bufPixel/bufHline/bufVline/bufRect/bufFillRect/bufClear) plus drawPages() partial-region flush. That release is purely additive -- no pre-existing exported function changed -- so quest_Dashboard's OLED text path in custom.ts behaves identically. The bump exists so the bot project can draw real graphics (DriverDashboard screens 5-9); pxt resolves ONE version per package, so this pin and any direct pin in a consuming project MUST stay identical.",
+    "_comment2": "jwc-26-0821-0300: 0.49.0 -> 0.50.0. custom_Motors.ts's live S1/S0 wheel-drive case now ALSO mirrors each command onto micro:bit AnalogPin.P1/P0 via pins.servoSetPulse (3000-4000us, 3500=stop) -- for a servo whose motor mode needs a pulse width outside what Wukong's I2C protocol can send (setServoAngle carries a single 0-180 angle byte, no pulse-width field). Purely additive: S0/S1 unchanged whether or not anything is wired to P0/P1.",
     "description": "",
     "dependencies": {
         "core": "*",
