@@ -663,7 +663,11 @@ namespace quest_Dashboard {
 
             //// jwc 25-0627-0900 network_Message_Str = "A:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
             //// jwc 25-0628-1400 network_Message_Str = "BotId:" + network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
-            network_Message_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
+            //// jwc-26-0829-0050 Was a bare copy of the header global, which the sender below then
+            //// jwc-26-0829-0050 prepended again -> login went out doubled as "B50:07,B50:07".
+            //// jwc-26-0829-0050 Restores the labeled payload style of the 25-0627/25-0628 lines above.
+            //// jwc-26-0829-0050 network_Message_Str = network_GroupChannel_DeviceSerialName_MyBotIdsDual_Str_QuestGlobal
+            network_Message_Str = "Me:" + network_DeviceSerialName_MyBotId_Str_QuestGlobal
 
             quest_Note_3.quest_Show_String_For_Note_Big_Func(
                 "Network_Message Max Length or will be cut off"
