@@ -547,7 +547,11 @@ namespace quest_Dashboard {
     //// jwc 25-0626-1400 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number, send_DataOfBot_ToXrayDashboardOfMb_OnOff_Enum_In: quest_Toggle_OnOff_Enum, debug_Show_In: quest_Debug_Show_Enum): void {
     //// jwc 25-0627-1500 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): void {
     //// jwc 25-0627-0900 export function quest_Send_LoginOfBot_ToXrayDashboardOfMb_Func(network_GroupChannel_MyBotId_Base0_IntIn: number, network_SerialId_MyBotId_StrIn: string): void {
-    export function quest_Dashboard_Network_SendLogin_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): void {
+    // jwc-26-0901-1200: void -> string, per user, paired with the same change on
+    // quest_Dashboard_Network_SendData_WithMyBotHeader_Func below (which this function calls to do
+    // the actual send). Returns the real wire text it just transmitted, so a caller (e.g. the bot's
+    // TX message log) can store/display exactly what was sent instead of reconstructing it by hand.
+    export function quest_Dashboard_Network_SendLogin_Func(network_GroupChannel_MyBotId_Base0_IntIn: number): string {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -686,7 +690,9 @@ namespace quest_Dashboard {
             //// jwc25-0628-1400 Important to prevent recursion: stack overflow: 
             network_Send_LoginOfBot_ToXrayDashboard_OnRemoteDisplay_Bool_QuestGlobal = true
 
-            quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str)
+            // jwc-26-0901-1200: capture the real wire text this call sends, to return at the end of
+            // this function (the rest of the body below still needs to run first -- debug-print etc).
+            let network_ActualWireText_Str_QuestGlobal = quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str)
 
             //// jwc 25-0627-0900 radio.setGroup(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL)
             //// jwc 25-0627-0900 radio.sendString(network_Message_Str)
@@ -711,6 +717,9 @@ namespace quest_Dashboard {
                 //// jwc 25-0627-0900 serial.writeLine("*A:" + convertToText(network_GroupChannel_OfXrayDashboard_OnRemoteDisplay_BASE0_INT_QUESTGLOBAL) + "<<" + network_Message_Str + "|" + convertToText(network_GroupChannel_MyBotId_Base0_Int_QuestGlobal))
                 serial.writeLine("* quest_Dashboard_Network_SendLogin_Func: '" + network_Message_Str +"'")
             }
+            // jwc-26-0901-1200: NEW - return the real wire text just transmitted (captured above),
+            // so a caller can log/display exactly what was sent instead of reconstructing it.
+            return network_ActualWireText_Str_QuestGlobal
         }
     }
 
@@ -743,7 +752,15 @@ namespace quest_Dashboard {
     //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
     //// jwc 25-0627-0900 y export function quest_Send_DataOfBot_ToXrayDashboardOfMb_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
     //// jwc 26-0202-1310 y? export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(network_Message_Str_In: string): void {
-    export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): void {
+    // jwc-26-0901-1200: void -> string, per user. Callers that logged/displayed traffic sent through
+    // this function used to have to RECONSTRUCT the wire text by hand (header + "," + payload) --
+    // fragile, and it already went stale once (a bot-repo screen was showing the OLD duplicate-
+    // header format months after the real wire format changed to "Me:<id>", because the
+    // reconstruction formula was never updated alongside it). Returning the true, final (post-
+    // truncation) string removes the need to reconstruct anything, ever -- callers that don't care
+    // about the return value are unaffected (discarding a return is always legal in TypeScript; all
+    // 11 existing call sites across this extension are untouched by this change).
+    export function quest_Dashboard_Network_SendData_WithMyBotHeader_Func(send_DataOfBot_ToXrayDashboardOfMb_Message_String: string): string {
 
         ///jwc y if(quest_Debug_Show_Enum)
         ///jwc y basic.showIcon(IconNames.SmallHeart)
@@ -891,6 +908,9 @@ namespace quest_Dashboard {
         //// jwc to prevent redundant data on dashboard, to mitigate network traffic
         //// jwc 25-0626-1400 OK TO SEND REDUNDANT DATA, WILL FILTER AT DESTINATION network_Message_Old_Str_QuestGlobal = network_Message_WithHeader_Str
 
+        // jwc-26-0901-1200: NEW - the real, final (post-truncation) wire string, for a caller that
+        // wants to log/display exactly what went out instead of reconstructing it.
+        return network_Message_WithHeader_Str
     }
 
 
